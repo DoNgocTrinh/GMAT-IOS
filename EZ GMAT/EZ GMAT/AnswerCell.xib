@@ -1,0 +1,50 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="10116" systemVersion="15E65" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES">
+    <dependencies>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="10085"/>
+        <capability name="Aspect ratio constraints" minToolsVersion="5.1"/>
+    </dependencies>
+    <objects>
+        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner"/>
+        <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
+        <tableViewCell contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" rowHeight="110" id="KGk-i7-Jjw" customClass="AnswerCell">
+            <rect key="frame" x="0.0" y="0.0" width="449" height="110"/>
+            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+            <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="KGk-i7-Jjw" id="H2p-sc-9uM">
+                <rect key="frame" x="0.0" y="0.0" width="449" height="109"/>
+                <autoresizingMask key="autoresizingMask"/>
+                <subviews>
+                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="hud-TV-Xzk">
+                        <rect key="frame" x="38" y="5" width="406" height="99"/>
+                        <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                        <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
+                        <nil key="highlightedColor"/>
+                    </label>
+                    <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="Heq-Ct-sOg">
+                        <rect key="frame" x="8" y="42" width="25" height="25"/>
+                        <constraints>
+                            <constraint firstAttribute="width" secondItem="Heq-Ct-sOg" secondAttribute="height" multiplier="56:57" id="feX-Nq-46Y"/>
+                            <constraint firstAttribute="height" constant="25" id="rjv-aM-mWV"/>
+                        </constraints>
+                    </imageView>
+                </subviews>
+                <constraints>
+                    <constraint firstItem="hud-TV-Xzk" firstAttribute="centerY" secondItem="Heq-Ct-sOg" secondAttribute="centerY" id="1UU-1D-8qv"/>
+                    <constraint firstAttribute="trailing" secondItem="hud-TV-Xzk" secondAttribute="trailing" constant="5" id="AWO-S2-M7q"/>
+                    <constraint firstItem="Heq-Ct-sOg" firstAttribute="leading" secondItem="H2p-sc-9uM" secondAttribute="leading" constant="8" id="F7f-yB-yzd"/>
+                    <constraint firstItem="hud-TV-Xzk" firstAttribute="top" secondItem="H2p-sc-9uM" secondAttribute="top" constant="5" id="XJR-mp-YFk"/>
+                    <constraint firstAttribute="bottom" relation="greaterThanOrEqual" secondItem="Heq-Ct-sOg" secondAttribute="bottom" id="Xeh-Sa-s9r"/>
+                    <constraint firstAttribute="bottom" secondItem="hud-TV-Xzk" secondAttribute="bottom" constant="5" id="g5T-Ed-H1M"/>
+                    <constraint firstItem="hud-TV-Xzk" firstAttribute="leading" secondItem="Heq-Ct-sOg" secondAttribute="trailing" constant="5" id="gdR-Ed-eTK"/>
+                    <constraint firstItem="Heq-Ct-sOg" firstAttribute="top" relation="greaterThanOrEqual" secondItem="H2p-sc-9uM" secondAttribute="top" id="hHw-EB-3aO"/>
+                </constraints>
+            </tableViewCellContentView>
+            <connections>
+                <outlet property="imvAnswer" destination="Heq-Ct-sOg" id="Cw8-aX-1gL"/>
+                <outlet property="lblAnswer" destination="hud-TV-Xzk" id="Ypm-g0-Agb"/>
+            </connections>
+            <point key="canvasLocation" x="389.5" y="386"/>
+        </tableViewCell>
+    </objects>
+</document>

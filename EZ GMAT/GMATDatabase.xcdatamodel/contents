@@ -1,0 +1,43 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<model userDefinedModelVersionIdentifier="" type="com.apple.IDECoreDataModeler.DataModel" documentVersion="1.0" lastSavedToolsVersion="10171" systemVersion="15E65" minimumToolsVersion="Xcode 7.0">
+    <entity name="Answer" representedClassName="Answer" syncable="YES">
+        <attribute name="choice" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="explanation" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="index" optional="YES" attributeType="Integer 16" defaultValueString="0" syncable="YES"/>
+        <attribute name="note" optional="YES" attributeType="String" syncable="YES"/>
+        <relationship name="question" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="Question" inverseName="answers" inverseEntity="Question" syncable="YES"/>
+    </entity>
+    <entity name="Question" representedClassName="Question" syncable="YES">
+        <attribute name="explanation" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="questionId" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="rightAnswerIdx" optional="YES" attributeType="Integer 16" defaultValueString="0" syncable="YES"/>
+        <attribute name="stem" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="stimulus" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="subType" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="tag" optional="YES" attributeType="Integer 16" defaultValueString="0" syncable="YES"/>
+        <attribute name="type" optional="YES" attributeType="String" syncable="YES"/>
+        <relationship name="answers" optional="YES" toMany="YES" deletionRule="Cascade" destinationEntity="Answer" inverseName="question" inverseEntity="Answer" syncable="YES"/>
+        <relationship name="studentAnswer" optional="YES" toMany="YES" deletionRule="Cascade" destinationEntity="StudentAnswer" inverseName="question" inverseEntity="StudentAnswer" syncable="YES"/>
+    </entity>
+    <entity name="QuestionID" representedClassName="QuestionID" syncable="YES">
+        <attribute name="questionID" optional="YES" attributeType="String" syncable="YES"/>
+        <relationship name="questionPack" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="QuestionPack" inverseName="questionIDs" inverseEntity="QuestionPack" syncable="YES"/>
+    </entity>
+    <entity name="QuestionPack" representedClassName="QuestionPack" syncable="YES">
+        <attribute name="available_time" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="packID" optional="YES" attributeType="String" syncable="YES"/>
+        <relationship name="questionIDs" optional="YES" toMany="YES" deletionRule="Nullify" destinationEntity="QuestionID" inverseName="questionPack" inverseEntity="QuestionID" syncable="YES"/>
+    </entity>
+    <entity name="StudentAnswer" representedClassName="StudentAnswer" syncable="YES">
+        <attribute name="answerChoiceIdx" optional="YES" attributeType="Integer 16" defaultValueString="0" syncable="YES"/>
+        <attribute name="result" optional="YES" attributeType="Boolean" syncable="YES"/>
+        <relationship name="question" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="Question" inverseName="studentAnswer" inverseEntity="Question" syncable="YES"/>
+    </entity>
+    <elements>
+        <element name="Answer" positionX="279" positionY="-1278" width="128" height="118"/>
+        <element name="Question" positionX="97" positionY="-1314" width="128" height="193"/>
+        <element name="QuestionID" positionX="-324" positionY="-1242" width="128" height="73"/>
+        <element name="StudentAnswer" positionX="279" positionY="-1143" width="128" height="90"/>
+        <element name="QuestionPack" positionX="-189" positionY="-1182" width="128" height="88"/>
+    </elements>
+</model>

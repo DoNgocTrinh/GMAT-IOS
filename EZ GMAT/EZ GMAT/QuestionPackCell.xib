@@ -1,0 +1,76 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="10116" systemVersion="15E65" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES">
+    <dependencies>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="10085"/>
+        <capability name="Aspect ratio constraints" minToolsVersion="5.1"/>
+    </dependencies>
+    <objects>
+        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner"/>
+        <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
+        <tableViewCell contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" rowHeight="145" id="KGk-i7-Jjw" customClass="QuestionPackCell">
+            <rect key="frame" x="0.0" y="0.0" width="560" height="145"/>
+            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+            <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="KGk-i7-Jjw" id="H2p-sc-9uM">
+                <rect key="frame" x="0.0" y="0.0" width="560" height="144"/>
+                <autoresizingMask key="autoresizingMask"/>
+                <subviews>
+                    <label opaque="NO" userInteractionEnabled="NO" alpha="0.59999999999999998" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="KRi-eK-hSJ">
+                        <rect key="frame" x="10" y="10" width="540" height="74"/>
+                        <fontDescription key="fontDescription" type="system" pointSize="20"/>
+                        <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
+                        <nil key="highlightedColor"/>
+                    </label>
+                    <view alpha="0.0" contentMode="scaleToFill" misplaced="YES" translatesAutoresizingMaskIntoConstraints="NO" id="Z7j-8Y-sZx">
+                        <rect key="frame" x="10" y="92" width="530" height="1"/>
+                        <color key="backgroundColor" white="0.0" alpha="1" colorSpace="calibratedWhite"/>
+                        <constraints>
+                            <constraint firstAttribute="height" constant="1" id="sm5-l4-C7U"/>
+                        </constraints>
+                    </view>
+                    <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" image="ic_directions_run_black_24dp" translatesAutoresizingMaskIntoConstraints="NO" id="XOe-Tu-vqI">
+                        <rect key="frame" x="15" y="103" width="32" height="32"/>
+                        <constraints>
+                            <constraint firstAttribute="width" secondItem="XOe-Tu-vqI" secondAttribute="height" multiplier="1:1" id="lps-Ha-ywF"/>
+                        </constraints>
+                    </imageView>
+                    <progressView opaque="NO" contentMode="scaleToFill" verticalHuggingPriority="750" misplaced="YES" progress="0.5" translatesAutoresizingMaskIntoConstraints="NO" id="jPc-jh-BKE">
+                        <rect key="frame" x="57" y="118" width="483" height="2"/>
+                    </progressView>
+                </subviews>
+                <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
+                <constraints>
+                    <constraint firstItem="XOe-Tu-vqI" firstAttribute="top" secondItem="Z7j-8Y-sZx" secondAttribute="bottom" constant="10" id="0qJ-4w-Cpf"/>
+                    <constraint firstItem="Z7j-8Y-sZx" firstAttribute="top" secondItem="KRi-eK-hSJ" secondAttribute="bottom" constant="8" id="2GW-Dd-0YB"/>
+                    <constraint firstItem="jPc-jh-BKE" firstAttribute="centerY" secondItem="XOe-Tu-vqI" secondAttribute="centerY" id="GZd-T4-Iw6"/>
+                    <constraint firstAttribute="trailing" secondItem="Z7j-8Y-sZx" secondAttribute="trailing" constant="20" id="JtH-hU-hos"/>
+                    <constraint firstItem="KRi-eK-hSJ" firstAttribute="top" secondItem="H2p-sc-9uM" secondAttribute="top" constant="10" id="PlZ-LJ-sU8"/>
+                    <constraint firstItem="jPc-jh-BKE" firstAttribute="leading" secondItem="XOe-Tu-vqI" secondAttribute="trailing" constant="10" id="Tit-p2-8i9"/>
+                    <constraint firstAttribute="bottom" secondItem="XOe-Tu-vqI" secondAttribute="bottom" constant="10" id="VbS-RY-fDm"/>
+                    <constraint firstItem="XOe-Tu-vqI" firstAttribute="leading" secondItem="H2p-sc-9uM" secondAttribute="leading" constant="15" id="W2d-dh-tXt"/>
+                    <constraint firstAttribute="trailing" secondItem="XOe-Tu-vqI" secondAttribute="trailing" constant="15" id="fA6-b1-YIN"/>
+                    <constraint firstItem="KRi-eK-hSJ" firstAttribute="leading" secondItem="H2p-sc-9uM" secondAttribute="leading" constant="10" id="gXO-wk-jjz"/>
+                    <constraint firstItem="Z7j-8Y-sZx" firstAttribute="leading" secondItem="KRi-eK-hSJ" secondAttribute="leading" id="if6-UR-qYl"/>
+                    <constraint firstAttribute="trailing" secondItem="jPc-jh-BKE" secondAttribute="trailing" constant="20" id="kib-F3-KqY"/>
+                    <constraint firstAttribute="trailing" secondItem="KRi-eK-hSJ" secondAttribute="trailing" constant="10" id="n68-QD-tjc"/>
+                    <constraint firstItem="Z7j-8Y-sZx" firstAttribute="leading" secondItem="H2p-sc-9uM" secondAttribute="leading" constant="15" id="sss-xM-Bid"/>
+                </constraints>
+                <variation key="default">
+                    <mask key="constraints">
+                        <exclude reference="sss-xM-Bid"/>
+                        <exclude reference="fA6-b1-YIN"/>
+                    </mask>
+                </variation>
+            </tableViewCellContentView>
+            <connections>
+                <outlet property="lblDate" destination="KRi-eK-hSJ" id="Alt-hE-Av9"/>
+                <outlet property="progessView" destination="jPc-jh-BKE" id="gvz-dE-Cqg"/>
+                <outlet property="separatorView" destination="Z7j-8Y-sZx" id="tPq-4X-f5f"/>
+            </connections>
+            <point key="canvasLocation" x="343" y="403.5"/>
+        </tableViewCell>
+    </objects>
+    <resources>
+        <image name="ic_directions_run_black_24dp" width="32" height="32"/>
+    </resources>
+</document>

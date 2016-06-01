@@ -1,0 +1,37 @@
+//
+//  PrefixHeader.pch
+//  EZ GMAT
+//
+//  Created by Do Ngoc Trinh on 6/1/16.
+//  Copyright © 2016 Do Ngoc Trinh. All rights reserved.
+//
+
+#ifndef PrefixHeader_pch
+#define PrefixHeader_pch
+
+//DATA
+#import "MagicalRecord.h"
+
+//CONSTANT
+#import "Constant.h"
+
+//OTHER
+#import "MCPercentageDoughnutView.h"
+
+//CUSTOM CELL
+#import "TextCell.h"
+#import "AnswerCell.h"
+#import "QuickReviewCell.h"
+#import "QuickReviewAnswerCell.h"
+#import "ReviewAnswerCell.h"
+#import "AnswerCell.h"
+#import "StudentAnswer.h"
+
+//OBJECT
+#import "Question.h"
+#import "Answer.h"
+#import "QuestionPack.h"
+#import "QuestionID.h"
+
+
+#endif /* PrefixHeader_pch */
