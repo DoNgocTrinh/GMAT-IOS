@@ -1,0 +1,44 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="10116" systemVersion="15E65" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES">
+    <dependencies>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="10085"/>
+        <capability name="Constraints with non-1.0 multipliers" minToolsVersion="5.1"/>
+    </dependencies>
+    <objects>
+        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner"/>
+        <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
+        <view contentMode="scaleToFill" id="iN0-l3-epB" customClass="CustomTitleView">
+            <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
+            <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+            <subviews>
+                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="5ro-6C-hoa">
+                    <rect key="frame" x="450" y="0.0" width="150" height="600"/>
+                    <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                    <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                    <nil key="highlightedColor"/>
+                </label>
+                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="atK-n1-SFg">
+                    <rect key="frame" x="0.0" y="0.0" width="150" height="600"/>
+                    <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                    <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                    <nil key="highlightedColor"/>
+                </label>
+            </subviews>
+            <constraints>
+                <constraint firstItem="atK-n1-SFg" firstAttribute="leading" secondItem="iN0-l3-epB" secondAttribute="leading" id="Noq-W4-Ss2"/>
+                <constraint firstItem="atK-n1-SFg" firstAttribute="height" secondItem="iN0-l3-epB" secondAttribute="height" id="Ppw-z2-dkb"/>
+                <constraint firstAttribute="trailing" secondItem="5ro-6C-hoa" secondAttribute="trailing" id="Slb-Fk-iWG"/>
+                <constraint firstItem="atK-n1-SFg" firstAttribute="top" secondItem="iN0-l3-epB" secondAttribute="top" id="W3c-kF-hOb"/>
+                <constraint firstItem="5ro-6C-hoa" firstAttribute="width" secondItem="iN0-l3-epB" secondAttribute="width" multiplier="1:4" id="XqE-lS-8Zx"/>
+                <constraint firstItem="5ro-6C-hoa" firstAttribute="top" secondItem="iN0-l3-epB" secondAttribute="top" id="aBv-Qk-Lbs"/>
+                <constraint firstItem="5ro-6C-hoa" firstAttribute="height" secondItem="iN0-l3-epB" secondAttribute="height" id="boZ-GD-olR"/>
+                <constraint firstItem="atK-n1-SFg" firstAttribute="width" secondItem="iN0-l3-epB" secondAttribute="width" multiplier="1:4" id="yfY-EV-3YS"/>
+            </constraints>
+            <connections>
+                <outlet property="lblQuestionNumber" destination="5ro-6C-hoa" id="Zyr-Uv-mM3"/>
+                <outlet property="lblTime" destination="atK-n1-SFg" id="7Cq-YL-ZDQ"/>
+            </connections>
+        </view>
+    </objects>
+</document>
