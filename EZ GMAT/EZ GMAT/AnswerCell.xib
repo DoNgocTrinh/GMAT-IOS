@@ -4,6 +4,7 @@
         <deployment identifier="iOS"/>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="10085"/>
         <capability name="Aspect ratio constraints" minToolsVersion="5.1"/>
+        <capability name="Constraints to layout margins" minToolsVersion="6.0"/>
     </dependencies>
     <objects>
         <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner"/>
@@ -15,30 +16,39 @@
                 <rect key="frame" x="0.0" y="0.0" width="449" height="109"/>
                 <autoresizingMask key="autoresizingMask"/>
                 <subviews>
-                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="hud-TV-Xzk">
-                        <rect key="frame" x="38" y="5" width="406" height="99"/>
+                    <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="Heq-Ct-sOg">
+                        <rect key="frame" x="8" y="42" width="25" height="25"/>
+                        <constraints>
+                            <constraint firstAttribute="width" secondItem="Heq-Ct-sOg" secondAttribute="height" multiplier="1:1" id="b6P-TS-eaZ"/>
+                            <constraint firstAttribute="height" constant="25" id="xwX-xF-G17"/>
+                        </constraints>
+                    </imageView>
+                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" text="Label" textAlignment="natural" lineBreakMode="wordWrap" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="hud-TV-Xzk">
+                        <rect key="frame" x="32" y="5" width="409" height="99"/>
+                        <constraints>
+                            <constraint firstAttribute="height" relation="greaterThanOrEqual" constant="24" id="tcr-IN-9jE"/>
+                        </constraints>
                         <fontDescription key="fontDescription" type="system" pointSize="14"/>
                         <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                         <nil key="highlightedColor"/>
                     </label>
-                    <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="Heq-Ct-sOg">
-                        <rect key="frame" x="8" y="42" width="25" height="25"/>
-                        <constraints>
-                            <constraint firstAttribute="width" secondItem="Heq-Ct-sOg" secondAttribute="height" multiplier="56:57" id="feX-Nq-46Y"/>
-                            <constraint firstAttribute="height" constant="25" id="rjv-aM-mWV"/>
-                        </constraints>
-                    </imageView>
                 </subviews>
                 <constraints>
                     <constraint firstItem="hud-TV-Xzk" firstAttribute="centerY" secondItem="Heq-Ct-sOg" secondAttribute="centerY" id="1UU-1D-8qv"/>
+                    <constraint firstItem="Heq-Ct-sOg" firstAttribute="centerY" secondItem="H2p-sc-9uM" secondAttribute="centerY" id="1cd-kR-o31"/>
                     <constraint firstAttribute="trailing" secondItem="hud-TV-Xzk" secondAttribute="trailing" constant="5" id="AWO-S2-M7q"/>
-                    <constraint firstItem="Heq-Ct-sOg" firstAttribute="leading" secondItem="H2p-sc-9uM" secondAttribute="leading" constant="8" id="F7f-yB-yzd"/>
+                    <constraint firstItem="hud-TV-Xzk" firstAttribute="leading" secondItem="Heq-Ct-sOg" secondAttribute="trailing" constant="2" id="DdY-6r-Wti"/>
+                    <constraint firstAttribute="leadingMargin" secondItem="Heq-Ct-sOg" secondAttribute="leading" id="PNP-iU-F7R"/>
+                    <constraint firstItem="Heq-Ct-sOg" firstAttribute="centerY" secondItem="hud-TV-Xzk" secondAttribute="centerY" id="Unl-G3-dZ0"/>
                     <constraint firstItem="hud-TV-Xzk" firstAttribute="top" secondItem="H2p-sc-9uM" secondAttribute="top" constant="5" id="XJR-mp-YFk"/>
-                    <constraint firstAttribute="bottom" relation="greaterThanOrEqual" secondItem="Heq-Ct-sOg" secondAttribute="bottom" id="Xeh-Sa-s9r"/>
                     <constraint firstAttribute="bottom" secondItem="hud-TV-Xzk" secondAttribute="bottom" constant="5" id="g5T-Ed-H1M"/>
-                    <constraint firstItem="hud-TV-Xzk" firstAttribute="leading" secondItem="Heq-Ct-sOg" secondAttribute="trailing" constant="5" id="gdR-Ed-eTK"/>
-                    <constraint firstItem="Heq-Ct-sOg" firstAttribute="top" relation="greaterThanOrEqual" secondItem="H2p-sc-9uM" secondAttribute="top" id="hHw-EB-3aO"/>
                 </constraints>
+                <variation key="default">
+                    <mask key="constraints">
+                        <exclude reference="1UU-1D-8qv"/>
+                        <exclude reference="Unl-G3-dZ0"/>
+                    </mask>
+                </variation>
             </tableViewCellContentView>
             <connections>
                 <outlet property="imvAnswer" destination="Heq-Ct-sOg" id="Cw8-aX-1gL"/>

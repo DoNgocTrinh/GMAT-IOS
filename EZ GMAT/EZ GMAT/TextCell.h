@@ -8,9 +8,10 @@
 
 #import <UIKit/UIKit.h>
 
-@interface TextCell : UITableViewCell
+@interface TextCell : UITableViewCell<UIWebViewDelegate>
 
 @property (weak, nonatomic) IBOutlet UILabel *lblText;
 @property (weak, nonatomic) IBOutlet UIWebView *webViewQuestion;
+@property (assign, nonatomic) CGFloat heightweb;
 
 @end

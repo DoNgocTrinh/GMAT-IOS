@@ -17,6 +17,9 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     [_webview layoutIfNeeded];
+    //[self setInset];
+
+   // self.navigationController.navigationBar.translucent = NO;
     _btnDismiss.layer.masksToBounds = YES;
     _btnDismiss.layer.cornerRadius = _btnDismiss.bounds.size.width/2;
     
@@ -49,7 +52,12 @@
 
     [self.view removeFromSuperview];
 }
+-(void)setInset;{
+    [_webview.scrollView setContentInset:UIEdgeInsetsMake(self.navigationController.navigationBar.frame.size.height+20, 0, 0, 0)];
+    [_webview.scrollView setScrollIndicatorInsets:UIEdgeInsetsMake(self.navigationController.navigationBar.frame.size.height+20, 0, 0, 0)];
 
+    //[_tbvQuestion setScrollIndicatorInsets:UIEdgeInsetsMake(self.navigationController.navigationBar.frame.size.height+20, 0, 0, 0)];
+}
 
 /*
 #pragma mark - Navigation

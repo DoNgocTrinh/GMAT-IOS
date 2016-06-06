@@ -20,7 +20,12 @@
 @end
 
 @implementation QuestionViewController
-{
+{NSMutableArray *heights;
+    NSMutableArray *cellList;
+    
+    NSArray *array;
+    
+    CGFloat height;
     NSTimer *timer;
     NSDate *startDate;
     BOOL isTimeRun;
@@ -32,7 +37,13 @@
 
 - (void)viewDidLoad {
     [super viewDidLoad];
-    self.navigationController.navigationBar.translucent = NO;
+    
+    heights = [[NSMutableArray alloc]init];
+    cellList = [[NSMutableArray alloc]init];
+    heights =[[NSMutableArray alloc]initWithArray: @[@0.0f,@0.0f,@0.0f,@0.0f,@0.0f,@0.0f]];
+    //  self.navigationController.navigationBar.translucent = NO;
+    [_tbvQuestion setContentInset:UIEdgeInsetsMake(self.navigationController.navigationBar.frame.size.height+20, 0, 0, 0)];
+    [_tbvQuestion setScrollIndicatorInsets:UIEdgeInsetsMake(self.navigationController.navigationBar.frame.size.height+20, 0, 0, 0)];
     
     _studentAnwsers = [[NSMutableArray alloc]init];
     
@@ -94,6 +105,12 @@
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
     Question *selectedQuestion = _questions[_displayIndex];
     
+    //    if(cellList.count < 7){
+    //        NSDictionary *dict = @{@"index": [NSNumber numberWithInteger:indexPath.row] , @"section": [NSNumber numberWithInteger: indexPath.section]};
+    //        [cellList addObject:dict];
+    //    }
+    //  NSLog(@"cell list: %ld", cellList.count);
+    
     NSSortDescriptor *nameDescriptor = [NSSortDescriptor sortDescriptorWithKey:@"index" ascending:YES];
     NSArray *answers = [[selectedQuestion.answers allObjects] sortedArrayUsingDescriptors:[NSArray arrayWithObject:nameDescriptor]];    static NSString *cellId = @"question";
     
@@ -103,6 +120,7 @@
         if (!cell) {
             NSArray *nib = [[NSBundle mainBundle]loadNibNamed:@"TextCell" owner:self options:nil];
             cell = [nib objectAtIndex:0];
+            //   NSLog(@"section : %ld row: %ld",indexPath.section, indexPath.row);
         }
         
         cell.selectionStyle = UITableViewCellSelectionStyleNone;
@@ -115,16 +133,23 @@
             }
             cell.lblText.text = selectedQuestion.stem;
         }
+        cell.webViewQuestion.delegate = self;
+        cell.webViewQuestion.tag = 0;
+        // NSLog(@"Height update: %lf", height);
+        cell.webViewQuestion.scrollView.scrollEnabled = NO;
+        
+        if(cellList.count < 2){
+            NSDictionary *dict = @{@"index": [NSNumber numberWithInteger:indexPath.row] , @"section": [NSNumber numberWithInteger: indexPath.section]};
+            [cellList addObject:dict];
+        }
         return cell;
         
     }else if (indexPath.section == 1){
         TextCell *cell = [tableView dequeueReusableCellWithIdentifier:cellId];
-        //
         for(UIView *b in self.navigationController.view.subviews){
             if( [b isKindOfClass: [UIButton class]])
                 [b removeFromSuperview];
         }
-        
         if([selectedQuestion.type isEqualToString:@"RC"]){
             
             button.userInteractionEnabled = YES;
@@ -133,7 +158,6 @@
                                                initWithTarget:self
                                                action:@selector(buttonDrag:)];
             [button addGestureRecognizer:gesture];
-            
             
             [self.navigationController.view addSubview:button];
         }
@@ -145,10 +169,16 @@
         
         cell.selectionStyle = UITableViewCellSelectionStyleNone;
         
-        [cell.webViewQuestion setBackgroundColor:[UIColor grayColor]];
-        [cell.webViewQuestion setOpaque:NO];
-        
-        [cell.webViewQuestion loadHTMLString:selectedQuestion.stem baseURL:nil];
+        NSString *htmlString  = @"";
+        NSString *string = [NSString stringWithFormat:@" %@ %@", selectedQuestion.stem, htmlString];
+        [cell.webViewQuestion loadHTMLString:string baseURL:nil];
+        cell.webViewQuestion.delegate = self;
+        cell.webViewQuestion.tag = 1;
+        if(cellList.count < 2){
+            NSDictionary *dict = @{@"index": [NSNumber numberWithInteger:indexPath.row] , @"section": [NSNumber numberWithInteger: indexPath.section]};
+            [cellList addObject:dict];
+        }
+        // height = 10;
         return cell;
         
     }
@@ -178,60 +208,99 @@
             cell.imvAnswer.image = [[UIImage imageNamed:kImage_AnswerE] imageWithRenderingMode:UIImageRenderingModeAlwaysTemplate];
         }
         answerCell = cell;
+        //  height = 100;
         return cell;
         
     } else return nil;
     
 }
-- (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath
-{
-    selectQuestion = _questions[_displayIndex];
-    //NSLog(@"Question type: %@ - %ld", selectQuestion.type , _displayIndex+1);
-    //NSLog(@"asdas + %ld %@", _displayIndex+1, typeQuestion);
-#define CASE(str)                       if ([__s__ isEqualToString:(str)])
-#define SWITCH(s)                       for (NSString *__s__ = (s); ; )
-#define DEFAULT
-    
-    SWITCH (selectQuestion.type) {
-        CASE (@"SC") {
-            if(indexPath.section == 0){
-                return kHeighQuesionWebView;
-            }
-            if(indexPath.section == 1){
-                return 0;
-            }
-            else{
-                return 60.0f;
-            }
-            break;
-        }
-        CASE (@"RC") {
-            if(indexPath.section == 0){
-                return 0;
-            }
-            if(indexPath.section == 1){
-                return kHeighQuesionWebView;
-            }
-            else{
-                return 60.0f;
-            }
-            break;
-        }
-        DEFAULT {
-            if(indexPath.section == 0){
-                return kHeighQuesionWebView;
-            }
-            if(indexPath.section == 1){
-                return 0;
-            }
-            else{
-                return 60.0f;
-            }
-            break;
+//- (void)webViewDidFinishLoad:(UIWebView *)webView{
+//
+//}
+- (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath {
+    //    UITableViewCell *cell = [tableView cellForRowAtIndexPath:indexPath];
+    //    if([cell isKindOfClass:[TextCell class]]){
+    //        TextCell *c = (TextCell*)cell;
+    //        if(heights.count>0){
+    //            return [[heights objectAtIndex:c.webViewQuestion.tag] floatValue];
+    //        }
+    //    }
+    //    if(indexPath.row + 1 <= heights.count){
+    //    NSLog(@"H: %ld , %@", indexPath.row, heights[indexPath.row]);
+    //    }
+    //    if(indexPath.section ==0 || indexPath.section == 1){
+    //        UITableViewCell *cell = [tableView cellForRowAtIndexPath:indexPath];
+    //        if([cell isKindOfClass:[TextCell class]]){
+    //            TextCell *c = (TextCell*)cell;
+    //            if(c.webViewQuestion.tag<heights.count){
+    //                return [[heights objectAtIndex:c.webViewQuestion.tag] floatValue];
+    //            }
+    //        }
+    //    }
+    if(indexPath.section == 0){
+        return [heights[0] floatValue];
+    }
+    if(indexPath.section ==1 ){
+        if ([heights[1]floatValue]<=8) {
+            return 0;
+        } else{
+            return [heights[1]floatValue];
         }
     }
-    
+    //NSLog(@"height count: %ld",heights.count);
+    //    if(indexPath.section == 0) return height;
+    //    else
+    return 44;
 }
+//- (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath
+//{
+//    selectQuestion = _questions[_displayIndex];
+//    //NSLog(@"Question type: %@ - %ld", selectQuestion.type , _displayIndex+1);
+//    //NSLog(@"asdas + %ld %@", _displayIndex+1, typeQuestion);
+//#define CASE(str)                       if ([__s__ isEqualToString:(str)])
+//#define SWITCH(s)                       for (NSString *__s__ = (s); ; )
+//#define DEFAULT
+//
+//    SWITCH (selectQuestion.type) {
+//        CASE (@"SC") {
+//            if(indexPath.section == 0){
+//                return kHeighQuesionWebView;
+//            }
+//            if(indexPath.section == 1){
+//                return 0;
+//            }
+//            else{
+//                return 24.0f;
+//            }
+//            break;
+//        }
+//        CASE (@"RC") {
+//            if(indexPath.section == 0){
+//                return 0;
+//            }
+//            if(indexPath.section == 1){
+//                return kHeighQuesionWebView;
+//            }
+//            else{
+//                return 24.0f;
+//            }
+//            break;
+//        }
+//        DEFAULT {
+//            if(indexPath.section == 0){
+//                return kHeighQuesionWebView;
+//            }
+//            if(indexPath.section == 1){
+//                return 0;
+//            }
+//            else{
+//                return 24.0f;
+//            }
+//            break;
+//        }
+//    }
+//
+//}
 - (CGFloat)tableView:(UITableView *)tableView heightForFooterInSection:(NSInteger)section
 {
     return 2;
@@ -247,6 +316,10 @@
     
     UITableViewCell *cell = [tableView cellForRowAtIndexPath:tableView.indexPathForSelectedRow];
     
+    if([cell isKindOfClass:[TextCell class]]){
+        NSLog(@"%ld" ,(long)[(TextCell*)cell webViewQuestion].tag);
+    }
+    
     [cell setSelected:YES];
     if(indexPath.section!=0){
         [self enableBtn];
@@ -255,8 +328,48 @@
 
 #pragma mark - webViewDelegate
 -(void)webViewDidFinishLoad:(UIWebView *)webView{
+    // NSLog(@" %ld height count : %ld",webView.tag,heights.count);
     
-    [webView sizeThatFits:CGSizeZero];
+    //    if(webView.tag< heights.count){
+    //        NSLog(@"dis :%ld height count : %ld",webView.tag,heights.count);
+    //        if(heights[webView.tag]!=0)return;
+    //    }
+    if(![heights[webView.tag] isEqual:@0.0]){
+        return;
+    }
+    
+    height = webView.scrollView.contentSize.height;
+    
+    heights[webView.tag] = [NSNumber numberWithFloat:height];
+    
+    NSLog(@"web is loaded with height: %@", heights[webView.tag]);
+    ;
+    
+    if(heights.count<2)
+        [heights addObject:[NSNumber numberWithFloat:height]];
+    //    //            NSLog(@" add height add: %lf", height);
+    //    //NSLog(@"height count : %ld",heights.count);
+    //    //            NSLog(@"++++%ld", webView.tag);
+    //    //
+    //
+    //    if(webView.tag <=1){
+    //        NSLog(@"reload ko em: %@", heights[webView.tag]);
+    ////          NSLog(@"height count : %ld",heights.count);
+    //        NSDictionary *dict = cellList[webView.tag];
+    //      //  NSLog(@"%ld %ld",[dict[@"index"] integerValue], [dict[@"section"] integerValue]);
+    //        NSInteger index = [dict[@"index"] integerValue];
+    //        NSInteger section = [dict[@"section"] integerValue];
+    [UIView animateWithDuration:0.1f animations:^{
+        [_tbvQuestion beginUpdates];
+        
+        [_tbvQuestion endUpdates];
+    }];
+   
+    //   [_tbvQuestion reloadRowsAtIndexPaths:[NSArray arrayWithObject: [NSIndexPath indexPathForRow:0 inSection:0] ]withRowAnimation:UITableViewRowAnimationLeft];
+    //        //}
+    //    }
+    //    NSLog(@"-----%ld", webView.tag);
+    
 }
 
 #pragma mark - Timer
@@ -282,8 +395,9 @@
     [dateFomatter setTimeZone:[NSTimeZone timeZoneForSecondsFromGMT:0.0]];
     
     NSString *time = [dateFomatter stringFromDate:timerDate];
-    
-    customTitleView.lblQuestionNumber.text = [NSString stringWithFormat:@"%ld/%ld",_displayIndex+1,_questions.count];
+    [_progessBar removeFromSuperview];
+    [_progessBar setFrame: CGRectMake(0, customTitleView.frame.origin.y, customTitleView.frame.size.width, customTitleView.frame.size.height)];
+    customTitleView.lblQuestionNumber.text = [NSString stringWithFormat:@"%ld/%ld",_displayIndex+1,(unsigned long)_questions.count];
     customTitleView.lblTime.text = [NSString stringWithFormat:@"%@",time];
 }
 
@@ -291,9 +405,14 @@
 #pragma mark - Class funtions
 
 - (void)redisplayQuestion;
-{
-    selectQuestion = _questions[_displayIndex];
+{       selectQuestion = _questions[_displayIndex];
     [_tbvQuestion reloadData];
+    
+   // [_tbvQuestion selectRowAtIndexPath:[NSIndexPath indexPathForRow:0 inSection:0] animated:YES scrollPosition:UITableViewScrollPositionTop];
+    height = 0;
+    heights =[[NSMutableArray alloc]initWithArray: @[@0.0f,@0.0f,@0.0f,@0.0f,@0.0f,@0.0f]];
+    //   [heights removeAllObjects];
+    // [_tbvQuestion reloadData];
     //[self showRightAnswer];
 }
 -(void)updateProgressBar;{
@@ -304,8 +423,8 @@
 {
     self.progessBar.progressTintColor = kAppColor;
     self.tbvQuestion.tableFooterView = [[UIView alloc]init];
-    _tbvQuestion.estimatedRowHeight = 60.0f;
-    _tbvQuestion.rowHeight = UITableViewAutomaticDimension;
+    _tbvQuestion.estimatedRowHeight = 44.0f;
+    // _tbvQuestion.rowHeight = UITableViewAutomaticDimension;
     
 }
 -(void)configView;{
@@ -314,7 +433,6 @@
 
 - (IBAction)btnSubmitDidTouch:(id)sender {
     [self disableBtn];
-    
     if (_tbvQuestion.indexPathForSelectedRow) {
         if (_displayIndex < _questions.count - 1) {
             Question *question = _questions[_displayIndex];
@@ -370,8 +488,6 @@
     button.center = self.view.center;
     button.layer.cornerRadius = 2;//button.bounds.size.width/2;
     button.backgroundColor = [UIColor redColor];
-    
-    
     button.layer.shadowColor = [UIColor redColor].CGColor;
     button.layer.shadowOffset = CGSizeMake(0.0f,2.0f);
     button.layer.masksToBounds = NO;
@@ -392,7 +508,7 @@
     // move button
     button_.center = CGPointMake(button_.center.x + translation.x,
                                  button_.center.y + translation.y);
-
+    
     if( gesture.state == UIGestureRecognizerStateEnded){
         if(button_.center.y<self.view.frame.size.height/8){
             [UIView animateWithDuration:0.2 animations:^{
@@ -416,7 +532,7 @@
     }
     // reset translation
     [gesture setTranslation:CGPointZero inView:button_];
-
+    
 }
 
 -(void)presentViewReading;{
@@ -439,7 +555,7 @@
                 NSLog(@"asdas");
                 [rv.view setHidden: YES];
                 [rv removeFromParentViewController];
-                NSLog(@"count view child : %lu", (unsigned long)self.childViewControllers.count);
+                //NSLog(@"count view child : %lu", (unsigned long)self.childViewControllers.count);
             }
         }
     }

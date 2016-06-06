@@ -16,7 +16,7 @@
     self.backgroundColor = [UIColor clearColor];
    // self.lblAnswer.numberOfLines = 1;
    // self.lblAnswer.minimumFontSize = 8;
-    self.lblAnswer.adjustsFontSizeToFitWidth = YES;
+   // self.lblAnswer.adjustsFontSizeToFitWidth = YES;
 }
 
 - (void)setSelected:(BOOL)selected animated:(BOOL)animated {

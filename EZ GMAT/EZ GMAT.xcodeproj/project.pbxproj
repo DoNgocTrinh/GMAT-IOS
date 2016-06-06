@@ -79,6 +79,8 @@
 		E81A7F0B1CF772CB00BDE293 /* UIRefreshControl+AFNetworking.m in Sources */ = {isa = PBXBuildFile; fileRef = E81A7ECD1CF772CB00BDE293 /* UIRefreshControl+AFNetworking.m */; };
 		E81A7F0C1CF772CB00BDE293 /* UIWebView+AFNetworking.m in Sources */ = {isa = PBXBuildFile; fileRef = E81A7ECF1CF772CB00BDE293 /* UIWebView+AFNetworking.m */; };
 		E81A7F0F1CF772F600BDE293 /* GmatAPI.m in Sources */ = {isa = PBXBuildFile; fileRef = E81A7F0E1CF772F600BDE293 /* GmatAPI.m */; };
+		E852A78B1D0427E900320EA2 /* AnswerWebviewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = E852A7891D0427E900320EA2 /* AnswerWebviewCell.m */; };
+		E852A78C1D0427E900320EA2 /* AnswerWebviewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = E852A78A1D0427E900320EA2 /* AnswerWebviewCell.xib */; };
 		E8B923C61CFDA221008BFFB4 /* QuestionsViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = E8B923C51CFDA221008BFFB4 /* QuestionsViewController.m */; };
 		E8FA65431CFDBB2A00D64D70 /* ReadingViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = E8FA65411CFDBB2A00D64D70 /* ReadingViewController.m */; };
 		E8FA65441CFDBB2A00D64D70 /* ReadingViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = E8FA65421CFDBB2A00D64D70 /* ReadingViewController.xib */; };
@@ -286,6 +288,9 @@
 		E81A7F0D1CF772F600BDE293 /* GmatAPI.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GmatAPI.h; sourceTree = "<group>"; };
 		E81A7F0E1CF772F600BDE293 /* GmatAPI.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GmatAPI.m; sourceTree = "<group>"; };
 		E847D6201CFEE6750082036A /* PrefixHeader.pch */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PrefixHeader.pch; sourceTree = "<group>"; };
+		E852A7881D0427E900320EA2 /* AnswerWebviewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AnswerWebviewCell.h; sourceTree = "<group>"; };
+		E852A7891D0427E900320EA2 /* AnswerWebviewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AnswerWebviewCell.m; sourceTree = "<group>"; };
+		E852A78A1D0427E900320EA2 /* AnswerWebviewCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = AnswerWebviewCell.xib; sourceTree = "<group>"; };
 		E8B923C41CFDA221008BFFB4 /* QuestionsViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = QuestionsViewController.h; sourceTree = "<group>"; };
 		E8B923C51CFDA221008BFFB4 /* QuestionsViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = QuestionsViewController.m; sourceTree = "<group>"; };
 		E8FA65401CFDBB2A00D64D70 /* ReadingViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ReadingViewController.h; sourceTree = "<group>"; };
@@ -807,6 +812,9 @@
 				E8FD54A81CF8729F008647E6 /* ReviewAnswerCell.h */,
 				E8FD54A91CF8729F008647E6 /* ReviewAnswerCell.m */,
 				E8FD54AA1CF8729F008647E6 /* ReviewAnswerCell.xib */,
+				E852A7881D0427E900320EA2 /* AnswerWebviewCell.h */,
+				E852A7891D0427E900320EA2 /* AnswerWebviewCell.m */,
+				E852A78A1D0427E900320EA2 /* AnswerWebviewCell.xib */,
 			);
 			name = CustomCellTableView;
 			sourceTree = "<group>";
@@ -949,6 +957,7 @@
 				E81A7E3D1CF763A800BDE293 /* QuestionPackCLVCell.xib in Resources */,
 				E8FD54AD1CF8729F008647E6 /* QuestionPackCell.xib in Resources */,
 				E8FD54B31CF8729F008647E6 /* QuickReviewCell.xib in Resources */,
+				E852A78C1D0427E900320EA2 /* AnswerWebviewCell.xib in Resources */,
 				E8FD54B11CF8729F008647E6 /* AnswerCell.xib in Resources */,
 				E81A7E0D1CF73EA900BDE293 /* LaunchScreen.storyboard in Resources */,
 				E81A7E0A1CF73EA900BDE293 /* Assets.xcassets in Resources */,
@@ -1051,6 +1060,7 @@
 				E81A7EFF1CF772CB00BDE293 /* SCLButton.m in Sources */,
 				E81A7F061CF772CB00BDE293 /* AFNetworkActivityIndicatorManager.m in Sources */,
 				E81A7F001CF772CB00BDE293 /* SCLSwitchView.m in Sources */,
+				E852A78B1D0427E900320EA2 /* AnswerWebviewCell.m in Sources */,
 				E8FD54B01CF8729F008647E6 /* AnswerCell.m in Sources */,
 				E81A7F0A1CF772CB00BDE293 /* UIProgressView+AFNetworking.m in Sources */,
 				E81A7F081CF772CB00BDE293 /* UIButton+AFNetworking.m in Sources */,
