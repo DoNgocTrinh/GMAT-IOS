@@ -15,40 +15,41 @@
     // Initialization code
     
     self.backgroundColor = [UIColor clearColor];
-  //  _webViewQuestion.delegate  = self;
     _webViewQuestion.userInteractionEnabled = NO;
-//    CGFloat output = [[_webViewQuestion stringByEvaluatingJavaScriptFromString:@"document.body.scrollHeight"] floatValue];
-//    NSLog(@"height %lf", output);
+    
 }
 
 - (void)setSelected:(BOOL)selected animated:(BOOL)animated {
-   // [super setSelected:selected animated:animated];
-    if(selected){
-    self.backgroundView.backgroundColor = kAppColor;
-        _webViewQuestion.backgroundColor = kAppColor;}
-    else{
-        self.backgroundView.backgroundColor = [UIColor whiteColor];
-        _webViewQuestion.backgroundColor = [UIColor whiteColor];
+    
+}
+
+-(void)loadContentWithContent:(NSString *)content;{
+    
+    NSString* htmlPath = [[NSBundle mainBundle] pathForResource:@"index" ofType:@"html"];
+    NSString* appHtml = [NSString stringWithContentsOfFile:htmlPath encoding:NSUTF8StringEncoding error:nil];
+    
+    content = [NSString stringWithFormat: @"%@  $a^2 + b^2 = c^2$ ", content];
+    
+    if([content rangeOfString:@"$"].location != NSNotFound) { // Expression inside text.
+        NSRange r;
+        BOOL intex = NO;
+        while ((r = [content rangeOfString:@"$"]).location != NSNotFound) {
+            content = [content stringByReplacingCharactersInRange:r
+                                                       withString:(intex ? @"</span>" : @"<span class=\"tex\">")];
+            intex = !intex;
+        }
+        if (intex) NSLog(@"Katex iOS: Error: No closing $.");
+    } else { // Raw KaTeX.
+        content = [NSString stringWithFormat:@"<span class=\"tex\">%@</span>", content];
     }
-    _webViewQuestion.opaque = NO;
+    
+    // Place into HTML
+    appHtml = [appHtml stringByReplacingOccurrencesOfString:@"$LATEX$"
+                                                 withString:content];
+    
+    NSURL *baseURL = [NSURL fileURLWithPath:htmlPath];
+    
+    [_webViewQuestion loadHTMLString:appHtml baseURL:baseURL];
 
 }
-//- (void)webViewDidFinishLoad:(UIWebView *)webView{
-//    NSLog(@"Load view");
-//    CGFloat output = [[_webViewQuestion stringByEvaluatingJavaScriptFromString:@"document.body.scrollHeight"] floatValue];
-//    NSLog(@"height of webview %lf %lf", output, _webViewQuestion.scrollView.contentSize.height);
-//    
-//    
-//    
-//    _heightweb = output;
-//    UITableView *parentTable = (UITableView *)self.superview;
-//    if (![parentTable isKindOfClass:[UITableView class]]) {
-//        parentTable = (UITableView *) parentTable.superview;
-//    }
-//    
-//    [self reloadInputViews];
-//    
-//    
-//}
-
 @end

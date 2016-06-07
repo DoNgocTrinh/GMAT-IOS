@@ -7,11 +7,9 @@
 //
 
 #import <UIKit/UIKit.h>
-
+#import "Question.h"
 @interface TextCell : UITableViewCell<UIWebViewDelegate>
-
 @property (weak, nonatomic) IBOutlet UILabel *lblText;
 @property (weak, nonatomic) IBOutlet UIWebView *webViewQuestion;
-@property (assign, nonatomic) CGFloat heightweb;
-
+-(void)loadContentWithContent:(NSString *)content;
 @end

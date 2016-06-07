@@ -9,7 +9,7 @@
 #import <UIKit/UIKit.h>
 #import "QuestionPack.h"
 
-@interface QuestionViewController : UIViewController<UITableViewDataSource, UITabBarDelegate, UIWebViewDelegate>
+@interface QuestionViewController : UIViewController<UITableViewDataSource, UITabBarDelegate, UIWebViewDelegate, UIScrollViewDelegate>
 
 @property (nonatomic, strong) NSMutableArray *questions;
 @property (weak, nonatomic) IBOutlet UITableView *tbvQuestion;

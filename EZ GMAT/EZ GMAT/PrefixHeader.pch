@@ -25,6 +25,7 @@
 #import "QuickReviewAnswerCell.h"
 #import "ReviewAnswerCell.h"
 #import "AnswerCell.h"
+#import "AnswerWVCell.h"
 #import "StudentAnswer.h"
 
 //OBJECT

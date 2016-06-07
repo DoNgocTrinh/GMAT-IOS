@@ -354,10 +354,10 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Xvk-Hn-NeI">
-                                <rect key="frame" x="0.0" y="554" width="600" height="46"/>
+                                <rect key="frame" x="0.0" y="540" width="600" height="60"/>
                                 <subviews>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Ma3-F8-Qfr">
-                                        <rect key="frame" x="0.0" y="0.0" width="600" height="46"/>
+                                        <rect key="frame" x="0.0" y="0.0" width="600" height="60"/>
                                         <constraints>
                                             <constraint firstAttribute="height" constant="40" id="jJp-Ax-b6j"/>
                                         </constraints>
@@ -390,7 +390,7 @@
                                 </variation>
                             </view>
                             <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="44" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="lbm-9s-RlA">
-                                <rect key="frame" x="0.0" y="0.0" width="600" height="554"/>
+                                <rect key="frame" x="0.0" y="0.0" width="600" height="540"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 <progressView key="tableHeaderView" opaque="NO" contentMode="scaleToFill" verticalHuggingPriority="750" progress="0.5" id="Z4Q-1F-8VG">
                                     <rect key="frame" x="0.0" y="0.0" width="600" height="2"/>
@@ -413,7 +413,7 @@
                             <constraint firstItem="lbm-9s-RlA" firstAttribute="centerY" secondItem="dDG-eG-RHJ" secondAttribute="centerY" id="aEY-TN-vBS"/>
                             <constraint firstItem="lbm-9s-RlA" firstAttribute="top" secondItem="dDG-eG-RHJ" secondAttribute="topMargin" id="d1X-Hi-GXL"/>
                             <constraint firstAttribute="trailing" secondItem="lbm-9s-RlA" secondAttribute="trailing" id="ftD-14-Xzg"/>
-                            <constraint firstItem="Xvk-Hn-NeI" firstAttribute="height" secondItem="dDG-eG-RHJ" secondAttribute="height" multiplier="1:13" id="ftT-Mj-qoQ"/>
+                            <constraint firstItem="Xvk-Hn-NeI" firstAttribute="height" secondItem="dDG-eG-RHJ" secondAttribute="height" multiplier="1:10" id="ftT-Mj-qoQ"/>
                             <constraint firstItem="lbm-9s-RlA" firstAttribute="leading" secondItem="dDG-eG-RHJ" secondAttribute="leading" id="ivH-zI-5H3"/>
                             <constraint firstItem="vJu-GS-LC2" firstAttribute="top" secondItem="lbm-9s-RlA" secondAttribute="bottom" id="kyT-Mz-ttR"/>
                             <constraint firstItem="Xvk-Hn-NeI" firstAttribute="top" secondItem="lbm-9s-RlA" secondAttribute="bottom" id="lKI-nK-jDI"/>

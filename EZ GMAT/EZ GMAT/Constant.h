@@ -26,7 +26,7 @@
 
 #define kColor_Window                                   [UIColor whiteColor]
 
-#define kAppColor                                     [UIColor colorWithRed:51.0/255  green:192.0/255 blue:152.0/255 alpha:1.0] //[UIColor orangeColor]
+#define kAppColor                                     kGreenColor//[UIColor colorWithRed:51.0/255  green:192.0/255 blue:152.0/255 alpha:1.0] //[UIColor orangeColor]
 #define kGreenColor    [UIColor colorWithRed:63.0/255  green:175.0/255 blue:102.0/255 alpha:1.0]
 
 //MARK: API

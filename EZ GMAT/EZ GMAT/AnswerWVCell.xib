@@ -1,0 +1,71 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="10116" systemVersion="15E65" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES">
+    <dependencies>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="10085"/>
+        <capability name="Aspect ratio constraints" minToolsVersion="5.1"/>
+        <capability name="Constraints to layout margins" minToolsVersion="6.0"/>
+    </dependencies>
+    <objects>
+        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner"/>
+        <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
+        <tableViewCell contentMode="scaleToFill" restorationIdentifier="AnswerWVCell" selectionStyle="default" indentationWidth="10" rowHeight="90" id="KGk-i7-Jjw" customClass="AnswerWVCell">
+            <rect key="frame" x="0.0" y="0.0" width="364" height="90"/>
+            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+            <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="KGk-i7-Jjw" id="H2p-sc-9uM">
+                <rect key="frame" x="0.0" y="0.0" width="364" height="89"/>
+                <autoresizingMask key="autoresizingMask"/>
+                <subviews>
+                    <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="Shb-Uk-SU6">
+                        <rect key="frame" x="12" y="32" width="25" height="25"/>
+                        <constraints>
+                            <constraint firstAttribute="height" constant="25" id="1Sh-du-A6T"/>
+                            <constraint firstAttribute="width" secondItem="Shb-Uk-SU6" secondAttribute="height" multiplier="1:1" id="6HK-uv-AQ1"/>
+                        </constraints>
+                    </imageView>
+                    <webView contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Tcs-U0-Sr2">
+                        <rect key="frame" x="41" y="0.0" width="315" height="89"/>
+                        <color key="backgroundColor" red="0.36078431370000003" green="0.38823529410000002" blue="0.4039215686" alpha="1" colorSpace="deviceRGB"/>
+                        <constraints>
+                            <constraint firstAttribute="height" constant="44" id="1zu-Qe-EX3"/>
+                            <constraint firstAttribute="height" relation="greaterThanOrEqual" constant="44" id="2cn-dY-swd"/>
+                        </constraints>
+                        <variation key="default">
+                            <mask key="constraints">
+                                <exclude reference="1zu-Qe-EX3"/>
+                                <exclude reference="2cn-dY-swd"/>
+                            </mask>
+                        </variation>
+                    </webView>
+                </subviews>
+                <constraints>
+                    <constraint firstItem="Tcs-U0-Sr2" firstAttribute="centerY" secondItem="Shb-Uk-SU6" secondAttribute="centerY" id="7gs-Ol-GA9"/>
+                    <constraint firstItem="Shb-Uk-SU6" firstAttribute="centerY" secondItem="H2p-sc-9uM" secondAttribute="centerY" id="9B6-3X-pkH"/>
+                    <constraint firstItem="Tcs-U0-Sr2" firstAttribute="height" secondItem="H2p-sc-9uM" secondAttribute="height" id="G07-lQ-32I"/>
+                    <constraint firstItem="Tcs-U0-Sr2" firstAttribute="top" secondItem="H2p-sc-9uM" secondAttribute="topMargin" id="HZp-dX-AvX"/>
+                    <constraint firstAttribute="bottomMargin" secondItem="Tcs-U0-Sr2" secondAttribute="bottom" constant="-2" id="Pvg-vr-uBF"/>
+                    <constraint firstItem="Tcs-U0-Sr2" firstAttribute="centerY" secondItem="H2p-sc-9uM" secondAttribute="centerY" id="RdR-eY-vbz"/>
+                    <constraint firstItem="Tcs-U0-Sr2" firstAttribute="top" secondItem="H2p-sc-9uM" secondAttribute="topMargin" id="UpN-Ht-sXv"/>
+                    <constraint firstAttribute="bottomMargin" secondItem="Tcs-U0-Sr2" secondAttribute="bottom" constant="-2" id="VRo-fJ-UY1"/>
+                    <constraint firstItem="Shb-Uk-SU6" firstAttribute="leading" secondItem="H2p-sc-9uM" secondAttribute="leadingMargin" constant="4" id="bvM-aT-3jp"/>
+                    <constraint firstAttribute="trailingMargin" secondItem="Tcs-U0-Sr2" secondAttribute="trailing" id="dBl-XY-CE6"/>
+                    <constraint firstItem="Tcs-U0-Sr2" firstAttribute="leading" secondItem="Shb-Uk-SU6" secondAttribute="trailing" constant="4" id="ds5-Tk-MLC"/>
+                </constraints>
+                <variation key="default">
+                    <mask key="constraints">
+                        <exclude reference="HZp-dX-AvX"/>
+                        <exclude reference="Pvg-vr-uBF"/>
+                        <exclude reference="RdR-eY-vbz"/>
+                        <exclude reference="UpN-Ht-sXv"/>
+                        <exclude reference="VRo-fJ-UY1"/>
+                    </mask>
+                </variation>
+            </tableViewCellContentView>
+            <connections>
+                <outlet property="imvAnswer" destination="Shb-Uk-SU6" id="xyj-ak-IMr"/>
+                <outlet property="webViewAnswer" destination="Tcs-U0-Sr2" id="QGp-cC-DN8"/>
+            </connections>
+            <point key="canvasLocation" x="293" y="270"/>
+        </tableViewCell>
+    </objects>
+</document>

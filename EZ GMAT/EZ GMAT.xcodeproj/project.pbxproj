@@ -7,6 +7,8 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		E812645F1D05992200094764 /* AnswerWVCell.m in Sources */ = {isa = PBXBuildFile; fileRef = E812645D1D05992200094764 /* AnswerWVCell.m */; };
+		E81264601D05992200094764 /* AnswerWVCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = E812645E1D05992200094764 /* AnswerWVCell.xib */; };
 		E81A7DFF1CF73EA900BDE293 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = E81A7DFE1CF73EA900BDE293 /* main.m */; };
 		E81A7E021CF73EA900BDE293 /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = E81A7E011CF73EA900BDE293 /* AppDelegate.m */; };
 		E81A7E081CF73EA900BDE293 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = E81A7E061CF73EA900BDE293 /* Main.storyboard */; };
@@ -79,6 +81,43 @@
 		E81A7F0B1CF772CB00BDE293 /* UIRefreshControl+AFNetworking.m in Sources */ = {isa = PBXBuildFile; fileRef = E81A7ECD1CF772CB00BDE293 /* UIRefreshControl+AFNetworking.m */; };
 		E81A7F0C1CF772CB00BDE293 /* UIWebView+AFNetworking.m in Sources */ = {isa = PBXBuildFile; fileRef = E81A7ECF1CF772CB00BDE293 /* UIWebView+AFNetworking.m */; };
 		E81A7F0F1CF772F600BDE293 /* GmatAPI.m in Sources */ = {isa = PBXBuildFile; fileRef = E81A7F0E1CF772F600BDE293 /* GmatAPI.m */; };
+		E83234E51D0638C300314B74 /* KaTeX_AMS-Regular.eot in Resources */ = {isa = PBXBuildFile; fileRef = E83234C01D0638C300314B74 /* KaTeX_AMS-Regular.eot */; };
+		E83234E61D0638C300314B74 /* KaTeX_AMS-Regular.ttf in Resources */ = {isa = PBXBuildFile; fileRef = E83234C11D0638C300314B74 /* KaTeX_AMS-Regular.ttf */; };
+		E83234E71D0638C300314B74 /* KaTeX_AMS-Regular.woff in Resources */ = {isa = PBXBuildFile; fileRef = E83234C21D0638C300314B74 /* KaTeX_AMS-Regular.woff */; };
+		E83234E81D0638C300314B74 /* KaTeX_Main-Bold.eot in Resources */ = {isa = PBXBuildFile; fileRef = E83234C31D0638C300314B74 /* KaTeX_Main-Bold.eot */; };
+		E83234E91D0638C300314B74 /* KaTeX_Main-Bold.ttf in Resources */ = {isa = PBXBuildFile; fileRef = E83234C41D0638C300314B74 /* KaTeX_Main-Bold.ttf */; };
+		E83234EA1D0638C300314B74 /* KaTeX_Main-Bold.woff in Resources */ = {isa = PBXBuildFile; fileRef = E83234C51D0638C300314B74 /* KaTeX_Main-Bold.woff */; };
+		E83234EB1D0638C300314B74 /* KaTeX_Main-Italic.eot in Resources */ = {isa = PBXBuildFile; fileRef = E83234C61D0638C300314B74 /* KaTeX_Main-Italic.eot */; };
+		E83234EC1D0638C300314B74 /* KaTeX_Main-Italic.ttf in Resources */ = {isa = PBXBuildFile; fileRef = E83234C71D0638C300314B74 /* KaTeX_Main-Italic.ttf */; };
+		E83234ED1D0638C300314B74 /* KaTeX_Main-Italic.woff in Resources */ = {isa = PBXBuildFile; fileRef = E83234C81D0638C300314B74 /* KaTeX_Main-Italic.woff */; };
+		E83234EE1D0638C300314B74 /* KaTeX_Main-Regular.eot in Resources */ = {isa = PBXBuildFile; fileRef = E83234C91D0638C300314B74 /* KaTeX_Main-Regular.eot */; };
+		E83234EF1D0638C300314B74 /* KaTeX_Main-Regular.ttf in Resources */ = {isa = PBXBuildFile; fileRef = E83234CA1D0638C300314B74 /* KaTeX_Main-Regular.ttf */; };
+		E83234F01D0638C300314B74 /* KaTeX_Main-Regular.woff in Resources */ = {isa = PBXBuildFile; fileRef = E83234CB1D0638C300314B74 /* KaTeX_Main-Regular.woff */; };
+		E83234F11D0638C300314B74 /* KaTeX_Math-BoldItalic.eot in Resources */ = {isa = PBXBuildFile; fileRef = E83234CC1D0638C300314B74 /* KaTeX_Math-BoldItalic.eot */; };
+		E83234F21D0638C300314B74 /* KaTeX_Math-BoldItalic.ttf in Resources */ = {isa = PBXBuildFile; fileRef = E83234CD1D0638C300314B74 /* KaTeX_Math-BoldItalic.ttf */; };
+		E83234F31D0638C300314B74 /* KaTeX_Math-BoldItalic.woff in Resources */ = {isa = PBXBuildFile; fileRef = E83234CE1D0638C300314B74 /* KaTeX_Math-BoldItalic.woff */; };
+		E83234F41D0638C300314B74 /* KaTeX_Math-Italic.eot in Resources */ = {isa = PBXBuildFile; fileRef = E83234CF1D0638C300314B74 /* KaTeX_Math-Italic.eot */; };
+		E83234F51D0638C300314B74 /* KaTeX_Math-Italic.ttf in Resources */ = {isa = PBXBuildFile; fileRef = E83234D01D0638C300314B74 /* KaTeX_Math-Italic.ttf */; };
+		E83234F61D0638C300314B74 /* KaTeX_Math-Italic.woff in Resources */ = {isa = PBXBuildFile; fileRef = E83234D11D0638C300314B74 /* KaTeX_Math-Italic.woff */; };
+		E83234F71D0638C300314B74 /* KaTeX_Math-Regular.eot in Resources */ = {isa = PBXBuildFile; fileRef = E83234D21D0638C300314B74 /* KaTeX_Math-Regular.eot */; };
+		E83234F81D0638C300314B74 /* KaTeX_Math-Regular.ttf in Resources */ = {isa = PBXBuildFile; fileRef = E83234D31D0638C300314B74 /* KaTeX_Math-Regular.ttf */; };
+		E83234F91D0638C300314B74 /* KaTeX_Math-Regular.woff in Resources */ = {isa = PBXBuildFile; fileRef = E83234D41D0638C300314B74 /* KaTeX_Math-Regular.woff */; };
+		E83234FA1D0638C300314B74 /* KaTeX_Size1-Regular.eot in Resources */ = {isa = PBXBuildFile; fileRef = E83234D51D0638C300314B74 /* KaTeX_Size1-Regular.eot */; };
+		E83234FB1D0638C300314B74 /* KaTeX_Size1-Regular.ttf in Resources */ = {isa = PBXBuildFile; fileRef = E83234D61D0638C300314B74 /* KaTeX_Size1-Regular.ttf */; };
+		E83234FC1D0638C300314B74 /* KaTeX_Size1-Regular.woff in Resources */ = {isa = PBXBuildFile; fileRef = E83234D71D0638C300314B74 /* KaTeX_Size1-Regular.woff */; };
+		E83234FD1D0638C300314B74 /* KaTeX_Size2-Regular.eot in Resources */ = {isa = PBXBuildFile; fileRef = E83234D81D0638C300314B74 /* KaTeX_Size2-Regular.eot */; };
+		E83234FE1D0638C300314B74 /* KaTeX_Size2-Regular.ttf in Resources */ = {isa = PBXBuildFile; fileRef = E83234D91D0638C300314B74 /* KaTeX_Size2-Regular.ttf */; };
+		E83234FF1D0638C300314B74 /* KaTeX_Size2-Regular.woff in Resources */ = {isa = PBXBuildFile; fileRef = E83234DA1D0638C300314B74 /* KaTeX_Size2-Regular.woff */; };
+		E83235001D0638C300314B74 /* KaTeX_Size3-Regular.eot in Resources */ = {isa = PBXBuildFile; fileRef = E83234DB1D0638C300314B74 /* KaTeX_Size3-Regular.eot */; };
+		E83235011D0638C300314B74 /* KaTeX_Size3-Regular.ttf in Resources */ = {isa = PBXBuildFile; fileRef = E83234DC1D0638C300314B74 /* KaTeX_Size3-Regular.ttf */; };
+		E83235021D0638C300314B74 /* KaTeX_Size3-Regular.woff in Resources */ = {isa = PBXBuildFile; fileRef = E83234DD1D0638C300314B74 /* KaTeX_Size3-Regular.woff */; };
+		E83235031D0638C300314B74 /* KaTeX_Size4-Regular.eot in Resources */ = {isa = PBXBuildFile; fileRef = E83234DE1D0638C300314B74 /* KaTeX_Size4-Regular.eot */; };
+		E83235041D0638C300314B74 /* KaTeX_Size4-Regular.ttf in Resources */ = {isa = PBXBuildFile; fileRef = E83234DF1D0638C300314B74 /* KaTeX_Size4-Regular.ttf */; };
+		E83235051D0638C300314B74 /* KaTeX_Size4-Regular.woff in Resources */ = {isa = PBXBuildFile; fileRef = E83234E01D0638C300314B74 /* KaTeX_Size4-Regular.woff */; };
+		E83235061D0638C300314B74 /* index.html in Resources */ = {isa = PBXBuildFile; fileRef = E83234E11D0638C300314B74 /* index.html */; };
+		E83235071D0638C300314B74 /* katex.min.css in Resources */ = {isa = PBXBuildFile; fileRef = E83234E21D0638C300314B74 /* katex.min.css */; };
+		E83235081D0638C300314B74 /* katex.min.js in Resources */ = {isa = PBXBuildFile; fileRef = E83234E31D0638C300314B74 /* katex.min.js */; };
+		E83235091D0638C300314B74 /* README.md in Sources */ = {isa = PBXBuildFile; fileRef = E83234E41D0638C300314B74 /* README.md */; };
 		E852A78B1D0427E900320EA2 /* AnswerWebviewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = E852A7891D0427E900320EA2 /* AnswerWebviewCell.m */; };
 		E852A78C1D0427E900320EA2 /* AnswerWebviewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = E852A78A1D0427E900320EA2 /* AnswerWebviewCell.xib */; };
 		E8B923C61CFDA221008BFFB4 /* QuestionsViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = E8B923C51CFDA221008BFFB4 /* QuestionsViewController.m */; };
@@ -132,6 +171,9 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		E812645C1D05992200094764 /* AnswerWVCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AnswerWVCell.h; sourceTree = "<group>"; };
+		E812645D1D05992200094764 /* AnswerWVCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AnswerWVCell.m; sourceTree = "<group>"; };
+		E812645E1D05992200094764 /* AnswerWVCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = AnswerWVCell.xib; sourceTree = "<group>"; };
 		E81A7DFA1CF73EA900BDE293 /* EZ GMAT.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "EZ GMAT.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		E81A7DFE1CF73EA900BDE293 /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
 		E81A7E001CF73EA900BDE293 /* AppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
@@ -287,6 +329,43 @@
 		E81A7ECF1CF772CB00BDE293 /* UIWebView+AFNetworking.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIWebView+AFNetworking.m"; sourceTree = "<group>"; };
 		E81A7F0D1CF772F600BDE293 /* GmatAPI.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GmatAPI.h; sourceTree = "<group>"; };
 		E81A7F0E1CF772F600BDE293 /* GmatAPI.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GmatAPI.m; sourceTree = "<group>"; };
+		E83234C01D0638C300314B74 /* KaTeX_AMS-Regular.eot */ = {isa = PBXFileReference; lastKnownFileType = file; path = "KaTeX_AMS-Regular.eot"; sourceTree = "<group>"; };
+		E83234C11D0638C300314B74 /* KaTeX_AMS-Regular.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "KaTeX_AMS-Regular.ttf"; sourceTree = "<group>"; };
+		E83234C21D0638C300314B74 /* KaTeX_AMS-Regular.woff */ = {isa = PBXFileReference; lastKnownFileType = file; path = "KaTeX_AMS-Regular.woff"; sourceTree = "<group>"; };
+		E83234C31D0638C300314B74 /* KaTeX_Main-Bold.eot */ = {isa = PBXFileReference; lastKnownFileType = file; path = "KaTeX_Main-Bold.eot"; sourceTree = "<group>"; };
+		E83234C41D0638C300314B74 /* KaTeX_Main-Bold.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "KaTeX_Main-Bold.ttf"; sourceTree = "<group>"; };
+		E83234C51D0638C300314B74 /* KaTeX_Main-Bold.woff */ = {isa = PBXFileReference; lastKnownFileType = file; path = "KaTeX_Main-Bold.woff"; sourceTree = "<group>"; };
+		E83234C61D0638C300314B74 /* KaTeX_Main-Italic.eot */ = {isa = PBXFileReference; lastKnownFileType = file; path = "KaTeX_Main-Italic.eot"; sourceTree = "<group>"; };
+		E83234C71D0638C300314B74 /* KaTeX_Main-Italic.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "KaTeX_Main-Italic.ttf"; sourceTree = "<group>"; };
+		E83234C81D0638C300314B74 /* KaTeX_Main-Italic.woff */ = {isa = PBXFileReference; lastKnownFileType = file; path = "KaTeX_Main-Italic.woff"; sourceTree = "<group>"; };
+		E83234C91D0638C300314B74 /* KaTeX_Main-Regular.eot */ = {isa = PBXFileReference; lastKnownFileType = file; path = "KaTeX_Main-Regular.eot"; sourceTree = "<group>"; };
+		E83234CA1D0638C300314B74 /* KaTeX_Main-Regular.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "KaTeX_Main-Regular.ttf"; sourceTree = "<group>"; };
+		E83234CB1D0638C300314B74 /* KaTeX_Main-Regular.woff */ = {isa = PBXFileReference; lastKnownFileType = file; path = "KaTeX_Main-Regular.woff"; sourceTree = "<group>"; };
+		E83234CC1D0638C300314B74 /* KaTeX_Math-BoldItalic.eot */ = {isa = PBXFileReference; lastKnownFileType = file; path = "KaTeX_Math-BoldItalic.eot"; sourceTree = "<group>"; };
+		E83234CD1D0638C300314B74 /* KaTeX_Math-BoldItalic.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "KaTeX_Math-BoldItalic.ttf"; sourceTree = "<group>"; };
+		E83234CE1D0638C300314B74 /* KaTeX_Math-BoldItalic.woff */ = {isa = PBXFileReference; lastKnownFileType = file; path = "KaTeX_Math-BoldItalic.woff"; sourceTree = "<group>"; };
+		E83234CF1D0638C300314B74 /* KaTeX_Math-Italic.eot */ = {isa = PBXFileReference; lastKnownFileType = file; path = "KaTeX_Math-Italic.eot"; sourceTree = "<group>"; };
+		E83234D01D0638C300314B74 /* KaTeX_Math-Italic.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "KaTeX_Math-Italic.ttf"; sourceTree = "<group>"; };
+		E83234D11D0638C300314B74 /* KaTeX_Math-Italic.woff */ = {isa = PBXFileReference; lastKnownFileType = file; path = "KaTeX_Math-Italic.woff"; sourceTree = "<group>"; };
+		E83234D21D0638C300314B74 /* KaTeX_Math-Regular.eot */ = {isa = PBXFileReference; lastKnownFileType = file; path = "KaTeX_Math-Regular.eot"; sourceTree = "<group>"; };
+		E83234D31D0638C300314B74 /* KaTeX_Math-Regular.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "KaTeX_Math-Regular.ttf"; sourceTree = "<group>"; };
+		E83234D41D0638C300314B74 /* KaTeX_Math-Regular.woff */ = {isa = PBXFileReference; lastKnownFileType = file; path = "KaTeX_Math-Regular.woff"; sourceTree = "<group>"; };
+		E83234D51D0638C300314B74 /* KaTeX_Size1-Regular.eot */ = {isa = PBXFileReference; lastKnownFileType = file; path = "KaTeX_Size1-Regular.eot"; sourceTree = "<group>"; };
+		E83234D61D0638C300314B74 /* KaTeX_Size1-Regular.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "KaTeX_Size1-Regular.ttf"; sourceTree = "<group>"; };
+		E83234D71D0638C300314B74 /* KaTeX_Size1-Regular.woff */ = {isa = PBXFileReference; lastKnownFileType = file; path = "KaTeX_Size1-Regular.woff"; sourceTree = "<group>"; };
+		E83234D81D0638C300314B74 /* KaTeX_Size2-Regular.eot */ = {isa = PBXFileReference; lastKnownFileType = file; path = "KaTeX_Size2-Regular.eot"; sourceTree = "<group>"; };
+		E83234D91D0638C300314B74 /* KaTeX_Size2-Regular.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "KaTeX_Size2-Regular.ttf"; sourceTree = "<group>"; };
+		E83234DA1D0638C300314B74 /* KaTeX_Size2-Regular.woff */ = {isa = PBXFileReference; lastKnownFileType = file; path = "KaTeX_Size2-Regular.woff"; sourceTree = "<group>"; };
+		E83234DB1D0638C300314B74 /* KaTeX_Size3-Regular.eot */ = {isa = PBXFileReference; lastKnownFileType = file; path = "KaTeX_Size3-Regular.eot"; sourceTree = "<group>"; };
+		E83234DC1D0638C300314B74 /* KaTeX_Size3-Regular.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "KaTeX_Size3-Regular.ttf"; sourceTree = "<group>"; };
+		E83234DD1D0638C300314B74 /* KaTeX_Size3-Regular.woff */ = {isa = PBXFileReference; lastKnownFileType = file; path = "KaTeX_Size3-Regular.woff"; sourceTree = "<group>"; };
+		E83234DE1D0638C300314B74 /* KaTeX_Size4-Regular.eot */ = {isa = PBXFileReference; lastKnownFileType = file; path = "KaTeX_Size4-Regular.eot"; sourceTree = "<group>"; };
+		E83234DF1D0638C300314B74 /* KaTeX_Size4-Regular.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "KaTeX_Size4-Regular.ttf"; sourceTree = "<group>"; };
+		E83234E01D0638C300314B74 /* KaTeX_Size4-Regular.woff */ = {isa = PBXFileReference; lastKnownFileType = file; path = "KaTeX_Size4-Regular.woff"; sourceTree = "<group>"; };
+		E83234E11D0638C300314B74 /* index.html */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.html; path = index.html; sourceTree = "<group>"; };
+		E83234E21D0638C300314B74 /* katex.min.css */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.css; path = katex.min.css; sourceTree = "<group>"; };
+		E83234E31D0638C300314B74 /* katex.min.js */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.javascript; path = katex.min.js; sourceTree = "<group>"; };
+		E83234E41D0638C300314B74 /* README.md */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = net.daringfireball.markdown; path = README.md; sourceTree = "<group>"; };
 		E847D6201CFEE6750082036A /* PrefixHeader.pch */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PrefixHeader.pch; sourceTree = "<group>"; };
 		E852A7881D0427E900320EA2 /* AnswerWebviewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AnswerWebviewCell.h; sourceTree = "<group>"; };
 		E852A7891D0427E900320EA2 /* AnswerWebviewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AnswerWebviewCell.m; sourceTree = "<group>"; };
@@ -372,6 +451,16 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		E812645B1D0598FD00094764 /* WebViewCell */ = {
+			isa = PBXGroup;
+			children = (
+				E812645C1D05992200094764 /* AnswerWVCell.h */,
+				E812645D1D05992200094764 /* AnswerWVCell.m */,
+				E812645E1D05992200094764 /* AnswerWVCell.xib */,
+			);
+			name = WebViewCell;
+			sourceTree = "<group>";
+		};
 		E81A7DF11CF73EA900BDE293 = {
 			isa = PBXGroup;
 			children = (
@@ -454,6 +543,7 @@
 		E81A7E311CF75BCD00BDE293 /* Library */ = {
 			isa = PBXGroup;
 			children = (
+				E83234BE1D0638C200314B74 /* katex */,
 				E81A7F101CF7743400BDE293 /* GMAT API */,
 				E81A7E3E1CF772CB00BDE293 /* AFNetworking */,
 				E81A7E4E1CF772CB00BDE293 /* Circular */,
@@ -726,6 +816,58 @@
 			name = "GMAT API";
 			sourceTree = "<group>";
 		};
+		E83234BE1D0638C200314B74 /* katex */ = {
+			isa = PBXGroup;
+			children = (
+				E83234BF1D0638C300314B74 /* fonts */,
+				E83234E11D0638C300314B74 /* index.html */,
+				E83234E21D0638C300314B74 /* katex.min.css */,
+				E83234E31D0638C300314B74 /* katex.min.js */,
+				E83234E41D0638C300314B74 /* README.md */,
+			);
+			path = katex;
+			sourceTree = "<group>";
+		};
+		E83234BF1D0638C300314B74 /* fonts */ = {
+			isa = PBXGroup;
+			children = (
+				E83234C01D0638C300314B74 /* KaTeX_AMS-Regular.eot */,
+				E83234C11D0638C300314B74 /* KaTeX_AMS-Regular.ttf */,
+				E83234C21D0638C300314B74 /* KaTeX_AMS-Regular.woff */,
+				E83234C31D0638C300314B74 /* KaTeX_Main-Bold.eot */,
+				E83234C41D0638C300314B74 /* KaTeX_Main-Bold.ttf */,
+				E83234C51D0638C300314B74 /* KaTeX_Main-Bold.woff */,
+				E83234C61D0638C300314B74 /* KaTeX_Main-Italic.eot */,
+				E83234C71D0638C300314B74 /* KaTeX_Main-Italic.ttf */,
+				E83234C81D0638C300314B74 /* KaTeX_Main-Italic.woff */,
+				E83234C91D0638C300314B74 /* KaTeX_Main-Regular.eot */,
+				E83234CA1D0638C300314B74 /* KaTeX_Main-Regular.ttf */,
+				E83234CB1D0638C300314B74 /* KaTeX_Main-Regular.woff */,
+				E83234CC1D0638C300314B74 /* KaTeX_Math-BoldItalic.eot */,
+				E83234CD1D0638C300314B74 /* KaTeX_Math-BoldItalic.ttf */,
+				E83234CE1D0638C300314B74 /* KaTeX_Math-BoldItalic.woff */,
+				E83234CF1D0638C300314B74 /* KaTeX_Math-Italic.eot */,
+				E83234D01D0638C300314B74 /* KaTeX_Math-Italic.ttf */,
+				E83234D11D0638C300314B74 /* KaTeX_Math-Italic.woff */,
+				E83234D21D0638C300314B74 /* KaTeX_Math-Regular.eot */,
+				E83234D31D0638C300314B74 /* KaTeX_Math-Regular.ttf */,
+				E83234D41D0638C300314B74 /* KaTeX_Math-Regular.woff */,
+				E83234D51D0638C300314B74 /* KaTeX_Size1-Regular.eot */,
+				E83234D61D0638C300314B74 /* KaTeX_Size1-Regular.ttf */,
+				E83234D71D0638C300314B74 /* KaTeX_Size1-Regular.woff */,
+				E83234D81D0638C300314B74 /* KaTeX_Size2-Regular.eot */,
+				E83234D91D0638C300314B74 /* KaTeX_Size2-Regular.ttf */,
+				E83234DA1D0638C300314B74 /* KaTeX_Size2-Regular.woff */,
+				E83234DB1D0638C300314B74 /* KaTeX_Size3-Regular.eot */,
+				E83234DC1D0638C300314B74 /* KaTeX_Size3-Regular.ttf */,
+				E83234DD1D0638C300314B74 /* KaTeX_Size3-Regular.woff */,
+				E83234DE1D0638C300314B74 /* KaTeX_Size4-Regular.eot */,
+				E83234DF1D0638C300314B74 /* KaTeX_Size4-Regular.ttf */,
+				E83234E01D0638C300314B74 /* KaTeX_Size4-Regular.woff */,
+			);
+			path = fonts;
+			sourceTree = "<group>";
+		};
 		E847D61E1CFEE5450082036A /* PrefixHeader */ = {
 			isa = PBXGroup;
 			children = (
@@ -792,6 +934,7 @@
 		E8FD54C21CF885D8008647E6 /* CustomCellTableView */ = {
 			isa = PBXGroup;
 			children = (
+				E812645B1D0598FD00094764 /* WebViewCell */,
 				E8FD54971CF8729F008647E6 /* BaseCell.h */,
 				E8FD54981CF8729F008647E6 /* BaseCell.m */,
 				E8FD54991CF8729F008647E6 /* QuestionPackCell.h */,
@@ -952,19 +1095,56 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				E83234F91D0638C300314B74 /* KaTeX_Math-Regular.woff in Resources */,
+				E83235021D0638C300314B74 /* KaTeX_Size3-Regular.woff in Resources */,
 				E8FD54AF1CF8729F008647E6 /* TextCell.xib in Resources */,
+				E83235051D0638C300314B74 /* KaTeX_Size4-Regular.woff in Resources */,
+				E83234ED1D0638C300314B74 /* KaTeX_Main-Italic.woff in Resources */,
+				E83234E51D0638C300314B74 /* KaTeX_AMS-Regular.eot in Resources */,
+				E83234F21D0638C300314B74 /* KaTeX_Math-BoldItalic.ttf in Resources */,
 				E8FD54B51CF8729F008647E6 /* QuickReviewAnswerCell.xib in Resources */,
+				E83234FD1D0638C300314B74 /* KaTeX_Size2-Regular.eot in Resources */,
+				E83234EC1D0638C300314B74 /* KaTeX_Main-Italic.ttf in Resources */,
+				E83234E91D0638C300314B74 /* KaTeX_Main-Bold.ttf in Resources */,
+				E83234FA1D0638C300314B74 /* KaTeX_Size1-Regular.eot in Resources */,
 				E81A7E3D1CF763A800BDE293 /* QuestionPackCLVCell.xib in Resources */,
 				E8FD54AD1CF8729F008647E6 /* QuestionPackCell.xib in Resources */,
+				E83234EF1D0638C300314B74 /* KaTeX_Main-Regular.ttf in Resources */,
+				E83234F51D0638C300314B74 /* KaTeX_Math-Italic.ttf in Resources */,
+				E83235001D0638C300314B74 /* KaTeX_Size3-Regular.eot in Resources */,
 				E8FD54B31CF8729F008647E6 /* QuickReviewCell.xib in Resources */,
+				E83234EA1D0638C300314B74 /* KaTeX_Main-Bold.woff in Resources */,
 				E852A78C1D0427E900320EA2 /* AnswerWebviewCell.xib in Resources */,
+				E83234F31D0638C300314B74 /* KaTeX_Math-BoldItalic.woff in Resources */,
+				E83235061D0638C300314B74 /* index.html in Resources */,
+				E83234FC1D0638C300314B74 /* KaTeX_Size1-Regular.woff in Resources */,
+				E83234FE1D0638C300314B74 /* KaTeX_Size2-Regular.ttf in Resources */,
 				E8FD54B11CF8729F008647E6 /* AnswerCell.xib in Resources */,
+				E83234EE1D0638C300314B74 /* KaTeX_Main-Regular.eot in Resources */,
+				E83234F11D0638C300314B74 /* KaTeX_Math-BoldItalic.eot in Resources */,
+				E83234F71D0638C300314B74 /* KaTeX_Math-Regular.eot in Resources */,
 				E81A7E0D1CF73EA900BDE293 /* LaunchScreen.storyboard in Resources */,
+				E83235041D0638C300314B74 /* KaTeX_Size4-Regular.ttf in Resources */,
+				E83235031D0638C300314B74 /* KaTeX_Size4-Regular.eot in Resources */,
 				E81A7E0A1CF73EA900BDE293 /* Assets.xcassets in Resources */,
+				E83235071D0638C300314B74 /* katex.min.css in Resources */,
 				E81A7E081CF73EA900BDE293 /* Main.storyboard in Resources */,
 				E8FD54B71CF8729F008647E6 /* ReviewAnswerCell.xib in Resources */,
+				E83234E81D0638C300314B74 /* KaTeX_Main-Bold.eot in Resources */,
+				E83234F41D0638C300314B74 /* KaTeX_Math-Italic.eot in Resources */,
 				E8FD54C01CF8733A008647E6 /* CustomTitleView.xib in Resources */,
+				E83234EB1D0638C300314B74 /* KaTeX_Main-Italic.eot in Resources */,
+				E83234E61D0638C300314B74 /* KaTeX_AMS-Regular.ttf in Resources */,
+				E83234FF1D0638C300314B74 /* KaTeX_Size2-Regular.woff in Resources */,
+				E83234FB1D0638C300314B74 /* KaTeX_Size1-Regular.ttf in Resources */,
+				E83235081D0638C300314B74 /* katex.min.js in Resources */,
+				E83234E71D0638C300314B74 /* KaTeX_AMS-Regular.woff in Resources */,
+				E81264601D05992200094764 /* AnswerWVCell.xib in Resources */,
 				E8FA65441CFDBB2A00D64D70 /* ReadingViewController.xib in Resources */,
+				E83234F81D0638C300314B74 /* KaTeX_Math-Regular.ttf in Resources */,
+				E83234F01D0638C300314B74 /* KaTeX_Main-Regular.woff in Resources */,
+				E83234F61D0638C300314B74 /* KaTeX_Math-Italic.woff in Resources */,
+				E83235011D0638C300314B74 /* KaTeX_Size3-Regular.ttf in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -1034,6 +1214,7 @@
 				E81A7EF51CF772CB00BDE293 /* MagicalRecord+Setup.m in Sources */,
 				E81A7F091CF772CB00BDE293 /* UIImageView+AFNetworking.m in Sources */,
 				E81A7EFD1CF772CB00BDE293 /* SCLAlertViewResponder.m in Sources */,
+				E812645F1D05992200094764 /* AnswerWVCell.m in Sources */,
 				E81A7EF61CF772CB00BDE293 /* MagicalRecord+ShorthandMethods.m in Sources */,
 				E81A7F0B1CF772CB00BDE293 /* UIRefreshControl+AFNetworking.m in Sources */,
 				E8FD54901CF8665E008647E6 /* StudentAnswer+CoreDataProperties.m in Sources */,
@@ -1042,6 +1223,7 @@
 				E81A7ED01CF772CB00BDE293 /* AFHTTPSessionManager.m in Sources */,
 				E8FD548E1CF8665E008647E6 /* Question+CoreDataProperties.m in Sources */,
 				E81A7ED51CF772CB00BDE293 /* AFURLSessionManager.m in Sources */,
+				E83235091D0638C300314B74 /* README.md in Sources */,
 				E8FD54911CF8665E008647E6 /* StudentAnswer.m in Sources */,
 				E8FA65431CFDBB2A00D64D70 /* ReadingViewController.m in Sources */,
 				E81A7DFF1CF73EA900BDE293 /* main.m in Sources */,

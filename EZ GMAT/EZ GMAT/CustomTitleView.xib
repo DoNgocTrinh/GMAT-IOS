@@ -19,7 +19,7 @@
                     <nil key="highlightedColor"/>
                 </label>
                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="atK-n1-SFg">
-                    <rect key="frame" x="0.0" y="0.0" width="150" height="600"/>
+                    <rect key="frame" x="205" y="0.0" width="150" height="600"/>
                     <fontDescription key="fontDescription" type="system" pointSize="17"/>
                     <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                     <nil key="highlightedColor"/>
@@ -33,12 +33,21 @@
                 <constraint firstItem="5ro-6C-hoa" firstAttribute="width" secondItem="iN0-l3-epB" secondAttribute="width" multiplier="1:4" id="XqE-lS-8Zx"/>
                 <constraint firstItem="5ro-6C-hoa" firstAttribute="top" secondItem="iN0-l3-epB" secondAttribute="top" id="aBv-Qk-Lbs"/>
                 <constraint firstItem="5ro-6C-hoa" firstAttribute="height" secondItem="iN0-l3-epB" secondAttribute="height" id="boZ-GD-olR"/>
+                <constraint firstItem="atK-n1-SFg" firstAttribute="centerX" secondItem="iN0-l3-epB" secondAttribute="centerX" constant="-20" id="cel-e8-yy3"/>
+                <constraint firstItem="atK-n1-SFg" firstAttribute="centerY" secondItem="iN0-l3-epB" secondAttribute="centerY" id="fd7-vM-CDJ"/>
                 <constraint firstItem="atK-n1-SFg" firstAttribute="width" secondItem="iN0-l3-epB" secondAttribute="width" multiplier="1:4" id="yfY-EV-3YS"/>
             </constraints>
+            <variation key="default">
+                <mask key="constraints">
+                    <exclude reference="Noq-W4-Ss2"/>
+                    <exclude reference="W3c-kF-hOb"/>
+                </mask>
+            </variation>
             <connections>
                 <outlet property="lblQuestionNumber" destination="5ro-6C-hoa" id="Zyr-Uv-mM3"/>
                 <outlet property="lblTime" destination="atK-n1-SFg" id="7Cq-YL-ZDQ"/>
             </connections>
+            <point key="canvasLocation" x="287" y="93"/>
         </view>
     </objects>
 </document>
