@@ -14,6 +14,8 @@
     [super awakeFromNib];
     // Initialization code
     self.backgroundColor = [UIColor clearColor];
+     _imgMore.image= [UIImage imageNamed:@"moreInfo"];
+    NSLog(@"asdasda dm");
    // self.lblAnswer.numberOfLines = 1;
    // self.lblAnswer.minimumFontSize = 8;
    // self.lblAnswer.adjustsFontSizeToFitWidth = YES;

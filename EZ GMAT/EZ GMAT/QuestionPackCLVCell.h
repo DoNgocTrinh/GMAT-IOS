@@ -16,5 +16,6 @@
 @property (weak, nonatomic) IBOutlet UIImageView *imgTheme;
 @property (weak, nonatomic) IBOutlet UIView *viewStar;
 @property(nonatomic, assign) NSInteger numberStar;
+@property (weak, nonatomic) IBOutlet UILabel *lblNumberQuestion;
 -(void)drawStarWithLightStar:(NSInteger)numberLight andTotal:(NSInteger)totalStars;
 @end

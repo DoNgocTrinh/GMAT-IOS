@@ -12,6 +12,9 @@
 
 - (void)awakeFromNib {
     [super awakeFromNib];
+    _imgMore.image =[[UIImage imageNamed:@"moreInfo"] imageWithRenderingMode:UIImageRenderingModeAlwaysTemplate];
+    _imgMore.tintColor = kAppColor;
+    
     // Initialization code
     
     self.backgroundColor = [UIColor clearColor];

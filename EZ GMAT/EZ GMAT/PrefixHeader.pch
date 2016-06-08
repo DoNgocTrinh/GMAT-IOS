@@ -34,5 +34,6 @@
 #import "QuestionPack.h"
 #import "QuestionID.h"
 
+#import "HexColors/HexColors.h"
 
 #endif /* PrefixHeader_pch */

@@ -23,8 +23,8 @@
                             <constraint firstAttribute="height" constant="25" id="xwX-xF-G17"/>
                         </constraints>
                     </imageView>
-                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" text="Label" textAlignment="natural" lineBreakMode="wordWrap" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="hud-TV-Xzk">
-                        <rect key="frame" x="32" y="5" width="409" height="99"/>
+                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="wordWrap" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="hud-TV-Xzk">
+                        <rect key="frame" x="35" y="5" width="396" height="99"/>
                         <constraints>
                             <constraint firstAttribute="height" relation="greaterThanOrEqual" constant="24" id="tcr-IN-9jE"/>
                         </constraints>
@@ -32,29 +32,44 @@
                         <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                         <nil key="highlightedColor"/>
                     </label>
+                    <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="moreInfo" translatesAutoresizingMaskIntoConstraints="NO" id="tbu-0c-BAk">
+                        <rect key="frame" x="431" y="46" width="18" height="18"/>
+                        <constraints>
+                            <constraint firstAttribute="height" constant="18" id="EJa-CO-n8b"/>
+                            <constraint firstAttribute="width" secondItem="tbu-0c-BAk" secondAttribute="height" multiplier="1:1" id="joY-3f-7fh"/>
+                        </constraints>
+                    </imageView>
                 </subviews>
                 <constraints>
                     <constraint firstItem="hud-TV-Xzk" firstAttribute="centerY" secondItem="Heq-Ct-sOg" secondAttribute="centerY" id="1UU-1D-8qv"/>
                     <constraint firstItem="Heq-Ct-sOg" firstAttribute="centerY" secondItem="H2p-sc-9uM" secondAttribute="centerY" id="1cd-kR-o31"/>
                     <constraint firstAttribute="trailing" secondItem="hud-TV-Xzk" secondAttribute="trailing" constant="5" id="AWO-S2-M7q"/>
                     <constraint firstItem="hud-TV-Xzk" firstAttribute="leading" secondItem="Heq-Ct-sOg" secondAttribute="trailing" constant="2" id="DdY-6r-Wti"/>
+                    <constraint firstAttribute="trailing" secondItem="tbu-0c-BAk" secondAttribute="trailing" id="Lqe-pl-Tzh"/>
                     <constraint firstAttribute="leadingMargin" secondItem="Heq-Ct-sOg" secondAttribute="leading" id="PNP-iU-F7R"/>
                     <constraint firstItem="Heq-Ct-sOg" firstAttribute="centerY" secondItem="hud-TV-Xzk" secondAttribute="centerY" id="Unl-G3-dZ0"/>
                     <constraint firstItem="hud-TV-Xzk" firstAttribute="top" secondItem="H2p-sc-9uM" secondAttribute="top" constant="5" id="XJR-mp-YFk"/>
+                    <constraint firstItem="tbu-0c-BAk" firstAttribute="leading" secondItem="hud-TV-Xzk" secondAttribute="trailing" id="alr-rp-s44"/>
                     <constraint firstAttribute="bottom" secondItem="hud-TV-Xzk" secondAttribute="bottom" constant="5" id="g5T-Ed-H1M"/>
+                    <constraint firstItem="tbu-0c-BAk" firstAttribute="centerY" secondItem="H2p-sc-9uM" secondAttribute="centerY" id="lJd-YD-dhw"/>
                 </constraints>
                 <variation key="default">
                     <mask key="constraints">
                         <exclude reference="1UU-1D-8qv"/>
+                        <exclude reference="AWO-S2-M7q"/>
                         <exclude reference="Unl-G3-dZ0"/>
                     </mask>
                 </variation>
             </tableViewCellContentView>
             <connections>
+                <outlet property="imgMore" destination="lJd-YD-dhw" id="w47-d5-CRx"/>
                 <outlet property="imvAnswer" destination="Heq-Ct-sOg" id="Cw8-aX-1gL"/>
                 <outlet property="lblAnswer" destination="hud-TV-Xzk" id="Ypm-g0-Agb"/>
             </connections>
-            <point key="canvasLocation" x="389.5" y="386"/>
+            <point key="canvasLocation" x="363.5" y="379"/>
         </tableViewCell>
     </objects>
+    <resources>
+        <image name="moreInfo" width="25" height="25"/>
+    </resources>
 </document>

@@ -20,7 +20,7 @@
 }
 - (void)viewDidLoad {
     [super viewDidLoad];
-    
+    self.navigationController.navigationBar.translucent = NO;
     [self configCollectionView];
     [self customView];
     [sGmatAPI exploreQuestionPacksWithCompletionBlock:^(NSArray *question) {
@@ -51,11 +51,12 @@
     // NSLog(@"color at: %lu",indexPath.row%colorList.count);
     cell.viewHeader.backgroundColor = colorHeader;
     cell.viewFooter.backgroundColor = cell.viewHeader.backgroundColor;
-    
+    cell.contentView.backgroundColor = [colorHeader colorWithAlphaComponent:.7];
     //cell content----------------------------------------------------------------------------------
     QuestionPack *quetionPack = _questionPacks[indexPath.row];
     cell.lblAvailableTime.text = quetionPack.available_time;
-    
+    cell.lblNumberQuestion.text =[NSString stringWithFormat:@"%lu questions", quetionPack.questionIDs.count];
+    cell.lblNumberQuestion.textColor = [UIColor whiteColor];
     //cell.numberStar = 1;
     [cell layoutIfNeeded];
     [cell drawStarWithLightStar:indexPath.row%3 andTotal:3];
@@ -79,29 +80,30 @@
         [UIView animateWithDuration:0.2 animations:^{
             cell.transform = CGAffineTransformMakeScale(1, 1);
         } completion:^(BOOL finished) {
+            
+            if([Question MR_countOfEntities] != 0){
+                
+                QuestionPack *selectedQuestionPack = _questionPacks[indexPath.row];
+                
+                NSSortDescriptor *nameDescriptor = [NSSortDescriptor sortDescriptorWithKey:@"questionID" ascending:YES];
+                NSArray *listID = [[selectedQuestionPack.questionIDs allObjects] sortedArrayUsingDescriptors:[NSArray arrayWithObject:nameDescriptor]];
+                
+                QuestionViewController *questionViewController = [self.storyboard instantiateViewControllerWithIdentifier:@"question"];
+                questionViewController.questions= [[NSMutableArray alloc]init];
+                
+                for (QuestionID *questionId in  listID) {
+                    
+                    Question *question = [Question MR_findFirstByAttribute:@"questionId" withValue: questionId.questionID];
+                    [questionViewController.questions addObject:question];
+                }
+                [self.navigationController pushViewController:questionViewController animated:YES];
+            }
+            else{
+                NSLog(@"Chua co question nao trong DB");
+            }
+            
         }];
     }];
-    
-    if([Question MR_countOfEntities] != 0){
-
-        QuestionPack *selectedQuestionPack = _questionPacks[indexPath.row];
-        
-        NSSortDescriptor *nameDescriptor = [NSSortDescriptor sortDescriptorWithKey:@"questionID" ascending:YES];
-        NSArray *listID = [[selectedQuestionPack.questionIDs allObjects] sortedArrayUsingDescriptors:[NSArray arrayWithObject:nameDescriptor]];
-
-         QuestionViewController *questionViewController = [self.storyboard instantiateViewControllerWithIdentifier:@"question"];
-        questionViewController.questions= [[NSMutableArray alloc]init];
-        
-        for (QuestionID *questionId in  listID) {
-            
-            Question *question = [Question MR_findFirstByAttribute:@"questionId" withValue: questionId.questionID];
-            [questionViewController.questions addObject:question];
-        }
-        [self.navigationController pushViewController:questionViewController animated:YES];
-    }
-    else{
-        NSLog(@"Chua co question nao trong DB");
-    }
 }
 #pragma mark - Button Action
 -(void)btnMoreDidTap:(id)sender;{
@@ -141,18 +143,20 @@
     [self colorListConfig];
     //circle
     self.viewProgress.textStyle               = MCPercentageDoughnutViewTextStyleUserDefined;
-    self.viewProgress.linePercentage          = 0.05;
+    self.viewProgress.linePercentage          = 0.08;
     self.viewProgress.animationDuration       = 0.5;
     self.viewProgress.showTextLabel           = YES;
     self.viewProgress.animatesBegining        = YES;
     self.viewProgress.textLabel.font          = [UIFont systemFontOfSize:5];
     
-    self.viewProgress.textLabel.textColor     = [UIColor orangeColor];
-    self.viewProgress.fillColor               = [UIColor orangeColor];
+    self.viewProgress.textLabel.textColor     = kColor_NavigationBarBackground;
+    self.viewProgress.fillColor               = kColor_NavigationBarBackground;
     self.viewProgress.textLabel.font          = [UIFont systemFontOfSize:1.0];
     [self.viewProgress setInitialPercentage:0.5f];
     [self.viewProgress setPercentage:0.8];
     self.viewProgress.textLabel.text          = [NSString stringWithFormat:@" %.lf%% ", self.viewProgress.percentage*100];
+    //view
+    self.view.backgroundColor = [kAppColor colorWithAlphaComponent:0.98];
     
     //bntMore
     self.btnMore.layer.cornerRadius           = 4.0f;

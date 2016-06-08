@@ -15,7 +15,7 @@
     // Initialization code
     
     self.backgroundColor = [UIColor clearColor];
-    _webViewQuestion.userInteractionEnabled = NO;
+   // _webViewQuestion.userInteractionEnabled = NO;
     
 }
 
@@ -23,12 +23,21 @@
     
 }
 
--(void)loadContentWithContent:(NSString *)content;{
+-(void)loadContentWithContent:(NSString *)content questionType:(NSString*)questionType;{
+//    if([questionType isEqualToString:@"Q"]){
+        [self loadContentWithLocalHTML:content];
+//    }
+//    else{
+//        [_webViewQuestion loadHTMLString:content baseURL:nil];
+//    }
     
+
+}
+-(void)loadContentWithLocalHTML:(NSString *)content;{
     NSString* htmlPath = [[NSBundle mainBundle] pathForResource:@"index" ofType:@"html"];
     NSString* appHtml = [NSString stringWithContentsOfFile:htmlPath encoding:NSUTF8StringEncoding error:nil];
     
-    content = [NSString stringWithFormat: @"%@  $a^2 + b^2 = c^2$ ", content];
+    content = [NSString stringWithFormat: @"%@ $\\frac{1}{2}$ $\\frac{1}{2}$ $\\frac{1}{2}$ $\\frac{1}{2}$ $\\frac{1}{2}$ $\\frac{1}{2}$ $\\frac{1}{2}$ $\\frac{1}{2}$ $\\frac{1}{2}$ $\\frac{1}{2}$ $\\frac{1}{2}$ $\\frac{1}{2}$ $\\frac{1}{2}$ $\\frac{1}{2}$ ", content];
     
     if([content rangeOfString:@"$"].location != NSNotFound) { // Expression inside text.
         NSRange r;
@@ -39,17 +48,18 @@
             intex = !intex;
         }
         if (intex) NSLog(@"Katex iOS: Error: No closing $.");
+        // Place into HTML
+        appHtml = [appHtml stringByReplacingOccurrencesOfString:@"$LATEX$"
+                                                     withString:content];
+        
+        NSURL *baseURL = [NSURL fileURLWithPath:htmlPath];
+        
+        [_webViewQuestion loadHTMLString:appHtml baseURL:baseURL];
     } else { // Raw KaTeX.
-        content = [NSString stringWithFormat:@"<span class=\"tex\">%@</span>", content];
+        [_webViewQuestion loadHTMLString:content baseURL:nil];
+        //  content = [NSString stringWithFormat:@"<span class=\"tex\">%@</span>", content];
     }
     
-    // Place into HTML
-    appHtml = [appHtml stringByReplacingOccurrencesOfString:@"$LATEX$"
-                                                 withString:content];
-    
-    NSURL *baseURL = [NSURL fileURLWithPath:htmlPath];
-    
-    [_webViewQuestion loadHTMLString:appHtml baseURL:baseURL];
-
+   
 }
 @end

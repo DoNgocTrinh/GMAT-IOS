@@ -11,5 +11,5 @@
 @interface TextCell : UITableViewCell<UIWebViewDelegate>
 @property (weak, nonatomic) IBOutlet UILabel *lblText;
 @property (weak, nonatomic) IBOutlet UIWebView *webViewQuestion;
--(void)loadContentWithContent:(NSString *)content;
+-(void)loadContentWithContent:(NSString *)content questionType:(NSString*)questionType;
 @end

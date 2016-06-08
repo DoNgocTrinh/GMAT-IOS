@@ -13,4 +13,5 @@
 @property (weak, nonatomic) IBOutlet UILabel *lblQuestion;
 @property (weak, nonatomic) IBOutlet UIImageView *imvResult;
 
+-(void)cellWithResult:(NSNumber *) result;
 @end

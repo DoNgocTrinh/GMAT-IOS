@@ -21,5 +21,23 @@
 
     // Configure the view for the selected state
 }
+-(void)cellWithResult:(NSNumber *) result;{
+    switch ([result intValue]) {
+        case 0:
+            _imvResult.image = [[UIImage imageNamed:kImage_Wrong] imageWithRenderingMode:UIImageRenderingModeAlwaysTemplate];
+            _imvResult.tintColor = [UIColor redColor];
+            
+            //self.contentView.backgroundColor = [[UIColor redColor] colorWithAlphaComponent:0.2];
+            break;
+        case 1:
+            _imvResult.image = [[UIImage imageNamed:kImage_Right] imageWithRenderingMode:UIImageRenderingModeAlwaysTemplate];
+            //self.contentView.backgroundColor = [[UIColor greenColor] colorWithAlphaComponent:0.2];
+              _imvResult.tintColor = [UIColor greenColor];
+            break;
+        default:
+            _imvResult.tintColor = [UIColor clearColor];
+            break;
+    }
+}
 
 @end

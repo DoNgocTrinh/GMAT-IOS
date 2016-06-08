@@ -18,7 +18,7 @@
 
 
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions {
-    [[UINavigationBar appearance] setBarTintColor:kGreenColor];
+    [[UINavigationBar appearance] setBarTintColor:kAppColor];
     self.window.tintColor = [UIColor whiteColor];
     
     [MagicalRecord setupCoreDataStackWithStoreNamed:kDatabaseName];

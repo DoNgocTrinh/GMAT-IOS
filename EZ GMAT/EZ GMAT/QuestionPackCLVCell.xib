@@ -3,7 +3,6 @@
     <dependencies>
         <deployment identifier="iOS"/>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="10085"/>
-        <capability name="Aspect ratio constraints" minToolsVersion="5.1"/>
         <capability name="Constraints with non-1.0 multipliers" minToolsVersion="5.1"/>
     </dependencies>
     <objects>
@@ -61,28 +60,28 @@
                             <constraint firstItem="yR0-aB-J11" firstAttribute="centerX" secondItem="JFe-wR-Olg" secondAttribute="centerX" id="tHn-3K-HFu"/>
                         </constraints>
                     </view>
-                    <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="Reminder" translatesAutoresizingMaskIntoConstraints="NO" id="6jm-oA-FZh">
-                        <rect key="frame" x="90" y="75" width="225" height="225"/>
-                        <constraints>
-                            <constraint firstAttribute="width" secondItem="6jm-oA-FZh" secondAttribute="height" id="xiS-H8-Boa"/>
-                        </constraints>
-                    </imageView>
+                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="nYo-cn-zAz">
+                        <rect key="frame" x="0.0" y="0.0" width="404" height="375"/>
+                        <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                        <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
+                        <nil key="highlightedColor"/>
+                    </label>
                 </subviews>
                 <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
             </view>
             <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
             <constraints>
+                <constraint firstItem="nYo-cn-zAz" firstAttribute="centerY" secondItem="gTV-IL-0wX" secondAttribute="centerY" id="4Q3-3E-KAR"/>
+                <constraint firstItem="nYo-cn-zAz" firstAttribute="height" secondItem="gTV-IL-0wX" secondAttribute="height" id="ESb-cA-6TG"/>
                 <constraint firstAttribute="bottom" secondItem="oNp-Sz-Jkg" secondAttribute="bottom" id="Jxc-R8-kB2"/>
-                <constraint firstItem="6jm-oA-FZh" firstAttribute="top" secondItem="yR0-aB-J11" secondAttribute="bottom" id="NL3-rF-bn0"/>
                 <constraint firstItem="oNp-Sz-Jkg" firstAttribute="height" secondItem="JFe-wR-Olg" secondAttribute="height" id="QOQ-a7-uA9"/>
                 <constraint firstItem="oNp-Sz-Jkg" firstAttribute="leading" secondItem="JFe-wR-Olg" secondAttribute="leading" id="VM3-8S-ta3"/>
                 <constraint firstItem="JFe-wR-Olg" firstAttribute="top" secondItem="gTV-IL-0wX" secondAttribute="top" id="cgU-7z-QPg"/>
                 <constraint firstItem="JFe-wR-Olg" firstAttribute="height" secondItem="gTV-IL-0wX" secondAttribute="height" multiplier="1:5" id="cm9-Wc-JC6"/>
-                <constraint firstItem="6jm-oA-FZh" firstAttribute="width" secondItem="yR0-aB-J11" secondAttribute="width" id="dfb-Q3-aK1"/>
                 <constraint firstItem="JFe-wR-Olg" firstAttribute="width" secondItem="gTV-IL-0wX" secondAttribute="width" id="h2Q-zI-4u0"/>
-                <constraint firstItem="oNp-Sz-Jkg" firstAttribute="top" secondItem="6jm-oA-FZh" secondAttribute="bottom" id="jaW-gH-ZNx"/>
+                <constraint firstItem="nYo-cn-zAz" firstAttribute="centerX" secondItem="gTV-IL-0wX" secondAttribute="centerX" id="hQj-m5-Tfp"/>
+                <constraint firstItem="nYo-cn-zAz" firstAttribute="width" secondItem="gTV-IL-0wX" secondAttribute="width" id="kKq-qP-9hG"/>
                 <constraint firstItem="oNp-Sz-Jkg" firstAttribute="width" secondItem="JFe-wR-Olg" secondAttribute="width" id="qQH-WH-t9X"/>
-                <constraint firstItem="6jm-oA-FZh" firstAttribute="centerX" secondItem="gTV-IL-0wX" secondAttribute="centerX" id="tBJ-p9-AEU"/>
                 <constraint firstItem="JFe-wR-Olg" firstAttribute="centerX" secondItem="gTV-IL-0wX" secondAttribute="centerX" id="toI-yO-HTa"/>
                 <constraint firstItem="JFe-wR-Olg" firstAttribute="leading" secondItem="gTV-IL-0wX" secondAttribute="leading" id="u9b-er-Ek0"/>
             </constraints>
@@ -90,12 +89,11 @@
             <variation key="default">
                 <mask key="constraints">
                     <exclude reference="u9b-er-Ek0"/>
-                    <exclude reference="dfb-Q3-aK1"/>
                 </mask>
             </variation>
             <connections>
-                <outlet property="imgTheme" destination="6jm-oA-FZh" id="G6g-dD-DAt"/>
                 <outlet property="lblAvailableTime" destination="yR0-aB-J11" id="09X-k6-dII"/>
+                <outlet property="lblNumberQuestion" destination="nYo-cn-zAz" id="QRx-XZ-y7z"/>
                 <outlet property="viewFooter" destination="oNp-Sz-Jkg" id="hOL-gn-p7I"/>
                 <outlet property="viewHeader" destination="JFe-wR-Olg" id="gUA-fT-ifv"/>
                 <outlet property="viewStar" destination="boV-JJ-fTY" id="MeG-Tw-Q45"/>
@@ -103,7 +101,4 @@
             <point key="canvasLocation" x="268" y="267.5"/>
         </collectionViewCell>
     </objects>
-    <resources>
-        <image name="Reminder" width="356" height="356"/>
-    </resources>
 </document>

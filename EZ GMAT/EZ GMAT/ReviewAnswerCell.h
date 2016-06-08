@@ -15,5 +15,7 @@
 @property (weak, nonatomic) IBOutlet UIView *line;
 @property (weak, nonatomic) IBOutlet UILabel *lblExplanation;
 @property (nonatomic, strong) NSString *explanation;
+@property (weak, nonatomic) IBOutlet UIImageView *imgMore;
+
 
 @end

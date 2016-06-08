@@ -7,6 +7,9 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		E80E19FE1D072E9F005362BD /* ReviewPageContentVC.m in Sources */ = {isa = PBXBuildFile; fileRef = E80E19F91D072E9F005362BD /* ReviewPageContentVC.m */; };
+		E80E19FF1D072E9F005362BD /* ReviewPageController.m in Sources */ = {isa = PBXBuildFile; fileRef = E80E19FB1D072E9F005362BD /* ReviewPageController.m */; };
+		E80E1A001D072E9F005362BD /* ReviewPageViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = E80E19FD1D072E9F005362BD /* ReviewPageViewController.m */; };
 		E812645F1D05992200094764 /* AnswerWVCell.m in Sources */ = {isa = PBXBuildFile; fileRef = E812645D1D05992200094764 /* AnswerWVCell.m */; };
 		E81264601D05992200094764 /* AnswerWVCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = E812645E1D05992200094764 /* AnswerWVCell.xib */; };
 		E81A7DFF1CF73EA900BDE293 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = E81A7DFE1CF73EA900BDE293 /* main.m */; };
@@ -118,9 +121,6 @@
 		E83235071D0638C300314B74 /* katex.min.css in Resources */ = {isa = PBXBuildFile; fileRef = E83234E21D0638C300314B74 /* katex.min.css */; };
 		E83235081D0638C300314B74 /* katex.min.js in Resources */ = {isa = PBXBuildFile; fileRef = E83234E31D0638C300314B74 /* katex.min.js */; };
 		E83235091D0638C300314B74 /* README.md in Sources */ = {isa = PBXBuildFile; fileRef = E83234E41D0638C300314B74 /* README.md */; };
-		E852A78B1D0427E900320EA2 /* AnswerWebviewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = E852A7891D0427E900320EA2 /* AnswerWebviewCell.m */; };
-		E852A78C1D0427E900320EA2 /* AnswerWebviewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = E852A78A1D0427E900320EA2 /* AnswerWebviewCell.xib */; };
-		E8B923C61CFDA221008BFFB4 /* QuestionsViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = E8B923C51CFDA221008BFFB4 /* QuestionsViewController.m */; };
 		E8FA65431CFDBB2A00D64D70 /* ReadingViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = E8FA65411CFDBB2A00D64D70 /* ReadingViewController.m */; };
 		E8FA65441CFDBB2A00D64D70 /* ReadingViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = E8FA65421CFDBB2A00D64D70 /* ReadingViewController.xib */; };
 		E8FA65461CFDD85300D64D70 /* QuestionViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = E8FD54B91CF872D2008647E6 /* QuestionViewController.m */; };
@@ -150,6 +150,7 @@
 		E8FD54B71CF8729F008647E6 /* ReviewAnswerCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = E8FD54AA1CF8729F008647E6 /* ReviewAnswerCell.xib */; };
 		E8FD54C01CF8733A008647E6 /* CustomTitleView.xib in Resources */ = {isa = PBXBuildFile; fileRef = E8FD54BD1CF8733A008647E6 /* CustomTitleView.xib */; };
 		E8FD54C11CF8733A008647E6 /* CustomTitleView.m in Sources */ = {isa = PBXBuildFile; fileRef = E8FD54BF1CF8733A008647E6 /* CustomTitleView.m */; };
+		E8FEA2201D067233003CE12E /* QuickReviewViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = E8FEA21F1D067233003CE12E /* QuickReviewViewController.m */; };
 		E8FED8B81CF8598A001EFC87 /* BaseViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = E8FED8B71CF8598A001EFC87 /* BaseViewController.m */; };
 /* End PBXBuildFile section */
 
@@ -171,6 +172,12 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		E80E19F81D072E9F005362BD /* ReviewPageContentVC.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ReviewPageContentVC.h; sourceTree = "<group>"; };
+		E80E19F91D072E9F005362BD /* ReviewPageContentVC.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ReviewPageContentVC.m; sourceTree = "<group>"; };
+		E80E19FA1D072E9F005362BD /* ReviewPageController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ReviewPageController.h; sourceTree = "<group>"; };
+		E80E19FB1D072E9F005362BD /* ReviewPageController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ReviewPageController.m; sourceTree = "<group>"; };
+		E80E19FC1D072E9F005362BD /* ReviewPageViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ReviewPageViewController.h; sourceTree = "<group>"; };
+		E80E19FD1D072E9F005362BD /* ReviewPageViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ReviewPageViewController.m; sourceTree = "<group>"; };
 		E812645C1D05992200094764 /* AnswerWVCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AnswerWVCell.h; sourceTree = "<group>"; };
 		E812645D1D05992200094764 /* AnswerWVCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AnswerWVCell.m; sourceTree = "<group>"; };
 		E812645E1D05992200094764 /* AnswerWVCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = AnswerWVCell.xib; sourceTree = "<group>"; };
@@ -367,11 +374,6 @@
 		E83234E31D0638C300314B74 /* katex.min.js */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.javascript; path = katex.min.js; sourceTree = "<group>"; };
 		E83234E41D0638C300314B74 /* README.md */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = net.daringfireball.markdown; path = README.md; sourceTree = "<group>"; };
 		E847D6201CFEE6750082036A /* PrefixHeader.pch */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PrefixHeader.pch; sourceTree = "<group>"; };
-		E852A7881D0427E900320EA2 /* AnswerWebviewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AnswerWebviewCell.h; sourceTree = "<group>"; };
-		E852A7891D0427E900320EA2 /* AnswerWebviewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AnswerWebviewCell.m; sourceTree = "<group>"; };
-		E852A78A1D0427E900320EA2 /* AnswerWebviewCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = AnswerWebviewCell.xib; sourceTree = "<group>"; };
-		E8B923C41CFDA221008BFFB4 /* QuestionsViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = QuestionsViewController.h; sourceTree = "<group>"; };
-		E8B923C51CFDA221008BFFB4 /* QuestionsViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = QuestionsViewController.m; sourceTree = "<group>"; };
 		E8FA65401CFDBB2A00D64D70 /* ReadingViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ReadingViewController.h; sourceTree = "<group>"; };
 		E8FA65411CFDBB2A00D64D70 /* ReadingViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ReadingViewController.m; sourceTree = "<group>"; };
 		E8FA65421CFDBB2A00D64D70 /* ReadingViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = ReadingViewController.xib; sourceTree = "<group>"; };
@@ -421,6 +423,8 @@
 		E8FD54BD1CF8733A008647E6 /* CustomTitleView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = CustomTitleView.xib; sourceTree = "<group>"; };
 		E8FD54BE1CF8733A008647E6 /* CustomTitleView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CustomTitleView.h; sourceTree = "<group>"; };
 		E8FD54BF1CF8733A008647E6 /* CustomTitleView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CustomTitleView.m; sourceTree = "<group>"; };
+		E8FEA21E1D067233003CE12E /* QuickReviewViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = QuickReviewViewController.h; sourceTree = "<group>"; };
+		E8FEA21F1D067233003CE12E /* QuickReviewViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = QuickReviewViewController.m; sourceTree = "<group>"; };
 		E8FED8B21CF8584C001EFC87 /* Constant.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Constant.h; sourceTree = "<group>"; };
 		E8FED8B61CF8598A001EFC87 /* BaseViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BaseViewController.h; sourceTree = "<group>"; };
 		E8FED8B71CF8598A001EFC87 /* BaseViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BaseViewController.m; sourceTree = "<group>"; };
@@ -451,12 +455,24 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		E80E19F71D072E84005362BD /* Review */ = {
+			isa = PBXGroup;
+			children = (
+				E80E19F81D072E9F005362BD /* ReviewPageContentVC.h */,
+				E80E19F91D072E9F005362BD /* ReviewPageContentVC.m */,
+				E80E19FA1D072E9F005362BD /* ReviewPageController.h */,
+				E80E19FB1D072E9F005362BD /* ReviewPageController.m */,
+				E80E19FC1D072E9F005362BD /* ReviewPageViewController.h */,
+				E80E19FD1D072E9F005362BD /* ReviewPageViewController.m */,
+			);
+			name = Review;
+			sourceTree = "<group>";
+		};
 		E812645B1D0598FD00094764 /* WebViewCell */ = {
 			isa = PBXGroup;
 			children = (
-				E812645C1D05992200094764 /* AnswerWVCell.h */,
-				E812645D1D05992200094764 /* AnswerWVCell.m */,
-				E812645E1D05992200094764 /* AnswerWVCell.xib */,
+				E81BA94E1D06E92E00961BD8 /* AnswerCell */,
+				E81BA94D1D06E92200961BD8 /* QuestionCell */,
 			);
 			name = WebViewCell;
 			sourceTree = "<group>";
@@ -526,10 +542,11 @@
 		E81A7E301CF75BC300BDE293 /* UI */ = {
 			isa = PBXGroup;
 			children = (
+				E80E19F71D072E84005362BD /* Review */,
+				E8FEA21D1D067010003CE12E /* QuickReviewVC */,
 				E81A7E061CF73EA900BDE293 /* Main.storyboard */,
 				E81A7E091CF73EA900BDE293 /* Assets.xcassets */,
 				E81A7E0B1CF73EA900BDE293 /* LaunchScreen.storyboard */,
-				E8B923C31CFDA1F5008BFFB4 /* QuestionViewController */,
 				E8FD54BC1CF87324008647E6 /* CustomTitleView */,
 				E8FD54BB1CF87303008647E6 /* QuestionView */,
 				E8FED8B51CF85974001EFC87 /* BaseViewController */,
@@ -816,6 +833,26 @@
 			name = "GMAT API";
 			sourceTree = "<group>";
 		};
+		E81BA94D1D06E92200961BD8 /* QuestionCell */ = {
+			isa = PBXGroup;
+			children = (
+				E8FD549C1CF8729F008647E6 /* TextCell.h */,
+				E8FD549D1CF8729F008647E6 /* TextCell.m */,
+				E8FD549E1CF8729F008647E6 /* TextCell.xib */,
+			);
+			name = QuestionCell;
+			sourceTree = "<group>";
+		};
+		E81BA94E1D06E92E00961BD8 /* AnswerCell */ = {
+			isa = PBXGroup;
+			children = (
+				E812645C1D05992200094764 /* AnswerWVCell.h */,
+				E812645D1D05992200094764 /* AnswerWVCell.m */,
+				E812645E1D05992200094764 /* AnswerWVCell.xib */,
+			);
+			name = AnswerCell;
+			sourceTree = "<group>";
+		};
 		E83234BE1D0638C200314B74 /* katex */ = {
 			isa = PBXGroup;
 			children = (
@@ -876,15 +913,6 @@
 			name = PrefixHeader;
 			sourceTree = "<group>";
 		};
-		E8B923C31CFDA1F5008BFFB4 /* QuestionViewController */ = {
-			isa = PBXGroup;
-			children = (
-				E8B923C41CFDA221008BFFB4 /* QuestionsViewController.h */,
-				E8B923C51CFDA221008BFFB4 /* QuestionsViewController.m */,
-			);
-			name = QuestionViewController;
-			sourceTree = "<group>";
-		};
 		E8FA65451CFDBB3100D64D70 /* ReadingView */ = {
 			isa = PBXGroup;
 			children = (
@@ -940,9 +968,6 @@
 				E8FD54991CF8729F008647E6 /* QuestionPackCell.h */,
 				E8FD549A1CF8729F008647E6 /* QuestionPackCell.m */,
 				E8FD549B1CF8729F008647E6 /* QuestionPackCell.xib */,
-				E8FD549C1CF8729F008647E6 /* TextCell.h */,
-				E8FD549D1CF8729F008647E6 /* TextCell.m */,
-				E8FD549E1CF8729F008647E6 /* TextCell.xib */,
 				E8FD549F1CF8729F008647E6 /* AnswerCell.h */,
 				E8FD54A01CF8729F008647E6 /* AnswerCell.m */,
 				E8FD54A11CF8729F008647E6 /* AnswerCell.xib */,
@@ -955,11 +980,17 @@
 				E8FD54A81CF8729F008647E6 /* ReviewAnswerCell.h */,
 				E8FD54A91CF8729F008647E6 /* ReviewAnswerCell.m */,
 				E8FD54AA1CF8729F008647E6 /* ReviewAnswerCell.xib */,
-				E852A7881D0427E900320EA2 /* AnswerWebviewCell.h */,
-				E852A7891D0427E900320EA2 /* AnswerWebviewCell.m */,
-				E852A78A1D0427E900320EA2 /* AnswerWebviewCell.xib */,
 			);
 			name = CustomCellTableView;
+			sourceTree = "<group>";
+		};
+		E8FEA21D1D067010003CE12E /* QuickReviewVC */ = {
+			isa = PBXGroup;
+			children = (
+				E8FEA21E1D067233003CE12E /* QuickReviewViewController.h */,
+				E8FEA21F1D067233003CE12E /* QuickReviewViewController.m */,
+			);
+			name = QuickReviewVC;
 			sourceTree = "<group>";
 		};
 		E8FED8B51CF85974001EFC87 /* BaseViewController */ = {
@@ -1114,7 +1145,6 @@
 				E83235001D0638C300314B74 /* KaTeX_Size3-Regular.eot in Resources */,
 				E8FD54B31CF8729F008647E6 /* QuickReviewCell.xib in Resources */,
 				E83234EA1D0638C300314B74 /* KaTeX_Main-Bold.woff in Resources */,
-				E852A78C1D0427E900320EA2 /* AnswerWebviewCell.xib in Resources */,
 				E83234F31D0638C300314B74 /* KaTeX_Math-BoldItalic.woff in Resources */,
 				E83235061D0638C300314B74 /* index.html in Resources */,
 				E83234FC1D0638C300314B74 /* KaTeX_Size1-Regular.woff in Resources */,
@@ -1169,8 +1199,11 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				E8FEA2201D067233003CE12E /* QuickReviewViewController.m in Sources */,
 				E81A7EF71CF772CB00BDE293 /* MagicalRecordInternal.m in Sources */,
+				E80E19FE1D072E9F005362BD /* ReviewPageContentVC.m in Sources */,
 				E8FD54B41CF8729F008647E6 /* QuickReviewAnswerCell.m in Sources */,
+				E80E1A001D072E9F005362BD /* ReviewPageViewController.m in Sources */,
 				E81A7F0F1CF772F600BDE293 /* GmatAPI.m in Sources */,
 				E81A7EEC1CF772CB00BDE293 /* NSManagedObjectContext+MagicalSaves.m in Sources */,
 				E81A7EF31CF772CB00BDE293 /* MagicalRecord+iCloud.m in Sources */,
@@ -1231,6 +1264,7 @@
 				E81A7EE71CF772CB00BDE293 /* NSManagedObject+MagicalRecord.m in Sources */,
 				E81A7EF21CF772CB00BDE293 /* MagicalRecord+ErrorHandling.m in Sources */,
 				E8FD54921CF8665E008647E6 /* QuestionPack+CoreDataProperties.m in Sources */,
+				E80E19FF1D072E9F005362BD /* ReviewPageController.m in Sources */,
 				E81A7EDE1CF772CB00BDE293 /* NSAttributeDescription+MagicalDataImport.m in Sources */,
 				E81A7ED91CF772CB00BDE293 /* MCPercentageDoughnutView.m in Sources */,
 				E81A7F021CF772CB00BDE293 /* SCLTimerDisplay.m in Sources */,
@@ -1242,7 +1276,6 @@
 				E81A7EFF1CF772CB00BDE293 /* SCLButton.m in Sources */,
 				E81A7F061CF772CB00BDE293 /* AFNetworkActivityIndicatorManager.m in Sources */,
 				E81A7F001CF772CB00BDE293 /* SCLSwitchView.m in Sources */,
-				E852A78B1D0427E900320EA2 /* AnswerWebviewCell.m in Sources */,
 				E8FD54B01CF8729F008647E6 /* AnswerCell.m in Sources */,
 				E81A7F0A1CF772CB00BDE293 /* UIProgressView+AFNetworking.m in Sources */,
 				E81A7F081CF772CB00BDE293 /* UIButton+AFNetworking.m in Sources */,
@@ -1259,7 +1292,6 @@
 				E81A7EE51CF772CB00BDE293 /* NSManagedObject+MagicalDataImport.m in Sources */,
 				E8FD548F1CF8665E008647E6 /* Question.m in Sources */,
 				E81A7EE91CF772CB00BDE293 /* NSManagedObjectContext+MagicalChainSave.m in Sources */,
-				E8B923C61CFDA221008BFFB4 /* QuestionsViewController.m in Sources */,
 				E81A7EF41CF772CB00BDE293 /* MagicalRecord+Options.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

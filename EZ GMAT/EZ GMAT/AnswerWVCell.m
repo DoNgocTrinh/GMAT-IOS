@@ -9,19 +9,23 @@
 #import "AnswerWVCell.h"
 
 @implementation AnswerWVCell
-
+{
+    int indexAnswer;
+}
 - (void)awakeFromNib {
     [super awakeFromNib];
     // Initialization code
     self.backgroundColor = [UIColor clearColor];
     _webViewAnswer.userInteractionEnabled = NO;
+    _webViewAnswer.delegate = self;
+
 }
 
 - (void)setSelected:(BOOL)selected animated:(BOOL)animated {
     if(selected){
-        self.backgroundView.backgroundColor = kAppColor;
-        self.contentView.backgroundColor = kAppColor;
-        _webViewAnswer.backgroundColor = kAppColor;
+      //  self.backgroundView.backgroundColor = kSelectedColor;
+        self.contentView.backgroundColor = kSelectedColor;
+        _webViewAnswer.backgroundColor = kSelectedColor;
     }
     else{
         self.contentView.backgroundColor = [UIColor whiteColor];
@@ -29,7 +33,10 @@
     }
     _webViewAnswer.opaque = NO;
 }
+-(void)webViewDidFinishLoad:(UIWebView *)webView{
+    }
 -(void)cellWithAnswer: (Answer*)answer questionType: (NSString*) questionType;{
+    
     switch ([answer.index intValue]) {
         case 0:
             _imvAnswer.image = [UIImage imageNamed:kImage_AnswerA];
@@ -49,21 +56,21 @@
         default:
             break;
     }
-    if([questionType isEqualToString: @"Q"])
-    {
+//    if([questionType isEqualToString: @"Q"])
+//    {
         [self loadContentWithContent:answer.choice];
-    }
-    else
-    {
-        [_webViewAnswer loadHTMLString:answer.choice baseURL:nil];
-    }
+//    }
+//    else
+//    {
+       // [_webViewAnswer loadHTMLString:answer.choice baseURL:nil];
+//    }
 }
 -(void)loadContentWithContent:(NSString *)content;{
     
     NSString* htmlPath = [[NSBundle mainBundle] pathForResource:@"index" ofType:@"html"];
     NSString* appHtml = [NSString stringWithContentsOfFile:htmlPath encoding:NSUTF8StringEncoding error:nil];
     
-    content = [NSString stringWithFormat: @"%@ $\\frac{anh}{em}$", content];
+    content = [NSString stringWithFormat: @"%@", content];
     
     if([content rangeOfString:@"$"].location != NSNotFound) { // Expression inside text.
         NSRange r;
@@ -74,17 +81,21 @@
             intex = !intex;
         }
         if (intex) NSLog(@"Katex iOS: Error: No closing $.");
+        
+        appHtml = [appHtml stringByReplacingOccurrencesOfString:@"$LATEX$"
+                                                     withString:content];
+        
+        NSURL *baseURL = [NSURL fileURLWithPath:htmlPath];
+        
+        [_webViewAnswer loadHTMLString:appHtml baseURL:baseURL];
+        
     } else { // Raw KaTeX.
-        content = [NSString stringWithFormat:@"<span class=\"tex\">%@</span>", content];
+        [_webViewAnswer loadHTMLString:content baseURL:nil];
+        // content = [NSString stringWithFormat:@"<span class=\"tex\">%@</span>", content];
     }
     
     // Place into HTML
-    appHtml = [appHtml stringByReplacingOccurrencesOfString:@"$LATEX$"
-                                                 withString:content];
-    
-    NSURL *baseURL = [NSURL fileURLWithPath:htmlPath];
-    
-    [_webViewAnswer loadHTMLString:appHtml baseURL:baseURL];
+   
     
 }
 

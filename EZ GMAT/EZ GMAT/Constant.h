@@ -26,9 +26,9 @@
 
 #define kColor_Window                                   [UIColor whiteColor]
 
-#define kAppColor                                     kGreenColor//[UIColor colorWithRed:51.0/255  green:192.0/255 blue:152.0/255 alpha:1.0] //[UIColor orangeColor]
+#define kAppColor                                     [UIColor hx_colorWithHexRGBAString: @"#475577"]
 #define kGreenColor    [UIColor colorWithRed:63.0/255  green:175.0/255 blue:102.0/255 alpha:1.0]
-
+#define kSelectedColor  [UIColor hx_colorWithHexRGBAString:@"#FFECB3"];
 //MARK: API
 
 #define kGmatAPIExploreQuestionUrl                      @"https://g-service.herokuapp.com/api/questions"

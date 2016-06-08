@@ -9,7 +9,7 @@
 #import <UIKit/UIKit.h>
 #import "Answer.h"
 
-@interface AnswerWVCell : UITableViewCell
+@interface AnswerWVCell : UITableViewCell<UIWebViewDelegate>
 @property (weak, nonatomic) IBOutlet UIWebView *webViewAnswer;
 @property (weak, nonatomic) IBOutlet UIImageView *imvAnswer;
 -(void)cellWithAnswer: (Answer*)answer questionType: (NSString*) questionType;

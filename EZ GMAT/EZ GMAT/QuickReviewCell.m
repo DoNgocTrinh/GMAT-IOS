@@ -13,7 +13,7 @@
 - (void)awakeFromNib {
     [super awakeFromNib];
     // Initialization code
-    self.contentView.backgroundColor = kAppColor;
+    self.contentView.backgroundColor = [kAppColor colorWithAlphaComponent:0.8];
     self.alpha = 0.8f;
     
     self.viewCir.textStyle               = MCPercentageDoughnutViewTextStyleUserDefined;
