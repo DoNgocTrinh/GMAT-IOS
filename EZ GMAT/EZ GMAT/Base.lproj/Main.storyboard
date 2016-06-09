@@ -770,8 +770,8 @@
                         <variation key="default">
                             <mask key="constraints">
                                 <exclude reference="206-7T-f4N"/>
-                                <exclude reference="JzF-7X-hJ3"/>
                                 <exclude reference="1qM-M8-XeQ"/>
+                                <exclude reference="JzF-7X-hJ3"/>
                                 <exclude reference="LKj-VD-cRi"/>
                                 <exclude reference="6XU-UG-OQT"/>
                             </mask>

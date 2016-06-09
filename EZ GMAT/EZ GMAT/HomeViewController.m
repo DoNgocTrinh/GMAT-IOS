@@ -53,13 +53,14 @@
     cell.viewFooter.backgroundColor = cell.viewHeader.backgroundColor;
     cell.contentView.backgroundColor = [colorHeader colorWithAlphaComponent:.7];
     //cell content----------------------------------------------------------------------------------
-    QuestionPack *quetionPack = _questionPacks[indexPath.row];
-    cell.lblAvailableTime.text = quetionPack.available_time;
-    cell.lblNumberQuestion.text =[NSString stringWithFormat:@"%lu questions", quetionPack.questionIDs.count];
+    QuestionPack *questionPack = _questionPacks[indexPath.row];
+    //NSLog(@"pack Level : %ld", [questionPack.level integerValue]);
+    cell.lblAvailableTime.text = questionPack.available_time;
+    cell.lblNumberQuestion.text =[NSString stringWithFormat:@"%lu questions", questionPack.questionIDs.count];
     cell.lblNumberQuestion.textColor = [UIColor whiteColor];
     //cell.numberStar = 1;
     [cell layoutIfNeeded];
-    [cell drawStarWithLightStar:indexPath.row%3 andTotal:3];
+   [cell drawStarsWithLightNumber:[questionPack.level integerValue]];
     return cell;
 }
 

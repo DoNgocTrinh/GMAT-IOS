@@ -26,9 +26,8 @@
     for(UIImageView *imgView in _viewStar.subviews){
         [imgView removeFromSuperview];
     }
-        UIImageView *imageView;
-    float width = _viewStar.frame.size.height
-    ;
+    UIImageView *imageView;
+    float width = _viewStar.frame.size.height*.75;
     float height = width;
     //NSLog(@"Height : %lf", height);
     for(int i = 0 ;i < totalStars;i++)
@@ -41,7 +40,7 @@
         else{
             imageView.image=[UIImage imageNamed:@"starBlank"];
         }
-      [imageView setTranslatesAutoresizingMaskIntoConstraints:YES];
+        [imageView setTranslatesAutoresizingMaskIntoConstraints:YES];
         [_viewStar addSubview:imageView];
     }
 }

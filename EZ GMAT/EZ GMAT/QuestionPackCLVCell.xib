@@ -14,11 +14,17 @@
             <view key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center">
                 <rect key="frame" x="0.0" y="0.0" width="404" height="375"/>
                 <subviews>
+                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="nYo-cn-zAz">
+                        <rect key="frame" x="0.0" y="0.0" width="404" height="375"/>
+                        <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                        <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
+                        <nil key="highlightedColor"/>
+                    </label>
                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="oNp-Sz-Jkg">
                         <rect key="frame" x="0.0" y="300" width="404" height="75"/>
                         <subviews>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="boV-JJ-fTY">
-                                <rect key="frame" x="202" y="8" width="202" height="59"/>
+                                <rect key="frame" x="20" y="8" width="202" height="59"/>
                                 <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                             </view>
                         </subviews>
@@ -29,6 +35,7 @@
                             <constraint firstItem="boV-JJ-fTY" firstAttribute="top" secondItem="oNp-Sz-Jkg" secondAttribute="top" constant="8" id="8rW-n4-g00"/>
                             <constraint firstItem="boV-JJ-fTY" firstAttribute="height" secondItem="oNp-Sz-Jkg" secondAttribute="height" id="CpS-JS-75h"/>
                             <constraint firstAttribute="bottom" secondItem="boV-JJ-fTY" secondAttribute="bottom" constant="8" id="j56-4L-FTi"/>
+                            <constraint firstItem="boV-JJ-fTY" firstAttribute="leading" secondItem="oNp-Sz-Jkg" secondAttribute="leading" constant="20" id="jOL-MX-BR1"/>
                             <constraint firstItem="boV-JJ-fTY" firstAttribute="centerY" secondItem="oNp-Sz-Jkg" secondAttribute="centerY" id="kgO-1V-SkV"/>
                             <constraint firstAttribute="trailing" secondItem="boV-JJ-fTY" secondAttribute="trailing" id="la5-mg-whi"/>
                             <constraint firstItem="boV-JJ-fTY" firstAttribute="height" secondItem="oNp-Sz-Jkg" secondAttribute="height" multiplier="2:3" id="qba-Sh-43w"/>
@@ -38,6 +45,7 @@
                                 <exclude reference="4Vj-qC-NwR"/>
                                 <exclude reference="CpS-JS-75h"/>
                                 <exclude reference="kgO-1V-SkV"/>
+                                <exclude reference="la5-mg-whi"/>
                                 <exclude reference="qba-Sh-43w"/>
                             </mask>
                         </variation>
@@ -60,12 +68,6 @@
                             <constraint firstItem="yR0-aB-J11" firstAttribute="centerX" secondItem="JFe-wR-Olg" secondAttribute="centerX" id="tHn-3K-HFu"/>
                         </constraints>
                     </view>
-                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="nYo-cn-zAz">
-                        <rect key="frame" x="0.0" y="0.0" width="404" height="375"/>
-                        <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                        <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
-                        <nil key="highlightedColor"/>
-                    </label>
                 </subviews>
                 <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
             </view>

@@ -18,4 +18,5 @@
 @property(nonatomic, assign) NSInteger numberStar;
 @property (weak, nonatomic) IBOutlet UILabel *lblNumberQuestion;
 -(void)drawStarWithLightStar:(NSInteger)numberLight andTotal:(NSInteger)totalStars;
+-(void)drawStarsWithLightNumber:(NSInteger)no_Light;
 @end

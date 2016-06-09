@@ -18,7 +18,7 @@
     QuestionPack *newQuestionPack = [QuestionPack MR_createEntity];
     newQuestionPack.packID = jsonDict[@"_id"][@"oid"];
     newQuestionPack.available_time = jsonDict[@"available_time"];
-    
+    newQuestionPack.level = jsonDict[@"level"];
     for (NSString *stringID in jsonDict[@"question_ids"]) {
         QuestionID *questionID = [QuestionID createAnswerWithStringID:stringID andQuestionPack:newQuestionPack];
         [newQuestionPack.questionIDs setByAddingObject:questionID];

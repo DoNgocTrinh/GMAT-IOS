@@ -25,6 +25,7 @@
     </entity>
     <entity name="QuestionPack" representedClassName="QuestionPack" syncable="YES">
         <attribute name="available_time" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="level" optional="YES" attributeType="Integer 16" defaultValueString="0" syncable="YES"/>
         <attribute name="packID" optional="YES" attributeType="String" syncable="YES"/>
         <relationship name="questionIDs" optional="YES" toMany="YES" deletionRule="Nullify" destinationEntity="QuestionID" inverseName="questionPack" inverseEntity="QuestionID" syncable="YES"/>
     </entity>
@@ -37,7 +38,7 @@
         <element name="Answer" positionX="279" positionY="-1278" width="128" height="118"/>
         <element name="Question" positionX="97" positionY="-1314" width="128" height="193"/>
         <element name="QuestionID" positionX="-324" positionY="-1242" width="128" height="73"/>
+        <element name="QuestionPack" positionX="-189" positionY="-1182" width="128" height="105"/>
         <element name="StudentAnswer" positionX="279" positionY="-1143" width="128" height="90"/>
-        <element name="QuestionPack" positionX="-189" positionY="-1182" width="128" height="88"/>
     </elements>
 </model>
