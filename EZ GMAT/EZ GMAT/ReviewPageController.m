@@ -8,6 +8,7 @@
 
 #import "ReviewPageController.h"
 #import "ReviewPageContentVC.h"
+#import "TagButtonView.h"
 
 @interface ReviewPageController ()
 
@@ -21,7 +22,7 @@
     self.pageViewController = [self.storyboard instantiateViewControllerWithIdentifier:@"PageViewController"];
     self.pageViewController.dataSource = self;
     [self.navigationController.view setAutoresizesSubviews:NO];
- 
+    
     ReviewPageContentVC *startingViewController = [self viewControllerAtIndex:self.currentPageIndex];
     self.navigationItem.title = [NSString stringWithFormat:@"%lu/%ld",startingViewController.pageindex+1,_questions.count];
     
@@ -30,8 +31,17 @@
     [self.pageViewController setViewControllers:viewControllers direction:UIPageViewControllerNavigationDirectionForward animated:YES completion:nil];
     
     [self addChildViewController:_pageViewController];
-    [self.view addSubview:_pageViewController.view];
+    [self.viewPage addSubview:_pageViewController.view];
+    _pageViewController.view.center = _viewPage.center;
+    [_pageViewController.view setFrame:CGRectMake(_viewPage.frame.origin.x, _viewPage.frame.origin.y, _viewPage.frame.size.width, _viewPage.frame.size.height)];
     [self.pageViewController didMoveToParentViewController:self];
+    //
+    _btnBack.backgroundColor = kAppColor;
+    _btnNext.backgroundColor = _btnBack.backgroundColor;
+    _btnTag.backgroundColor = _btnBack.backgroundColor;
+    
+    [_btnTag addTarget:self action:@selector(showTagViewButton) forControlEvents:UIControlEventTouchUpInside];
+    [_btnNext addTarget:self action:@selector(btnNextDidTap) forControlEvents:UIControlEventTouchUpInside];
 }
 
 - (void)didReceiveMemoryWarning {
@@ -52,7 +62,7 @@
     }
     
     index--;
-
+    
     return [self viewControllerAtIndex:index];
 }
 
@@ -98,6 +108,47 @@
 - (NSInteger)presentationIndexForPageViewController:(UIPageViewController *)pageViewController
 {
     return 0;
+}
+
+-(void)btnNextDidTap;{
+    // _currentPageIndex = _currentPageIndex + 1;
+    
+    //NSLog(@"%d %d", _currentPageIndex);
+    //    ReviewPageContentVC *view = [self viewControllerAtIndex:index];
+    //    [self.pageViewController setViewControllers:[NSArray arrayWithObject:view]direction:UIPageViewControllerNavigationDirectionForward animated:YES completion:^(BOOL finished) {
+    //    }];
+}
+
+
+
+-(void)btnBackDidTap;{
+    
+}
+
+-(void)showTagViewButton;{
+    int count = 0;
+    for(UIView *tagView in self.view.subviews){
+        if([tagView isKindOfClass:[TagButtonView class]]){
+            count++;
+            [tagView removeFromSuperview];
+            tagView.hidden = YES;
+            NSLog(@"removed");
+        }
+    }
+    if(count==0){
+        CGFloat x = 0;
+        CGFloat y = 300;
+        CGFloat width = self.view.frame.size.width;
+        CGFloat height = 100;
+        TagButtonView *tagView= [TagButtonView tagViewWithFrame:CGRectMake(x, y, width, height)];
+        tagView.center = self.viewPage.center;
+        tagView.alpha = 0.5;
+        [UIView animateWithDuration:0.2 animations:^{
+            [self.view addSubview:tagView];
+            tagView.alpha = 1;
+        }];
+        
+    }
 }
 
 @end

@@ -37,7 +37,7 @@
     NSString* htmlPath = [[NSBundle mainBundle] pathForResource:@"index" ofType:@"html"];
     NSString* appHtml = [NSString stringWithContentsOfFile:htmlPath encoding:NSUTF8StringEncoding error:nil];
     
-    content = [NSString stringWithFormat: @"%@ $\\frac{1}{2}$ $\\frac{1}{2}$ $\\frac{1}{2}$ $\\frac{1}{2}$ $\\frac{1}{2}$ $\\frac{1}{2}$ $\\frac{1}{2}$ $\\frac{1}{2}$ $\\frac{1}{2}$ $\\frac{1}{2}$ $\\frac{1}{2}$ $\\frac{1}{2}$ $\\frac{1}{2}$ $\\frac{1}{2}$ ", content];
+    content = [NSString stringWithFormat: @"%@ $math demo \\frac{1}{2} = 0.5$ ", content];
     
     if([content rangeOfString:@"$"].location != NSNotFound) { // Expression inside text.
         NSRange r;

@@ -33,11 +33,13 @@
             _imvResult.image = [[UIImage imageNamed:kImage_Right] imageWithRenderingMode:UIImageRenderingModeAlwaysTemplate];
             //self.contentView.backgroundColor = [[UIColor greenColor] colorWithAlphaComponent:0.2];
               _imvResult.tintColor = [UIColor greenColor];
+           
             break;
         default:
             _imvResult.tintColor = [UIColor clearColor];
             break;
     }
+     self.contentView.backgroundColor = [_imvResult.tintColor colorWithAlphaComponent:.2];
 }
 
 @end

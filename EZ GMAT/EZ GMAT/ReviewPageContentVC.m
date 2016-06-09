@@ -119,11 +119,14 @@
         if ((int)[_studentAnswer.answerChoiceIdx intValue] == (int)indexPath.row) {
             cell.lblAnswer.textColor = [UIColor redColor];
             cell.imvAnswer.tintColor = [UIColor redColor];
+            cell.contentView.backgroundColor = [cell.lblAnswer.textColor colorWithAlphaComponent:0.1];
         }
         
         if ((int)[_question.rightAnswerIdx intValue] == (int)indexPath.row) {
-            cell.lblAnswer.textColor = kAppColor;//[UIColor greenColor];
-            cell.imvAnswer.tintColor = kAppColor;//[UIColor greenColor];
+            cell.lblAnswer.textColor = [UIColor greenColor];
+            cell.imvAnswer.tintColor = [UIColor greenColor];
+            cell.contentView.backgroundColor = [cell.lblAnswer.textColor colorWithAlphaComponent:0.1];
+
         }
         
         cell.line.hidden = YES;

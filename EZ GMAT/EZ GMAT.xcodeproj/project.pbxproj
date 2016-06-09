@@ -7,6 +7,9 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		E80565001D07FFAC00542BB7 /* TagButtonView.m in Sources */ = {isa = PBXBuildFile; fileRef = E80564FF1D07FFAC00542BB7 /* TagButtonView.m */; };
+		E80565021D07FFCB00542BB7 /* TagButtonView.xib in Resources */ = {isa = PBXBuildFile; fileRef = E80565011D07FFCB00542BB7 /* TagButtonView.xib */; };
+		E808F21E1D08297D00559BAD /* LoginViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = E808F21D1D08297D00559BAD /* LoginViewController.m */; };
 		E80E19FE1D072E9F005362BD /* ReviewPageContentVC.m in Sources */ = {isa = PBXBuildFile; fileRef = E80E19F91D072E9F005362BD /* ReviewPageContentVC.m */; };
 		E80E19FF1D072E9F005362BD /* ReviewPageController.m in Sources */ = {isa = PBXBuildFile; fileRef = E80E19FB1D072E9F005362BD /* ReviewPageController.m */; };
 		E80E1A001D072E9F005362BD /* ReviewPageViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = E80E19FD1D072E9F005362BD /* ReviewPageViewController.m */; };
@@ -172,6 +175,11 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		E80564FE1D07FFAC00542BB7 /* TagButtonView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TagButtonView.h; sourceTree = "<group>"; };
+		E80564FF1D07FFAC00542BB7 /* TagButtonView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TagButtonView.m; sourceTree = "<group>"; };
+		E80565011D07FFCB00542BB7 /* TagButtonView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = TagButtonView.xib; sourceTree = "<group>"; };
+		E808F21C1D08297D00559BAD /* LoginViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LoginViewController.h; sourceTree = "<group>"; };
+		E808F21D1D08297D00559BAD /* LoginViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LoginViewController.m; sourceTree = "<group>"; };
 		E80E19F81D072E9F005362BD /* ReviewPageContentVC.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ReviewPageContentVC.h; sourceTree = "<group>"; };
 		E80E19F91D072E9F005362BD /* ReviewPageContentVC.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ReviewPageContentVC.m; sourceTree = "<group>"; };
 		E80E19FA1D072E9F005362BD /* ReviewPageController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ReviewPageController.h; sourceTree = "<group>"; };
@@ -455,6 +463,15 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		E808F21B1D08296D00559BAD /* Login */ = {
+			isa = PBXGroup;
+			children = (
+				E808F21C1D08297D00559BAD /* LoginViewController.h */,
+				E808F21D1D08297D00559BAD /* LoginViewController.m */,
+			);
+			name = Login;
+			sourceTree = "<group>";
+		};
 		E80E19F71D072E84005362BD /* Review */ = {
 			isa = PBXGroup;
 			children = (
@@ -542,6 +559,7 @@
 		E81A7E301CF75BC300BDE293 /* UI */ = {
 			isa = PBXGroup;
 			children = (
+				E808F21B1D08296D00559BAD /* Login */,
 				E80E19F71D072E84005362BD /* Review */,
 				E8FEA21D1D067010003CE12E /* QuickReviewVC */,
 				E81A7E061CF73EA900BDE293 /* Main.storyboard */,
@@ -955,6 +973,9 @@
 				E8FD54BD1CF8733A008647E6 /* CustomTitleView.xib */,
 				E8FD54BE1CF8733A008647E6 /* CustomTitleView.h */,
 				E8FD54BF1CF8733A008647E6 /* CustomTitleView.m */,
+				E80564FE1D07FFAC00542BB7 /* TagButtonView.h */,
+				E80564FF1D07FFAC00542BB7 /* TagButtonView.m */,
+				E80565011D07FFCB00542BB7 /* TagButtonView.xib */,
 			);
 			name = CustomTitleView;
 			sourceTree = "<group>";
@@ -1145,6 +1166,7 @@
 				E83235001D0638C300314B74 /* KaTeX_Size3-Regular.eot in Resources */,
 				E8FD54B31CF8729F008647E6 /* QuickReviewCell.xib in Resources */,
 				E83234EA1D0638C300314B74 /* KaTeX_Main-Bold.woff in Resources */,
+				E80565021D07FFCB00542BB7 /* TagButtonView.xib in Resources */,
 				E83234F31D0638C300314B74 /* KaTeX_Math-BoldItalic.woff in Resources */,
 				E83235061D0638C300314B74 /* index.html in Resources */,
 				E83234FC1D0638C300314B74 /* KaTeX_Size1-Regular.woff in Resources */,
@@ -1207,6 +1229,7 @@
 				E81A7F0F1CF772F600BDE293 /* GmatAPI.m in Sources */,
 				E81A7EEC1CF772CB00BDE293 /* NSManagedObjectContext+MagicalSaves.m in Sources */,
 				E81A7EF31CF772CB00BDE293 /* MagicalRecord+iCloud.m in Sources */,
+				E808F21E1D08297D00559BAD /* LoginViewController.m in Sources */,
 				E8FD54AC1CF8729F008647E6 /* QuestionPackCell.m in Sources */,
 				E81A7EE21CF772CB00BDE293 /* NSRelationshipDescription+MagicalDataImport.m in Sources */,
 				E81A7EF91CF772CB00BDE293 /* MMDrawerController.m in Sources */,
@@ -1218,6 +1241,7 @@
 				E81A7EDF1CF772CB00BDE293 /* NSEntityDescription+MagicalDataImport.m in Sources */,
 				E81A7F051CF772CB00BDE293 /* AFImageDownloader.m in Sources */,
 				E8FD548C1CF8665E008647E6 /* QuestionID+CoreDataProperties.m in Sources */,
+				E80565001D07FFAC00542BB7 /* TagButtonView.m in Sources */,
 				E81A7F041CF772CB00BDE293 /* AFAutoPurgingImageCache.m in Sources */,
 				E81A7ED41CF772CB00BDE293 /* AFURLResponseSerialization.m in Sources */,
 				E8FD54B21CF8729F008647E6 /* QuickReviewCell.m in Sources */,
