@@ -12,12 +12,21 @@
 
 @interface ReviewPageController ()
 
+@property UIImage *img;
+
 @end
 
 @implementation ReviewPageController
 
 - (void)viewDidLoad {
     [super viewDidLoad];
+    //Create Share-Button:
+    UIBarButtonItem *shareButton = [[UIBarButtonItem alloc]
+                                    initWithBarButtonSystemItem:UIBarButtonSystemItemAction
+                                    target:self
+                                    action:@selector(compartir:)];
+    self.navigationItem.rightBarButtonItem = shareButton;
+    
     // Create page view controller
     self.pageViewController = [self.storyboard instantiateViewControllerWithIdentifier:@"PageViewController"];
     self.pageViewController.dataSource = self;
@@ -150,5 +159,40 @@
         
     }
 }
+//Save ScreenShot and share:
+
+- (UIImage*)captureView:(UIView *)view {
+    CGRect rect = [[UIScreen mainScreen] bounds];
+    UIGraphicsBeginImageContext(rect.size);
+    CGContextRef context = UIGraphicsGetCurrentContext();
+    [view.layer renderInContext:context];
+    _img = UIGraphicsGetImageFromCurrentImageContext();
+    UIGraphicsEndImageContext();
+    NSLog(@"tri ccc");
+    return _img;
+}
+
+- (void)saveScreenshotToPhotosAlbum:(UIView *)view {
+    UIImageWriteToSavedPhotosAlbum([self captureView:view], nil, nil, nil);
+    NSLog(@"tri tri");
+}
+
+- (void) compartir:(id)sender{
+    
+    //Si no
+    [self saveScreenshotToPhotosAlbum:self.view];
+    
+    NSLog(@"shareButton pressed");
+    
+    
+    NSString *stringtoshare= @"This is a string to share";
+    UIImage *imagetoshare = _img; //This is an image to share.
+    
+    NSArray *activityItems = @[stringtoshare, imagetoshare];
+    UIActivityViewController *activityVC = [[UIActivityViewController alloc] initWithActivityItems:activityItems applicationActivities:nil];
+    activityVC.excludedActivityTypes = @[UIActivityTypeAssignToContact, UIActivityTypePrint, UIActivityTypePostToTwitter, UIActivityTypePostToWeibo];
+    [self presentViewController:activityVC animated:TRUE completion:nil];
+}
+
 
 @end
