@@ -19,6 +19,11 @@
     self.viewFooter.layer.cornerRadius = 5.0f;
     self.viewStar.layer.cornerRadius = 2.50f;
 }
+- (IBAction)btnLocked:(id)sender {
+    UIAlertView *alert = [[UIAlertView alloc]initWithTitle:@"Lock" message:@"This pack is locked" delegate:self cancelButtonTitle:@"OK" otherButtonTitles: nil];
+    [alert show];
+}
+
 -(void)drawStarWithLightStar:(NSInteger)numberLight andTotal:(NSInteger)totalStars;
 {
     NSLog(@"");
@@ -47,5 +52,6 @@
 -(void)drawStarsWithLightNumber:(NSInteger)no_Light;{
     [self drawStarWithLightStar:no_Light andTotal:3];
 }
+
 
 @end
