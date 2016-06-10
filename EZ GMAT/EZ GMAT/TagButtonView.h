@@ -13,6 +13,7 @@
 @property (weak, nonatomic) IBOutlet UIButton *btnRed;
 @property (weak, nonatomic) IBOutlet UIButton *btnGreen;
 @property (weak, nonatomic) IBOutlet UIButton *btnYellow;
-
+@property UIImage *img;
 + (id)tagViewWithFrame: (CGRect)frame;
++(void)showShareInViewController:(UIViewController *)viewController andWithView:(UIView *)view;
 @end

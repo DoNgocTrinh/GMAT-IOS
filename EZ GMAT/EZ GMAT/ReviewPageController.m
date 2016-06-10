@@ -11,7 +11,9 @@
 #import "TagButtonView.h"
 
 @interface ReviewPageController ()
-
+{
+    
+}
 @property UIImage *img;
 
 @end
@@ -20,11 +22,13 @@
 
 - (void)viewDidLoad {
     [super viewDidLoad];
+    
     //Create Share-Button:
     UIBarButtonItem *shareButton = [[UIBarButtonItem alloc]
                                     initWithBarButtonSystemItem:UIBarButtonSystemItemAction
                                     target:self
-                                    action:@selector(compartir:)];
+                                    action:@selector(share)];
+    
     self.navigationItem.rightBarButtonItem = shareButton;
     
     // Create page view controller
@@ -120,12 +124,12 @@
 }
 
 -(void)btnNextDidTap;{
-    // _currentPageIndex = _currentPageIndex + 1;
+    _currentPageIndex = (_currentPageIndex + 1)%_questions.count;
     
-    //NSLog(@"%d %d", _currentPageIndex);
-    //    ReviewPageContentVC *view = [self viewControllerAtIndex:index];
-    //    [self.pageViewController setViewControllers:[NSArray arrayWithObject:view]direction:UIPageViewControllerNavigationDirectionForward animated:YES completion:^(BOOL finished) {
-    //    }];
+    NSLog(@"%ld", (long)_currentPageIndex);
+    ReviewPageContentVC *view = [self viewControllerAtIndex:_currentPageIndex];
+    [self.pageViewController setViewControllers:[NSArray arrayWithObject:view]direction:UIPageViewControllerNavigationDirectionForward animated:YES completion:^(BOOL finished) {
+    }];
 }
 
 
@@ -146,53 +150,40 @@
     }
     if(count==0){
         CGFloat x = 0;
-        CGFloat y = 300;
+        CGFloat y = 0;
         CGFloat width = self.view.frame.size.width;
-        CGFloat height = 100;
+        CGFloat height = self.view.frame.size.height;
         TagButtonView *tagView= [TagButtonView tagViewWithFrame:CGRectMake(x, y, width, height)];
         tagView.center = self.viewPage.center;
-        tagView.alpha = 0.5;
-        [UIView animateWithDuration:0.2 animations:^{
+        [UIView animateWithDuration:0.5 animations:^{
+            
             [self.view addSubview:tagView];
-            tagView.alpha = 1;
+            
+        } completion:^(BOOL finished) {
+            
         }];
-        
+        UITapGestureRecognizer *tapGR;
+        tapGR = [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(handleTap:)];
+        tapGR.numberOfTapsRequired = 1;
+        [tagView addGestureRecognizer:tapGR];
+    }
+    
+}
+
+-(void)handleTap:(UITapGestureRecognizer *)sender
+{
+    NSLog(@"dmm®");
+    if (sender.state == UIGestureRecognizerStateEnded) {
+        for(UIView *tagView in self.view.subviews){
+            if([tagView isKindOfClass:[TagButtonView class]]){
+                [tagView removeFromSuperview];
+                tagView.hidden = YES;
+                NSLog(@"removed");
+            }
+        }
     }
 }
-//Save ScreenShot and share:
-
-- (UIImage*)captureView:(UIView *)view {
-    CGRect rect = [[UIScreen mainScreen] bounds];
-    UIGraphicsBeginImageContext(rect.size);
-    CGContextRef context = UIGraphicsGetCurrentContext();
-    [view.layer renderInContext:context];
-    _img = UIGraphicsGetImageFromCurrentImageContext();
-    UIGraphicsEndImageContext();
-    NSLog(@"tri ccc");
-    return _img;
+-(void)share;{
+    [TagButtonView showShareInViewController:self andWithView:_viewPage];
 }
-
-- (void)saveScreenshotToPhotosAlbum:(UIView *)view {
-    UIImageWriteToSavedPhotosAlbum([self captureView:view], nil, nil, nil);
-    NSLog(@"tri tri");
-}
-
-- (void) compartir:(id)sender{
-    
-    //Si no
-    [self saveScreenshotToPhotosAlbum:self.view];
-    
-    NSLog(@"shareButton pressed");
-    
-    
-    NSString *stringtoshare= @"This is a string to share";
-    UIImage *imagetoshare = _img; //This is an image to share.
-    
-    NSArray *activityItems = @[stringtoshare, imagetoshare];
-    UIActivityViewController *activityVC = [[UIActivityViewController alloc] initWithActivityItems:activityItems applicationActivities:nil];
-    activityVC.excludedActivityTypes = @[UIActivityTypeAssignToContact, UIActivityTypePrint, UIActivityTypePostToTwitter, UIActivityTypePostToWeibo];
-    [self presentViewController:activityVC animated:TRUE completion:nil];
-}
-
-
 @end

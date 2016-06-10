@@ -11,7 +11,7 @@
 @interface ReviewPageController : UIViewController
                                   <UIPageViewControllerDataSource,UIPageViewControllerDelegate, UIPageViewControllerDataSource>
 
-@property (weak, nonatomic) IBOutlet UIView *viewPage;
+@property (strong, nonatomic) IBOutlet UIView *viewPage;
 @property (weak, nonatomic) IBOutlet UIButton *btnTag;
 @property (weak, nonatomic) IBOutlet UIButton *btnNext;
 @property (weak, nonatomic) IBOutlet UIButton *btnBack;
@@ -20,4 +20,7 @@
 @property (nonatomic, assign) NSInteger currentPageIndex;
 @property (nonatomic, strong) NSArray *studentAnswers;
 @property (nonatomic, strong) NSArray *questions;
+
+//- (void)saveScreenshotToPhotosAlbum:(UIView *)view;
+
 @end

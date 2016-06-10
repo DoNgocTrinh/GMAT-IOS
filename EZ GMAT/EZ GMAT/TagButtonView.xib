@@ -14,19 +14,19 @@
             <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
             <subviews>
                 <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="iAu-un-jGS">
-                    <rect key="frame" x="155" y="230" width="140" height="140"/>
+                    <rect key="frame" x="157" y="230" width="140" height="140"/>
                     <state key="normal" image="red"/>
                 </button>
                 <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="pj4-wC-WSa">
-                    <rect key="frame" x="300" y="230" width="140" height="140"/>
+                    <rect key="frame" x="302" y="230" width="140" height="140"/>
                     <state key="normal" image="green"/>
                 </button>
                 <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="p3N-uo-IQV">
-                    <rect key="frame" x="445" y="230" width="140" height="140"/>
+                    <rect key="frame" x="447" y="230" width="140" height="140"/>
                     <state key="normal" image="yellow"/>
                 </button>
                 <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="MIM-Ft-w43">
-                    <rect key="frame" x="10" y="230" width="140" height="140"/>
+                    <rect key="frame" x="12" y="230" width="140" height="140"/>
                     <constraints>
                         <constraint firstAttribute="width" secondItem="MIM-Ft-w43" secondAttribute="height" id="DXA-Ff-Z8M"/>
                     </constraints>
@@ -34,7 +34,6 @@
                     <state key="normal" image="grey"/>
                 </button>
             </subviews>
-            <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
             <constraints>
                 <constraint firstItem="pj4-wC-WSa" firstAttribute="centerY" secondItem="iAu-un-jGS" secondAttribute="centerY" id="01k-h8-kWg"/>
                 <constraint firstItem="p3N-uo-IQV" firstAttribute="width" secondItem="pj4-wC-WSa" secondAttribute="width" id="1id-C2-Ivz"/>
@@ -44,7 +43,7 @@
                 <constraint firstItem="iAu-un-jGS" firstAttribute="leading" secondItem="MIM-Ft-w43" secondAttribute="trailing" constant="5" id="HFf-gX-YjU"/>
                 <constraint firstItem="pj4-wC-WSa" firstAttribute="width" secondItem="iAu-un-jGS" secondAttribute="width" id="IEk-GE-jb5"/>
                 <constraint firstItem="iAu-un-jGS" firstAttribute="centerY" secondItem="MIM-Ft-w43" secondAttribute="centerY" id="T5f-Aq-2XU"/>
-                <constraint firstItem="MIM-Ft-w43" firstAttribute="leading" secondItem="iN0-l3-epB" secondAttribute="leading" constant="10" id="cF3-on-5BZ"/>
+                <constraint firstItem="MIM-Ft-w43" firstAttribute="leading" secondItem="iN0-l3-epB" secondAttribute="leading" constant="12" id="cF3-on-5BZ"/>
                 <constraint firstItem="MIM-Ft-w43" firstAttribute="centerY" secondItem="iN0-l3-epB" secondAttribute="centerY" id="nt9-4S-4e4"/>
                 <constraint firstItem="p3N-uo-IQV" firstAttribute="height" secondItem="pj4-wC-WSa" secondAttribute="height" id="nyE-fH-BU4"/>
                 <constraint firstItem="pj4-wC-WSa" firstAttribute="height" secondItem="iAu-un-jGS" secondAttribute="height" id="plY-o9-ccf"/>

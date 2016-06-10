@@ -7,8 +7,11 @@
 //
 
 #import "TagButtonView.h"
+#import "ReviewPageController.h"
+
 
 @implementation TagButtonView
+
 
 + (id)tagViewWithFrame: (CGRect)frame;
 {
@@ -27,7 +30,6 @@
         tagButtonView.btnGreen.backgroundColor = tagButtonView.btnGrey.backgroundColor;
         tagButtonView.btnYellow.backgroundColor = tagButtonView.btnGrey.backgroundColor;
         
-        
         return tagButtonView;
     }
     else{
@@ -35,6 +37,59 @@
         return nil;
     }
 }
++(void)showShareInViewController:(UIViewController *)viewController andWithView:(UIView *)view;
+{
+    CGRect rect = [[UIScreen mainScreen] bounds];
+        UIGraphicsBeginImageContext(rect.size);
+        CGContextRef context = UIGraphicsGetCurrentContext();
+        [view.layer renderInContext:context];
+    UIImage *image = UIGraphicsGetImageFromCurrentImageContext();
+        UIGraphicsEndImageContext();
+    
+    //UIImageWriteToSavedPhotosAlbum(image, nil, nil, nil);
+    
+    NSString *stringtoshare= @"This is a string to share";
+        UIImage *imagetoshare = image; //This is an image to share.
+    
+        NSArray *activityItems = @[stringtoshare, imagetoshare];
+        UIActivityViewController *activityVC = [[UIActivityViewController alloc] initWithActivityItems:activityItems applicationActivities:nil];
+        activityVC.excludedActivityTypes = @[UIActivityTypeAssignToContact, UIActivityTypePrint, UIActivityTypePostToTwitter, UIActivityTypePostToWeibo];
+        [viewController presentViewController:activityVC animated:TRUE completion:nil];
+}
+////Save ScreenShot and share:
+//
+//- (UIImage*)captureView:(UIView *)view {
+//    CGRect rect = [[UIScreen mainScreen] bounds];
+//    UIGraphicsBeginImageContext(rect.size);
+//    CGContextRef context = UIGraphicsGetCurrentContext();
+//    [view.layer renderInContext:context];
+//    _img = UIGraphicsGetImageFromCurrentImageContext();
+//    UIGraphicsEndImageContext();
+//    NSLog(@"tri ccc");
+//    return _img;
+//}
+//
+//- (void)saveScreenshotToPhotosAlbum:(UIView *)view {
+//    UIImageWriteToSavedPhotosAlbum([self captureView:view], nil, nil, nil);
+//    NSLog(@"tri tri");
+//}
+//
+//- (void) compartir:(id)sender{
+//    
+//    //Si no
+//    [self saveScreenshotToPhotosAlbum:self.view];
+//    
+//    NSLog(@"shareButton pressed");
+//    
+//    
+//    NSString *stringtoshare= @"This is a string to share";
+//    UIImage *imagetoshare = _img; //This is an image to share.
+//    
+//    NSArray *activityItems = @[stringtoshare, imagetoshare];
+//    UIActivityViewController *activityVC = [[UIActivityViewController alloc] initWithActivityItems:activityItems applicationActivities:nil];
+//    activityVC.excludedActivityTypes = @[UIActivityTypeAssignToContact, UIActivityTypePrint, UIActivityTypePostToTwitter, UIActivityTypePostToWeibo];
+//    [self presentViewController:activityVC animated:TRUE completion:nil];
+//}
 
 
 @end
