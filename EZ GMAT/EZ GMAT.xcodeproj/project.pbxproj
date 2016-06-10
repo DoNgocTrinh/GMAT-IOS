@@ -1182,7 +1182,7 @@
 				TargetAttributes = {
 					E81A7DF91CF73EA900BDE293 = {
 						CreatedOnToolsVersion = 7.3;
-						DevelopmentTeam = 4SEJ287U7W;
+						DevelopmentTeam = 6LXAHM492W;
 					};
 					E81A7E121CF73EA900BDE293 = {
 						CreatedOnToolsVersion = 7.3;
@@ -1545,7 +1545,7 @@
 				INFOPLIST_FILE = "EZ GMAT/Info.plist";
 				IPHONEOS_DEPLOYMENT_TARGET = 7.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
-				PRODUCT_BUNDLE_IDENTIFIER = com.trinh1911.EZGMAT;
+				PRODUCT_BUNDLE_IDENTIFIER = tribm.DemoScreenShot;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE = "";
 			};
@@ -1561,7 +1561,7 @@
 				INFOPLIST_FILE = "EZ GMAT/Info.plist";
 				IPHONEOS_DEPLOYMENT_TARGET = 7.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
-				PRODUCT_BUNDLE_IDENTIFIER = com.trinh1911.EZGMAT;
+				PRODUCT_BUNDLE_IDENTIFIER = tribm.DemoScreenShot;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE = "";
 			};

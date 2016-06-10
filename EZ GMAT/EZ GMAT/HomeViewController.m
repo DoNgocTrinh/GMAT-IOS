@@ -13,6 +13,8 @@
 
 @interface HomeViewController ()
 
+@property int i;
+
 @end
 
 @implementation HomeViewController
@@ -46,7 +48,6 @@
     
     static NSString *cellId = @"QuestionPackCLVCell";
     QuestionPackCLVCell *cell = [_clvQuestionPack dequeueReusableCellWithReuseIdentifier:cellId forIndexPath:indexPath];
-    
     //color for cell----------------------------------------------------------------------------------
     UIColor *colorHeader = [UIColor hx_colorWithHexRGBAString:[colorList objectAtIndex:indexPath.row%colorList.count]];
     // NSLog(@"color at: %lu",indexPath.row%colorList.count);
@@ -62,6 +63,33 @@
     //cell.numberStar = 1;
     [cell layoutIfNeeded];
    [cell drawStarsWithLightNumber:[questionPack.level integerValue]];
+    //
+    
+    cell.lblNumberOfPack.text = [NSString stringWithFormat:@"%ld / %ld",indexPath.row + 1 , _questionPacks.count];
+    
+    
+    //Lock Pack
+    NSDate *currentTime = [NSDate date];
+    NSDateFormatter *dateFormatter = [[NSDateFormatter alloc] init];
+    [dateFormatter setDateFormat:@"yyyy-MM-dd"];
+    NSString *resultString = [dateFormatter stringFromDate: currentTime];
+   
+    switch ([resultString compare:questionPack.available_time]) {
+        case NSOrderedAscending:
+            cell.btnLock.hidden = NO;
+            cell.btnLocked.hidden = NO;
+            cell.lblNumberQuestion.text = @"";
+            break;
+        case NSOrderedSame:
+            cell.btnLock.hidden = YES;
+            cell.btnLocked.hidden = YES;
+            break;
+        case NSOrderedDescending:
+            cell.btnLock.hidden = YES;
+            cell.btnLocked.hidden = YES;
+            break;
+    }
+    
     return cell;
 }
 
