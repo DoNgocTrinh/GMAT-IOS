@@ -267,7 +267,7 @@
     
     UITableViewCell *cell = [tableView cellForRowAtIndexPath:tableView.indexPathForSelectedRow];
     
-    if([cell isKindOfClass:[TextCell class]]){
+    if([cell isKindOfClass:[AnswerWVCell class]]){
         //  NSLog(@"%ld" ,(long)[(TextCell*)cell webViewQuestion].tag);
     }
     
@@ -412,7 +412,12 @@
             Question *question = _questions[_displayIndex];
             
             StudentAnswer *newStudentAnswer = [StudentAnswer createStudentAnswerWithChoiceIndex:_tbvQuestion.indexPathForSelectedRow.row andQuestion:question];
+            
             [_studentAnwsers addObject:newStudentAnswer];
+            
+            [MagicalRecord saveWithBlock:^(NSManagedObjectContext * _Nonnull localContext) {
+                NSLog(@"-finished");
+            }];
             
             QuickReviewViewController *quickReviewController = [self.storyboard instantiateViewControllerWithIdentifier:@"QuickReviewViewController"];
             

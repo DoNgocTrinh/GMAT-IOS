@@ -20,5 +20,7 @@
 
 - (void)exploreQuestionPacksWithCompletionBlock:(void(^)(NSArray *question))completion;
 
+- (void)exploreQuestionTypeWithCompletionBlock:(void(^)(NSArray *questionType))completion;
+
 - (void)postLoginWithUsername:(NSString*)username andPassword:(NSString*)password withCompletionBlock:(void(^)(int loginStatus))completion;
 @end

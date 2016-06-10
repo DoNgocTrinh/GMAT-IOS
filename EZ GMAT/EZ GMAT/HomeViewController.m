@@ -7,6 +7,7 @@
 //
 
 #import "HomeViewController.h"
+#import "SummaryVC.h"
 #import "QuestionPackCLVCell.h"
 #import "QuestionViewController.h"
 
@@ -96,6 +97,7 @@
                     
                     Question *question = [Question MR_findFirstByAttribute:@"questionId" withValue: questionId.questionID];
                     [questionViewController.questions addObject:question];
+                    
                 }
                 [self.navigationController pushViewController:questionViewController animated:YES];
             }
@@ -109,6 +111,10 @@
 #pragma mark - Button Action
 -(void)btnMoreDidTap:(id)sender;{
     [self showAlertWithMessage:@"More info"];
+    SummaryVC *summaryVC = [self.storyboard instantiateViewControllerWithIdentifier:@"SummaryVC"];
+    NSLog(@"GO TO SUMMARY");
+    [self.navigationController pushViewController:summaryVC animated:YES];
+    
 }
 -(void)btnReminderDidTap:(id)sender;{
     [self showAlertWithMessage:@"Chua co cmm no gi ca"];

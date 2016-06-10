@@ -11,6 +11,7 @@
 #import "Constant.h"
 #import "Question.h"
 #import "QuestionPack.h"
+#import "QUestionType.h"
 #import "MagicalRecord/MagicalRecord.h"
 
 
@@ -126,7 +127,6 @@
                                                           }
                                                       }];
     [dataTask resume];
-    
 }
 
 - (void)exploreQuestionPacksWithCompletionBlock:(void(^)(NSArray *question))completion;
@@ -174,7 +174,53 @@
         }
     }];
 }
-
+#pragma mark - getQuestionType
+- (void)exploreQuestionTypeWithCompletionBlock:(void(^)(NSArray *questionType))completion;
+{
+    
+    [_httpSessionManager GET:kGmatAPIVersionUrl parameters:nil progress:nil success:^(NSURLSessionDataTask * _Nonnull task, id  _Nullable responseObject) {
+        
+        if (completion && responseObject) {
+            NSString *currentVersion = [NSString stringWithFormat:@"%@",[[NSUserDefaults standardUserDefaults] objectForKey:@"version"]];
+            NSString *apiVersion = [NSString stringWithFormat:@"%@",responseObject[@"value"][0] ];
+            
+            if ([currentVersion isEqualToString:apiVersion]) {
+                NSURLSessionTask *datatask = [_httpSessionManager GET:kGmatAPIExploreQuestionTypeURL parameters:nil progress:nil success:^(NSURLSessionDataTask * _Nonnull task, id  _Nullable responseObject) {
+                    if(completion && responseObject){
+                        
+                        [QuestionType MR_truncateAll];
+                        
+                        for (NSDictionary *questionType in responseObject[@"type"]) {
+                            
+                            [QuestionType createQuestionTypeWithJson:questionType];
+                        }
+                        [[NSManagedObjectContext MR_defaultContext]MR_saveToPersistentStoreWithCompletion:^(BOOL contextDidSave,NSError* error) {
+                            NSLog(@"\nQUESTION TYPE SAVED !!!!\n\n");
+                        }];
+                        completion(responseObject[@"type"]);
+                    }
+                    
+                } failure:^(NSURLSessionDataTask * _Nullable task, NSError * _Nonnull error) {
+                    NSLog(@"_____________ERROR______________: %@", error);
+                    
+                    UIAlertView *alertView = [[UIAlertView alloc]initWithTitle:@"Error" message:@"Please check network connection to update" delegate:self cancelButtonTitle:@"OK" otherButtonTitles: nil];
+                    [alertView show];
+                    
+                }];
+                
+                [datatask resume];
+            }
+            else{
+                NSLog(@"\n\nVERSION IS UPDATED!!\n\n");
+            }
+        }
+        
+    } failure:^(NSURLSessionDataTask * _Nullable task, NSError * _Nonnull error) {
+        if (error) {
+            NSLog(@"error: %@",error);
+        }
+    }];
+}
 #pragma mark - Login
 -(void)postLoginWithUsername:(NSString*)username andPassword:(NSString*)password withCompletionBlock:(void(^)(int loginStatus))completion
 {

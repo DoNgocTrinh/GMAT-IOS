@@ -24,12 +24,6 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     // Do any additional setup after loading the view.
-    //[self setInsetTableView];
-    
-    //
-    //    UIImageView *backgroundView = [[UIImageView alloc] initWithImage:[UIImage imageNamed:kImage_TableQuestionPacksBackground]];
-    //    [backgroundView setFrame:self.tbvReview.frame];
-    //    self.tbvReview.backgroundView = backgroundView;
     _tbvReview.tableFooterView = [[UIView alloc]init];
     _tbvReview.estimatedRowHeight = 60.0f;
     _tbvReview.rowHeight = UITableViewAutomaticDimension;

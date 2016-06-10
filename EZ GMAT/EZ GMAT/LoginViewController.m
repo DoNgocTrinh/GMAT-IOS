@@ -27,6 +27,9 @@
 
 - (void)viewDidLoad {
     [super viewDidLoad];
+    [sGmatAPI exploreQuestionTypeWithCompletionBlock:^(NSArray *questionType) {
+        
+    }];
     // Do any additional setup after loading the view.
     
     _imvLoginBackGround.image = [UIImage imageNamed:kImage_LoginBackGround];

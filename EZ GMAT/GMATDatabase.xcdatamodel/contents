@@ -29,6 +29,16 @@
         <attribute name="packID" optional="YES" attributeType="String" syncable="YES"/>
         <relationship name="questionIDs" optional="YES" toMany="YES" deletionRule="Nullify" destinationEntity="QuestionID" inverseName="questionPack" inverseEntity="QuestionID" syncable="YES"/>
     </entity>
+    <entity name="QuestionSubType" representedClassName="QuestionSubType" syncable="YES">
+        <attribute name="code" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="detail" optional="YES" attributeType="String" syncable="YES"/>
+        <relationship name="questionType" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="QuestionType" inverseName="subTypes" inverseEntity="QuestionType" syncable="YES"/>
+    </entity>
+    <entity name="QuestionType" representedClassName="QuestionType" syncable="YES">
+        <attribute name="code" optional="YES" attributeType="String" syncable="YES"/>
+        <attribute name="detail" optional="YES" attributeType="String" syncable="YES"/>
+        <relationship name="subTypes" optional="YES" toMany="YES" deletionRule="Nullify" destinationEntity="QuestionSubType" inverseName="questionType" inverseEntity="QuestionSubType" syncable="YES"/>
+    </entity>
     <entity name="StudentAnswer" representedClassName="StudentAnswer" syncable="YES">
         <attribute name="answerChoiceIdx" optional="YES" attributeType="Integer 16" defaultValueString="0" syncable="YES"/>
         <attribute name="result" optional="YES" attributeType="Boolean" syncable="YES"/>
@@ -40,5 +50,7 @@
         <element name="QuestionID" positionX="-324" positionY="-1242" width="128" height="73"/>
         <element name="QuestionPack" positionX="-189" positionY="-1182" width="128" height="105"/>
         <element name="StudentAnswer" positionX="279" positionY="-1143" width="128" height="90"/>
+        <element name="QuestionType" positionX="-99" positionY="-1296" width="128" height="88"/>
+        <element name="QuestionSubType" positionX="-47" positionY="-1171" width="128" height="88"/>
     </elements>
 </model>

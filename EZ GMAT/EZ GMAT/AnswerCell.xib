@@ -70,6 +70,6 @@
         </tableViewCell>
     </objects>
     <resources>
-        <image name="moreInfo" width="25" height="25"/>
+        <image name="moreInfo" width="30" height="30"/>
     </resources>
 </document>

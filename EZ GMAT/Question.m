@@ -19,6 +19,8 @@
     
     newQuestion.questionId = jsonDict[@"_id"][@"oid"];
     newQuestion.type = jsonDict[@"type"];
+    newQuestion.subType = jsonDict[@"sub_type"];
+    NSLog(@"%@", newQuestion.subType);
     newQuestion.stimulus = jsonDict[@"stimulus"];
     newQuestion.stem = jsonDict[@"stem"];
     newQuestion.rightAnswerIdx = [NSNumber numberWithInteger:[jsonDict[@"right_answer"] integerValue]];

@@ -35,6 +35,8 @@
 
 #define kGmatAPIExploreQuestionPackUrl                  @"https://g-service.herokuapp.com/api/question_packs"
 
+#define kGmatAPIExploreQuestionTypeURL                  @"https://g-service.herokuapp.com/api/question_type"
+
 #define kGmatAPIVersionUrl                              @"https://g-service.herokuapp.com/api/version"
 
 //MARK: Image
