@@ -55,6 +55,7 @@
     
     [_btnTag addTarget:self action:@selector(showTagViewButton) forControlEvents:UIControlEventTouchUpInside];
     [_btnNext addTarget:self action:@selector(btnNextDidTap) forControlEvents:UIControlEventTouchUpInside];
+    [_btnBack addTarget:self action:@selector(btnBackDidTap) forControlEvents:UIControlEventTouchUpInside];
 }
 
 - (void)didReceiveMemoryWarning {
@@ -67,7 +68,7 @@
 {
     
     NSInteger index = ((ReviewPageContentVC*) viewController).pageindex;
-    
+     _currentPageIndex = index;
     self.navigationItem.title = [NSString stringWithFormat:@"%lu/%ld",index+1,_questions.count];
     
     if ((index == 0) || (index == NSNotFound)) {
@@ -82,6 +83,7 @@
 - (UIViewController *)pageViewController:(UIPageViewController *)pageViewController viewControllerAfterViewController:(UIViewController *)viewController
 {
     NSInteger index = ((ReviewPageContentVC*) viewController).pageindex;
+    _currentPageIndex = index;
     self.navigationItem.title = [NSString stringWithFormat:@"%lu/%ld",index+1,_questions.count];
     if (index == NSNotFound) {
         return nil;
@@ -125,8 +127,8 @@
 
 -(void)btnNextDidTap;{
     _currentPageIndex = (_currentPageIndex + 1)%_questions.count;
-    
-    NSLog(@"%ld", (long)_currentPageIndex);
+   
+    self.navigationItem.title = [NSString stringWithFormat:@"%lu/%ld",_currentPageIndex+1,_questions.count];
     ReviewPageContentVC *view = [self viewControllerAtIndex:_currentPageIndex];
     [self.pageViewController setViewControllers:[NSArray arrayWithObject:view]direction:UIPageViewControllerNavigationDirectionForward animated:YES completion:^(BOOL finished) {
     }];
@@ -135,7 +137,16 @@
 
 
 -(void)btnBackDidTap;{
+    if(_currentPageIndex ==0 )
+        _currentPageIndex = 10;
+    _currentPageIndex = (_currentPageIndex - 1)%_questions.count;
     
+    NSLog(@"Back %ld", (long)_currentPageIndex);
+    
+    self.navigationItem.title = [NSString stringWithFormat:@"%lu/%ld",_currentPageIndex+1,_questions.count];
+    ReviewPageContentVC *view = [self viewControllerAtIndex:_currentPageIndex];
+    [self.pageViewController setViewControllers:[NSArray arrayWithObject:view]direction:UIPageViewControllerNavigationDirectionReverse animated:YES completion:^(BOOL finished) {
+    }];
 }
 
 -(void)showTagViewButton;{

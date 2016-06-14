@@ -12,17 +12,40 @@
 #import "AnswerCell.h"
 #import "Answer.h"
 #import "ReviewAnswerCell.h"
+#import "ReviewAnswerWVCell.h"
 #import "SCLAlertView.h"
 
 
 @interface ReviewPageContentVC ()
-
+{
+    NSMutableArray *selectedRows;
+    NSMutableArray *heights;
+    NSMutableArray *expandheights;
+    CGFloat height;
+}
 @end
 
 @implementation ReviewPageContentVC
 
 - (void)viewDidLoad {
     [super viewDidLoad];
+    selectedRows = [[NSMutableArray alloc]initWithObjects:@"0",@"0",@"0",@"0",@"0", nil];
+    
+    heights =[[NSMutableArray alloc]initWithObjects:[NSNumber numberWithFloat:0],
+              [NSNumber numberWithFloat:0],
+              [NSNumber numberWithFloat:0],
+              [NSNumber numberWithFloat:0],
+              [NSNumber numberWithFloat:0],
+              [NSNumber numberWithFloat:0],
+              [NSNumber numberWithFloat:0],nil ];
+    expandheights =[[NSMutableArray alloc]initWithObjects:[NSNumber numberWithFloat:0],
+                    [NSNumber numberWithFloat:0],
+                    [NSNumber numberWithFloat:0],
+                    [NSNumber numberWithFloat:0],
+                    [NSNumber numberWithFloat:0],
+                    [NSNumber numberWithFloat:0],
+                    [NSNumber numberWithFloat:0],nil ];
+    
     // Do any additional setup after loading the view.
     _tbvReview.tableFooterView = [[UIView alloc]init];
     _tbvReview.estimatedRowHeight = 60.0f;
@@ -50,7 +73,7 @@
 
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section {
     if (section == 0) {
-        return 1;
+        return 2;
     } else {
         return 5;
     }
@@ -64,66 +87,68 @@
     static NSString *cellId = @"question";
     
     if (indexPath.section == 0) {
-        TextCell *cell = [tableView dequeueReusableCellWithIdentifier:cellId];
-        if (!cell) {
-            NSArray *nib = [[NSBundle mainBundle]loadNibNamed:@"TextCell" owner:self options:nil];
-            cell = [nib objectAtIndex:0];
-        }
-        
-        cell.selectionStyle = UITableViewCellSelectionStyleNone;
         
         if (indexPath.row == 0) {
-            [cell loadContentWithContent:_question.stimulus questionType:_question.type];
-            //cell.lblText.text = _question.stimulus;
-        } else if (indexPath.row == 1) {
-            if ([_question.stem isEqualToString:@""]) {
-                cell.hidden = YES;
+            TextCell *cell = [tableView dequeueReusableCellWithIdentifier:cellId];
+            
+            if (!cell) {
+                NSArray *nib = [[NSBundle mainBundle]loadNibNamed:@"TextCell" owner:self options:nil];
+                cell = [nib objectAtIndex:0];
             }
-            cell.lblText.text = _question.stem;
+            
+            cell.selectionStyle = UITableViewCellSelectionStyleNone;
+            cell.webViewQuestion.tag = 0;
+            cell.webViewQuestion.delegate = self;
+            if(![_question.type isEqualToString:@"RC"])
+            {
+                cell.webViewQuestion.opaque = NO;
+                cell.webViewQuestion.backgroundColor =[kAppColor colorWithAlphaComponent:.2];
+            }
+
+            [cell loadContentWithContent:_question.stimulus questionType:_question.type];
+            
+            return cell;
+            
+        } else if (indexPath.row == 1) {
+            TextCell *cell = [tableView dequeueReusableCellWithIdentifier:cellId];
+            
+            if (!cell) {
+                NSArray *nib = [[NSBundle mainBundle]loadNibNamed:@"TextCell" owner:self options:nil];
+                cell = [nib objectAtIndex:0];
+            }
+            
+            cell.selectionStyle = UITableViewCellSelectionStyleNone;
+            cell.webViewQuestion.tag = 1;
+            cell.webViewQuestion.delegate = self;
+            cell.webViewQuestion.opaque = NO;
+            cell.webViewQuestion.backgroundColor =[kAppColor colorWithAlphaComponent:.2];
+            [cell loadContentWithContent:_question.stem questionType:_question.type];
+            return cell;
         }
-        return cell;
+        else return nil;
         
     } else if (indexPath.section == 1) {
-        ReviewAnswerCell *cell = [tableView dequeueReusableCellWithIdentifier:cellId];
+        ReviewAnswerWVCell *cell = [tableView dequeueReusableCellWithIdentifier:cellId];
         if (!cell) {
-            NSArray *nib = [[NSBundle mainBundle]loadNibNamed:@"ReviewAnswerCell" owner:self options:nil];
+            NSArray *nib = [[NSBundle mainBundle]loadNibNamed:@"ReviewAnswerWVCell" owner:self options:nil];
             cell = [nib objectAtIndex:0];
         }
         cell.selectionStyle = UITableViewCellSelectionStyleNone;
         cell.tintColor = [UIColor blackColor];
-        if (indexPath.row == 0) {
-            cell.lblAnswer.text = [(Answer *)answers[0] choice];
-            cell.imvAnswer.image = [[UIImage imageNamed:kImage_AnswerA] imageWithRenderingMode:UIImageRenderingModeAlwaysTemplate];
-        } else if (indexPath.row == 1) {
-            cell.lblAnswer.text = [(Answer *)answers[1] choice];
-            cell.imvAnswer.image = [[UIImage imageNamed:kImage_AnswerB] imageWithRenderingMode:UIImageRenderingModeAlwaysTemplate];
-        } else if (indexPath.row == 2) {
-            cell.lblAnswer.text = [(Answer *)answers[2] choice];
-            cell.imvAnswer.image = [[UIImage imageNamed:kImage_AnswerC] imageWithRenderingMode:UIImageRenderingModeAlwaysTemplate];
-        } else if (indexPath.row == 3) {
-            cell.lblAnswer.text = [(Answer *)answers[3] choice];
-            cell.imvAnswer.image = [[UIImage imageNamed:kImage_AnswerD] imageWithRenderingMode:UIImageRenderingModeAlwaysTemplate];
-        } else if (indexPath.row == 4) {
-            cell.lblAnswer.text = [(Answer *)answers[4] choice];
-            cell.imvAnswer.image = [[UIImage imageNamed:kImage_AnswerE] imageWithRenderingMode:UIImageRenderingModeAlwaysTemplate];
-        }
-        
-        cell.explanation = [(Answer *)answers[indexPath.row] explanation];
-        
+        cell.webViewAnswer.tag = indexPath.row +2;
+        cell.webViewAnswer.delegate = self;
+        [cell cellWithAnswer:  (Answer *)answers[indexPath.row] andIsSelected:selectedRows[indexPath.row]];
+        //         cell.explanation = [(Answer *)answers[indexPath.row] explanation];
+        //
         if ((int)[_studentAnswer.answerChoiceIdx intValue] == (int)indexPath.row) {
-            cell.lblAnswer.textColor = [UIColor redColor];
-            cell.imvAnswer.tintColor = [UIColor redColor];
-            cell.contentView.backgroundColor = [cell.lblAnswer.textColor colorWithAlphaComponent:0.1];
+            cell.contentView.backgroundColor = [UIColor redColor];
+            cell.webViewAnswer.backgroundColor = [UIColor redColor];
         }
         
         if ((int)[_question.rightAnswerIdx intValue] == (int)indexPath.row) {
-            cell.lblAnswer.textColor = [UIColor greenColor];
-            cell.imvAnswer.tintColor = [UIColor greenColor];
-            cell.contentView.backgroundColor = [cell.lblAnswer.textColor colorWithAlphaComponent:0.1];
-
+            cell.contentView.backgroundColor = [UIColor greenColor];
+            cell.webViewAnswer.backgroundColor = [UIColor greenColor];
         }
-        
-        cell.line.hidden = YES;
         
         return cell;
         
@@ -135,33 +160,85 @@
 
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
     if(indexPath.section != 0){
-        SCLAlertView *alert = [[SCLAlertView alloc] initWithNewWindow];
-        alert.tintTopCircle = YES;
-        alert.useLargerIcon = NO;
-        alert.cornerRadius = 13.0f;
-        alert.showAnimationType = SlideOutFromCenter;
         
-        alert.customViewColor = kAppColor;
-        
-        [alert addButton:@"Close" actionBlock:^{
-            
-        }];
-        
+        //* sort NSSet
         NSSortDescriptor *nameDescriptor = [NSSortDescriptor sortDescriptorWithKey:@"index" ascending:YES];
         NSArray *answers = [[_question.answers allObjects] sortedArrayUsingDescriptors:[NSArray arrayWithObject:nameDescriptor]];
-        
-        [alert showInfo:nil subTitle:[answers[indexPath.row] explanation] closeButtonTitle:nil duration:0.0f];
+        UITableViewCell *cell = [tableView cellForRowAtIndexPath:indexPath];
+        if([selectedRows[indexPath.row] isEqualToString:@"0"]){
+            selectedRows[indexPath.row] = @"1";
+        }
+        else{
+            selectedRows[indexPath.row] = @"0";
+        }
+        [(ReviewAnswerWVCell *) cell cellWithAnswer:  (Answer *)answers[indexPath.row] andIsSelected:selectedRows[indexPath.row]];
+        [_tbvReview beginUpdates];
+        [_tbvReview endUpdates];
     }
 }
 - (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath
 {
     if(indexPath.section == 0){
-        return kHeighQuesionWebView;
+        if(indexPath.row==0){
+            if([heights[0] floatValue] <= 0) return 100;
+            if([heights[0] floatValue]>=500) return 158
+                ;
+            else
+                return [heights[0] floatValue];
+        }else{
+            if ([heights[1]floatValue]<=8) {
+                return 0;
+            } else{
+                return [heights[1]floatValue];
+            }
+        }
     }
-    else{
-        return UITableViewAutomaticDimension;
+    if(indexPath.section == 1){
+        if([heights[indexPath.row +2] floatValue] <=0){
+            return 44;
+        }
+        if([selectedRows[indexPath.row] isEqualToString:@"0"])
+        {
+            return [heights[indexPath.row + 2] floatValue];
+        }
+        else{
+            return [expandheights[indexPath.row + 2] floatValue];
+        }
     }
+    return 0;
 }
+#pragma mark - WebView Delegate
+-(void)webViewDidFinishLoad:(UIWebView *)webView{
+    
+    height = [[webView stringByEvaluatingJavaScriptFromString:@"document.body.scrollHeight"] floatValue];
+    
+    // if([heights[webView.tag] floatValue]!=height){
+    // heights[webView.tag] = [NSNumber numberWithFloat:height];
+    if(webView.tag>=2){
+        if([selectedRows[webView.tag-2] isEqualToString:@"1"]){
+            if([expandheights[webView.tag] floatValue] == 0){
+            expandheights[webView.tag] = [NSNumber numberWithFloat:height];
+                [_tbvReview beginUpdates];
+                [_tbvReview endUpdates];
+            }
+           
+            
+            //            [_tbvReview reloadRowsAtIndexPaths:[NSArray arrayWithObject: [NSIndexPath indexPathForRow:webView.tag-2 inSection:1] ]withRowAnimation:UITableViewRowAnimationNone];
+        }
+    }
+//    if([expandheights[webView.tag] floatValue]!=0){
+//      
+//    }
+    
+    if([heights[webView.tag] floatValue]==0){
+        heights[webView.tag] = [NSNumber numberWithFloat:height];
+        [_tbvReview beginUpdates];
+        [_tbvReview endUpdates];
+    }
+    
+    //  }
+}
+
 
 #pragma mark - Class Funtion
 

@@ -1,41 +1,42 @@
 //
-//  AnswerWVCell.m
+//  ReviewAnswerWVCell.m
 //  EZ GMAT
 //
-//  Created by Do Ngoc Trinh on 6/6/16.
+//  Created by Do Ngoc Trinh on 6/13/16.
 //  Copyright © 2016 Do Ngoc Trinh. All rights reserved.
 //
 
-#import "AnswerWVCell.h"
+#import "ReviewAnswerWVCell.h"
 
-@implementation AnswerWVCell
-{
-    int indexAnswer;
-}
+@implementation ReviewAnswerWVCell
+
 - (void)awakeFromNib {
     [super awakeFromNib];
     // Initialization code
     self.backgroundColor = [UIColor clearColor];
     _webViewAnswer.userInteractionEnabled = NO;
-    _webViewAnswer.delegate = self;
-    
+    self.contentView.backgroundColor = [UIColor whiteColor];
+    _webViewAnswer.backgroundColor = [UIColor whiteColor];
 }
 
 - (void)setSelected:(BOOL)selected animated:(BOOL)animated {
     if(selected){
         //  self.backgroundView.backgroundColor = kSelectedColor;
-        self.contentView.backgroundColor = kSelectedColor;
-        _webViewAnswer.backgroundColor = kSelectedColor;
+//        self.contentView.backgroundColor = kSelectedColor;
+//        _webViewAnswer.backgroundColor = kSelectedColor;
+        //®[self loadContentWithContent:[NSString stringWithFormat:@"-------%@", @"choice"]];
+        
     }
     else{
-        self.contentView.backgroundColor = [UIColor whiteColor];
-        _webViewAnswer.backgroundColor = [UIColor whiteColor];
+//        self.contentView.backgroundColor = [UIColor whiteColor];
+//        _webViewAnswer.backgroundColor = [UIColor whiteColor];
+        //[self loadContentWithContent:[NSString stringWithFormat:@"%@", @"choice"]];
     }
     _webViewAnswer.opaque = NO;
 }
 -(void)webViewDidFinishLoad:(UIWebView *)webView{
 }
--(void)cellWithAnswer: (Answer*)answer questionType: (NSString*) questionType;{
+-(void)cellWithAnswer: (Answer*)answer andIsSelected:(NSString *)isSelected;{
     
     switch ([answer.index intValue]) {
         case 0:
@@ -56,8 +57,15 @@
         default:
             break;
     }
-    [self loadContentWithContent:answer.choice];
+    // if(self.expanded == 1){
+    if(![isSelected isEqualToString:@"1"]){
+        [self loadContentWithContent:[NSString stringWithFormat:@"%@", answer.choice]];
+    }
+    else{
+        [self loadContentWithContent:[NSString stringWithFormat:@"%@<hr> %@", answer.choice, answer.explanation]];
+    }
 }
+
 -(void)loadContentWithContent:(NSString *)content;{
     
     NSString* htmlPath = [[NSBundle mainBundle] pathForResource:@"index" ofType:@"html"];
@@ -86,7 +94,5 @@
         [_webViewAnswer loadHTMLString:content baseURL:nil];
     }
 }
-
-
 
 @end

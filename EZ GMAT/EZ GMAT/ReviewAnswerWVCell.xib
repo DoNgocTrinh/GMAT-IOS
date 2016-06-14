@@ -1,0 +1,93 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="10116" systemVersion="15E65" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES">
+    <dependencies>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="10085"/>
+        <capability name="Aspect ratio constraints" minToolsVersion="5.1"/>
+        <capability name="Constraints to layout margins" minToolsVersion="6.0"/>
+    </dependencies>
+    <objects>
+        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner"/>
+        <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
+        <tableViewCell contentMode="scaleToFill" restorationIdentifier="AnswerWVCell" selectionStyle="default" indentationWidth="10" rowHeight="127" id="lOt-9Q-wZn" customClass="ReviewAnswerWVCell">
+            <rect key="frame" x="0.0" y="0.0" width="364" height="127"/>
+            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+            <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="lOt-9Q-wZn" id="tUU-ya-EG0">
+                <rect key="frame" x="0.0" y="0.0" width="364" height="126"/>
+                <autoresizingMask key="autoresizingMask"/>
+                <subviews>
+                    <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="V6L-o2-Hn0">
+                        <rect key="frame" x="12" y="51" width="25" height="25"/>
+                        <constraints>
+                            <constraint firstAttribute="width" secondItem="V6L-o2-Hn0" secondAttribute="height" multiplier="1:1" id="QGT-BJ-QXv"/>
+                            <constraint firstAttribute="height" constant="25" id="qIB-9h-226"/>
+                        </constraints>
+                    </imageView>
+                    <webView contentMode="scaleAspectFill" translatesAutoresizingMaskIntoConstraints="NO" id="toR-Jb-fEq">
+                        <rect key="frame" x="41" y="0.0" width="315" height="126"/>
+                        <color key="backgroundColor" red="0.36078431370000003" green="0.38823529410000002" blue="0.4039215686" alpha="1" colorSpace="deviceRGB"/>
+                        <constraints>
+                            <constraint firstAttribute="height" relation="greaterThanOrEqual" constant="44" id="5PY-VN-URp"/>
+                            <constraint firstAttribute="height" relation="greaterThanOrEqual" constant="44" id="6Bw-g3-NuU"/>
+                            <constraint firstAttribute="height" constant="89" id="6LH-hm-CIJ"/>
+                            <constraint firstAttribute="height" constant="110" id="gA5-jO-IK2"/>
+                            <constraint firstAttribute="height" constant="44" id="m3e-FQ-sIS"/>
+                            <constraint firstAttribute="height" relation="greaterThanOrEqual" constant="44" id="xFF-vN-hen"/>
+                        </constraints>
+                        <variation key="default">
+                            <mask key="constraints">
+                                <exclude reference="5PY-VN-URp"/>
+                                <exclude reference="6Bw-g3-NuU"/>
+                                <exclude reference="6LH-hm-CIJ"/>
+                                <exclude reference="gA5-jO-IK2"/>
+                                <exclude reference="m3e-FQ-sIS"/>
+                                <exclude reference="xFF-vN-hen"/>
+                            </mask>
+                        </variation>
+                    </webView>
+                </subviews>
+                <constraints>
+                    <constraint firstItem="toR-Jb-fEq" firstAttribute="height" secondItem="tUU-ya-EG0" secondAttribute="height" id="1BY-Ks-DOc"/>
+                    <constraint firstItem="toR-Jb-fEq" firstAttribute="centerY" secondItem="tUU-ya-EG0" secondAttribute="centerY" id="3nH-cG-fy1"/>
+                    <constraint firstAttribute="trailingMargin" secondItem="toR-Jb-fEq" secondAttribute="trailing" id="7Ad-tg-vsW"/>
+                    <constraint firstAttribute="bottomMargin" secondItem="toR-Jb-fEq" secondAttribute="bottom" constant="-2" id="B9Q-Qh-zJP"/>
+                    <constraint firstAttribute="bottomMargin" secondItem="toR-Jb-fEq" secondAttribute="bottom" id="BTv-vK-6Q5"/>
+                    <constraint firstAttribute="bottomMargin" secondItem="toR-Jb-fEq" secondAttribute="bottom" constant="-2" id="EO4-MS-i1g"/>
+                    <constraint firstItem="toR-Jb-fEq" firstAttribute="top" secondItem="tUU-ya-EG0" secondAttribute="topMargin" id="HST-zD-Tbu"/>
+                    <constraint firstItem="toR-Jb-fEq" firstAttribute="leading" secondItem="V6L-o2-Hn0" secondAttribute="trailing" constant="4" id="Hby-Vv-9XY"/>
+                    <constraint firstItem="toR-Jb-fEq" firstAttribute="centerY" secondItem="tUU-ya-EG0" secondAttribute="centerY" id="Rk4-WP-h8I"/>
+                    <constraint firstItem="V6L-o2-Hn0" firstAttribute="centerY" secondItem="tUU-ya-EG0" secondAttribute="centerY" id="UFt-Al-Bwt"/>
+                    <constraint firstItem="V6L-o2-Hn0" firstAttribute="leading" secondItem="tUU-ya-EG0" secondAttribute="leadingMargin" constant="4" id="VYq-Zx-ySf"/>
+                    <constraint firstAttribute="bottomMargin" secondItem="toR-Jb-fEq" secondAttribute="bottom" id="ViK-fK-OjW"/>
+                    <constraint firstItem="toR-Jb-fEq" firstAttribute="top" secondItem="tUU-ya-EG0" secondAttribute="topMargin" id="bMt-QJ-mFb"/>
+                    <constraint firstItem="toR-Jb-fEq" firstAttribute="centerY" secondItem="V6L-o2-Hn0" secondAttribute="centerY" id="cqD-VQ-aAE"/>
+                    <constraint firstItem="toR-Jb-fEq" firstAttribute="height" secondItem="tUU-ya-EG0" secondAttribute="height" id="m77-cK-6gy"/>
+                    <constraint firstItem="toR-Jb-fEq" firstAttribute="top" secondItem="tUU-ya-EG0" secondAttribute="topMargin" id="ncf-oP-OZ0"/>
+                    <constraint firstItem="toR-Jb-fEq" firstAttribute="top" secondItem="tUU-ya-EG0" secondAttribute="topMargin" id="u33-qa-adR"/>
+                    <constraint firstItem="toR-Jb-fEq" firstAttribute="height" secondItem="tUU-ya-EG0" secondAttribute="height" id="veW-zi-PBQ"/>
+                </constraints>
+                <variation key="default">
+                    <mask key="constraints">
+                        <exclude reference="B9Q-Qh-zJP"/>
+                        <exclude reference="BTv-vK-6Q5"/>
+                        <exclude reference="EO4-MS-i1g"/>
+                        <exclude reference="HST-zD-Tbu"/>
+                        <exclude reference="Rk4-WP-h8I"/>
+                        <exclude reference="ViK-fK-OjW"/>
+                        <exclude reference="bMt-QJ-mFb"/>
+                        <exclude reference="cqD-VQ-aAE"/>
+                        <exclude reference="m77-cK-6gy"/>
+                        <exclude reference="ncf-oP-OZ0"/>
+                        <exclude reference="u33-qa-adR"/>
+                        <exclude reference="veW-zi-PBQ"/>
+                    </mask>
+                </variation>
+            </tableViewCellContentView>
+            <connections>
+                <outlet property="imvAnswer" destination="V6L-o2-Hn0" id="Jf2-9U-YVO"/>
+                <outlet property="webViewAnswer" destination="toR-Jb-fEq" id="EWd-JN-4eU"/>
+            </connections>
+            <point key="canvasLocation" x="299" y="161.5"/>
+        </tableViewCell>
+    </objects>
+</document>

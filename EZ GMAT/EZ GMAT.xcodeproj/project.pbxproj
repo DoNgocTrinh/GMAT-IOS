@@ -124,6 +124,8 @@
 		E83235071D0638C300314B74 /* katex.min.css in Resources */ = {isa = PBXBuildFile; fileRef = E83234E21D0638C300314B74 /* katex.min.css */; };
 		E83235081D0638C300314B74 /* katex.min.js in Resources */ = {isa = PBXBuildFile; fileRef = E83234E31D0638C300314B74 /* katex.min.js */; };
 		E83235091D0638C300314B74 /* README.md in Sources */ = {isa = PBXBuildFile; fileRef = E83234E41D0638C300314B74 /* README.md */; };
+		E8B0C2191D0ECA370073BB52 /* ReviewAnswerWVCell.m in Sources */ = {isa = PBXBuildFile; fileRef = E8B0C2171D0ECA370073BB52 /* ReviewAnswerWVCell.m */; };
+		E8B0C21A1D0ECA370073BB52 /* ReviewAnswerWVCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = E8B0C2181D0ECA370073BB52 /* ReviewAnswerWVCell.xib */; };
 		E8FA59331D09B15300AA8280 /* QuestionType+CoreDataProperties.m in Sources */ = {isa = PBXBuildFile; fileRef = E8FA592E1D09B15300AA8280 /* QuestionType+CoreDataProperties.m */; };
 		E8FA59341D09B15300AA8280 /* QuestionSubType+CoreDataProperties.m in Sources */ = {isa = PBXBuildFile; fileRef = E8FA59301D09B15300AA8280 /* QuestionSubType+CoreDataProperties.m */; };
 		E8FA59351D09B15300AA8280 /* QuestionSubType.m in Sources */ = {isa = PBXBuildFile; fileRef = E8FA59321D09B15300AA8280 /* QuestionSubType.m */; };
@@ -392,6 +394,9 @@
 		E83234E31D0638C300314B74 /* katex.min.js */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.javascript; path = katex.min.js; sourceTree = "<group>"; };
 		E83234E41D0638C300314B74 /* README.md */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = net.daringfireball.markdown; path = README.md; sourceTree = "<group>"; };
 		E847D6201CFEE6750082036A /* PrefixHeader.pch */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PrefixHeader.pch; sourceTree = "<group>"; };
+		E8B0C2161D0ECA370073BB52 /* ReviewAnswerWVCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ReviewAnswerWVCell.h; sourceTree = "<group>"; };
+		E8B0C2171D0ECA370073BB52 /* ReviewAnswerWVCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ReviewAnswerWVCell.m; sourceTree = "<group>"; };
+		E8B0C2181D0ECA370073BB52 /* ReviewAnswerWVCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = ReviewAnswerWVCell.xib; sourceTree = "<group>"; };
 		E8FA592D1D09B15300AA8280 /* QuestionType+CoreDataProperties.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "QuestionType+CoreDataProperties.h"; sourceTree = "<group>"; };
 		E8FA592E1D09B15300AA8280 /* QuestionType+CoreDataProperties.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "QuestionType+CoreDataProperties.m"; sourceTree = "<group>"; };
 		E8FA592F1D09B15300AA8280 /* QuestionSubType+CoreDataProperties.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "QuestionSubType+CoreDataProperties.h"; sourceTree = "<group>"; };
@@ -517,6 +522,7 @@
 		E812645B1D0598FD00094764 /* WebViewCell */ = {
 			isa = PBXGroup;
 			children = (
+				E8B0C2151D0EC9DC0073BB52 /* ReviewAnswerCell */,
 				E81BA94E1D06E92E00961BD8 /* AnswerCell */,
 				E81BA94D1D06E92200961BD8 /* QuestionCell */,
 			);
@@ -960,6 +966,16 @@
 			name = PrefixHeader;
 			sourceTree = "<group>";
 		};
+		E8B0C2151D0EC9DC0073BB52 /* ReviewAnswerCell */ = {
+			isa = PBXGroup;
+			children = (
+				E8B0C2161D0ECA370073BB52 /* ReviewAnswerWVCell.h */,
+				E8B0C2171D0ECA370073BB52 /* ReviewAnswerWVCell.m */,
+				E8B0C2181D0ECA370073BB52 /* ReviewAnswerWVCell.xib */,
+			);
+			name = ReviewAnswerCell;
+			sourceTree = "<group>";
+		};
 		E8FA590E1D0995CC00AA8280 /* Mode Item */ = {
 			isa = PBXGroup;
 			children = (
@@ -1182,7 +1198,7 @@
 				TargetAttributes = {
 					E81A7DF91CF73EA900BDE293 = {
 						CreatedOnToolsVersion = 7.3;
-						DevelopmentTeam = 6LXAHM492W;
+						DevelopmentTeam = 4SEJ287U7W;
 					};
 					E81A7E121CF73EA900BDE293 = {
 						CreatedOnToolsVersion = 7.3;
@@ -1249,6 +1265,7 @@
 				E83234F71D0638C300314B74 /* KaTeX_Math-Regular.eot in Resources */,
 				E81A7E0D1CF73EA900BDE293 /* LaunchScreen.storyboard in Resources */,
 				E83235041D0638C300314B74 /* KaTeX_Size4-Regular.ttf in Resources */,
+				E8B0C21A1D0ECA370073BB52 /* ReviewAnswerWVCell.xib in Resources */,
 				E83235031D0638C300314B74 /* KaTeX_Size4-Regular.eot in Resources */,
 				E81A7E0A1CF73EA900BDE293 /* Assets.xcassets in Resources */,
 				E83235071D0638C300314B74 /* katex.min.css in Resources */,
@@ -1330,6 +1347,7 @@
 				E81A7F031CF772CB00BDE293 /* UIImage+ImageEffects.m in Sources */,
 				E81A7E3C1CF763A800BDE293 /* QuestionPackCLVCell.m in Sources */,
 				E8FA59411D09B3BC00AA8280 /* QuestionType.m in Sources */,
+				E8B0C2191D0ECA370073BB52 /* ReviewAnswerWVCell.m in Sources */,
 				E81A7EE41CF772CB00BDE293 /* NSManagedObject+MagicalAggregation.m in Sources */,
 				E81A7EFA1CF772CB00BDE293 /* MMDrawerVisualState.m in Sources */,
 				E81A7EFC1CF772CB00BDE293 /* SCLAlertView.m in Sources */,
@@ -1545,7 +1563,7 @@
 				INFOPLIST_FILE = "EZ GMAT/Info.plist";
 				IPHONEOS_DEPLOYMENT_TARGET = 7.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
-				PRODUCT_BUNDLE_IDENTIFIER = tribm.DemoScreenShot;
+				PRODUCT_BUNDLE_IDENTIFIER = njhkkj;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE = "";
 			};
@@ -1561,7 +1579,7 @@
 				INFOPLIST_FILE = "EZ GMAT/Info.plist";
 				IPHONEOS_DEPLOYMENT_TARGET = 7.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
-				PRODUCT_BUNDLE_IDENTIFIER = tribm.DemoScreenShot;
+				PRODUCT_BUNDLE_IDENTIFIER = njhkkj;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE = "";
 			};

@@ -10,7 +10,7 @@
 #import "StudentAnswer.h"
 #import "Question.h"
 
-@interface ReviewPageContentVC : UIViewController <UITableViewDelegate, UITableViewDataSource>
+@interface ReviewPageContentVC : UIViewController <UITableViewDelegate, UITableViewDataSource, UIWebViewDelegate>
 
 @property (nonatomic, assign) NSInteger pageindex;
 @property (nonatomic, strong) StudentAnswer *studentAnswer;

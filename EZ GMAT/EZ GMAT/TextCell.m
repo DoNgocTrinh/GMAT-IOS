@@ -24,20 +24,13 @@
 }
 
 -(void)loadContentWithContent:(NSString *)content questionType:(NSString*)questionType;{
-//    if([questionType isEqualToString:@"Q"]){
         [self loadContentWithLocalHTML:content];
-//    }
-//    else{
-//        [_webViewQuestion loadHTMLString:content baseURL:nil];
-//    }
-    
-
 }
 -(void)loadContentWithLocalHTML:(NSString *)content;{
     NSString* htmlPath = [[NSBundle mainBundle] pathForResource:@"index" ofType:@"html"];
     NSString* appHtml = [NSString stringWithContentsOfFile:htmlPath encoding:NSUTF8StringEncoding error:nil];
     
-    content = [NSString stringWithFormat: @"%@ $math demo \\frac{1}{2} = 0.5$ ", content];
+    content = [NSString stringWithFormat: @"%@", content];
     
     if([content rangeOfString:@"$"].location != NSNotFound) { // Expression inside text.
         NSRange r;

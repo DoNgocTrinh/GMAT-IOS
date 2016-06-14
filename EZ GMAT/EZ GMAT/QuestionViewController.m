@@ -27,7 +27,6 @@
     NSTimer *timer;
     NSDate *startDate;
     
-    
     BOOL isTimeRun;
     //timer:
     NSDate *currentDate;// =[NSDate date];
@@ -264,13 +263,12 @@
 
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(nonnull NSIndexPath *)indexPath {
     //[tableView deselectRowAtIndexPath:indexPath animated:NO];
-    
-    UITableViewCell *cell = [tableView cellForRowAtIndexPath:tableView.indexPathForSelectedRow];
-    
-    if([cell isKindOfClass:[AnswerWVCell class]]){
-        //  NSLog(@"%ld" ,(long)[(TextCell*)cell webViewQuestion].tag);
-    }
-    
+//    
+//    UITableViewCell *cell = [tableView cellForRowAtIndexPath:tableView.indexPathForSelectedRow];
+//    
+//    if([cell isKindOfClass:[AnswerWVCell class]]){
+//        //  NSLog(@"%ld" ,(long)[(TextCell*)cell webViewQuestion].tag);
+//    }
     //[cell setSelected:YES];
     if(indexPath.section!=0&&indexPath.section!=1){
         [self enableBtn];
