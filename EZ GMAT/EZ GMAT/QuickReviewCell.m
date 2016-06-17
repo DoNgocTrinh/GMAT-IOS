@@ -13,7 +13,7 @@
 - (void)awakeFromNib {
     [super awakeFromNib];
     // Initialization code
-    self.contentView.backgroundColor = [kAppColor colorWithAlphaComponent:0.8];
+    self.contentView.backgroundColor = [kAppColor colorWithAlphaComponent:0.5];
     self.alpha = 0.8f;
     
     self.viewCir.textStyle               = MCPercentageDoughnutViewTextStyleUserDefined;
@@ -23,8 +23,8 @@
     self.viewCir.animatesBegining        = YES;
     self.viewCir.textLabel.font          = [UIFont systemFontOfSize:5];
     self.viewCir.textLabel.textColor     = [UIColor whiteColor ];//[kAppColor colorWithAlphaComponent:0.5];
-    self.viewCir.fillColor               = [UIColor whiteColor];
-    self.viewCir.unfillColor             =[UIColor grayColor];
+    self.viewCir.fillColor               = [UIColor orangeColor];
+    self.viewCir.unfillColor             =[UIColor whiteColor];
     [self.viewCir setLinePercentage:0.09f];
     
     _lblTime.adjustsFontSizeToFitWidth = YES;

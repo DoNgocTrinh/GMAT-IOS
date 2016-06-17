@@ -31,7 +31,7 @@
     //timer:
     NSDate *currentDate;// =[NSDate date];
     NSTimeInterval timeInterval;//  = [currentDate timeIntervalSinceDate:startDate];
-    
+    CGFloat startTimeInterval;
     NSDate *timerDate ; // = [NSDate dateWithTimeIntervalSince1970:timeInterval];
     NSDateFormatter *dateFomatter;// = [[NSDateFormatter alloc]init];
     
@@ -48,7 +48,10 @@
 
 - (void)viewDidLoad {
     [super viewDidLoad];
+    _studentAnwsers = [[NSMutableArray alloc]init];
+    startTimeInterval = [_currentPack.totalTimeToFinish floatValue];
     
+    [self COUNTer];
     dateFomatter = [[NSDateFormatter alloc]init];
     [dateFomatter setDateFormat:@"mm:ss"];
     [dateFomatter setTimeZone:[NSTimeZone timeZoneForSecondsFromGMT:0.0]];
@@ -65,8 +68,16 @@
     
     //    [_tbvQuestion setContentInset:UIEdgeInsetsMake(self.navigationController.navigationBar.frame.size.height+20, 0, 0, 0)];
     //    [_tbvQuestion setScrollIndicatorInsets:UIEdgeInsetsMake(self.navigationController.navigationBar.frame.size.height+20, 0, 0, 0)];
+    //custom title view
     
-    _studentAnwsers = [[NSMutableArray alloc]init];
+    
+    CGRect rect = CGRectMake(0, 0, self.view.frame.size.width, 44);
+    customTitleView = [CustomTitleView customViewWithFrame:rect];
+    [customTitleView setCenter:self.navigationItem.titleView.center];
+    self.navigationItem.titleView = customTitleView;
+    timerDate = [NSDate dateWithTimeIntervalSince1970:startTimeInterval];
+    customTitleView.lblTime.text = [NSString stringWithFormat:@"%@", [dateFomatter stringFromDate:timerDate]];
+    
     
     [_btnSubmit setBackgroundColor:kAppColor];
     
@@ -74,18 +85,13 @@
     
     // self.navigationItem.hidesBackButton = YES;
     
-    _displayIndex = 0;
+    //_displayIndex = 0;
     [self redisplayQuestion];
     
-   [self startTimer];
+    //[self startTimer];
     
     [self disableBtn];
     
-    //custom title view
-    CGRect rect = CGRectMake(0, 0, self.view.frame.size.width, 44);
-    customTitleView = [CustomTitleView customViewWithFrame:rect];
-    [customTitleView setCenter:self.navigationItem.titleView.center];
-    self.navigationItem.titleView = customTitleView;
     
     [self createReadingButton];
 }
@@ -94,6 +100,8 @@
         if( [b isKindOfClass: [UIButton class]])
             [b removeFromSuperview];
     }
+    [self stopTimer];
+    [[NSManagedObjectContext MR_defaultContext] MR_saveToPersistentStoreAndWait];
 }
 
 - (void) showRightAnswer; {
@@ -133,7 +141,8 @@
     Question *selectedQuestion = _questions[_displayIndex];
     //sort order items in NSSet
     NSSortDescriptor *nameDescriptor = [NSSortDescriptor sortDescriptorWithKey:@"index" ascending:YES];
-    NSArray *answers = [[selectedQuestion.answers allObjects] sortedArrayUsingDescriptors:[NSArray arrayWithObject:nameDescriptor]];    static NSString *cellId = @"question";
+    NSArray *answers = [[selectedQuestion.answers allObjects] sortedArrayUsingDescriptors:[NSArray arrayWithObject:nameDescriptor]];
+    static NSString *cellId = @"question";
     
     if (indexPath.section == 0) {
         TextCell *cell = [tableView dequeueReusableCellWithIdentifier:cellId];
@@ -263,19 +272,18 @@
 
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(nonnull NSIndexPath *)indexPath {
     //[tableView deselectRowAtIndexPath:indexPath animated:NO];
-//    
-//    UITableViewCell *cell = [tableView cellForRowAtIndexPath:tableView.indexPathForSelectedRow];
-//    
-//    if([cell isKindOfClass:[AnswerWVCell class]]){
-//        //  NSLog(@"%ld" ,(long)[(TextCell*)cell webViewQuestion].tag);
-//    }
+    //
+    //    UITableViewCell *cell = [tableView cellForRowAtIndexPath:tableView.indexPathForSelectedRow];
+    //
+    //    if([cell isKindOfClass:[AnswerWVCell class]]){
+    //        //  NSLog(@"%ld" ,(long)[(TextCell*)cell webViewQuestion].tag);
+    //    }
     //[cell setSelected:YES];
     if(indexPath.section!=0&&indexPath.section!=1){
         [self enableBtn];
     }
     else{
         [self disableBtn];
-        //cell.selected = NO;
     }
 }
 
@@ -329,9 +337,10 @@
 -(void)startTimer{
     startDate = [NSDate date];
     timer = [NSTimer scheduledTimerWithTimeInterval:0.5 target:self selector:@selector(timeTick:) userInfo:nil repeats:YES];
-
     
-  [[NSRunLoop mainRunLoop] addTimer:timer forMode:NSRunLoopCommonModes];
+    
+    [[NSRunLoop mainRunLoop] addTimer:timer forMode:NSRunLoopCommonModes];
+    //NSLog(@"total time : %lf", );
     [timer fire];
 }
 -(void)stopTimer;{
@@ -341,15 +350,17 @@
 
 -(void)timeTick:(id)sender{
     [self updateProgressBar];
-    currentDate =[NSDate date];
+    currentDate =[[NSDate date] dateByAddingTimeInterval:startTimeInterval];
     timeInterval  = [currentDate timeIntervalSinceDate:startDate];
     //reformat time from TimeInterval
-     timerDate = [NSDate dateWithTimeIntervalSince1970:timeInterval];
+    NSLog(@"Time interval : %f", timeInterval);
+    timerDate = [NSDate dateWithTimeIntervalSince1970:timeInterval];
     
     time = [dateFomatter stringFromDate:timerDate];
-    customTitleView.lblQuestionNumber.text = [NSString stringWithFormat:@"%ld/%ld",_displayIndex+1,(unsigned long)_questions.count];
+    customTitleView.lblQuestionNumber.text = [NSString stringWithFormat:@"%d/%ld",_displayIndex+1,(unsigned long)_questions.count];
     customTitleView.lblTime.text = [NSString stringWithFormat:@"%@",time];
     
+    _currentPack.totalTimeToFinish = [NSNumber numberWithDouble:timeInterval];
 }
 
 
@@ -365,6 +376,8 @@
               [NSNumber numberWithFloat:0],
               [NSNumber numberWithFloat:0],
               [NSNumber numberWithFloat:0],nil ];
+    customTitleView.lblQuestionNumber.text = [NSString stringWithFormat:@"%d/%ld",_displayIndex+1,(unsigned long)_questions.count];
+    
     [_tbvQuestion reloadData];
 }
 -(void)updateProgressBar;{
@@ -393,9 +406,11 @@
         if (_displayIndex < _questions.count - 1) {
             Question *question = _questions[_displayIndex];
             selectQuestion = question;
+            
             StudentAnswer *newStudentAnswer = [StudentAnswer createStudentAnswerWithChoiceIndex:_tbvQuestion.indexPathForSelectedRow.row andQuestion:question];
             [_studentAnwsers addObject:newStudentAnswer];
             
+            [[NSManagedObjectContext MR_defaultContext] MR_saveToPersistentStoreAndWait];
             if (_displayIndex == _questions.count - 2) {
                 [_btnSubmit setTitle:@"Submit" forState:UIControlStateNormal];
             }
@@ -413,10 +428,7 @@
             
             [_studentAnwsers addObject:newStudentAnswer];
             
-            [MagicalRecord saveWithBlock:^(NSManagedObjectContext * _Nonnull localContext) {
-                NSLog(@"-finished");
-            }];
-            
+            [[NSManagedObjectContext MR_defaultContext] MR_saveToPersistentStoreAndWait];
             QuickReviewViewController *quickReviewController = [self.storyboard instantiateViewControllerWithIdentifier:@"QuickReviewViewController"];
             
             quickReviewController.studentAnswers = _studentAnwsers;
@@ -434,6 +446,10 @@
             
             
         }
+   
+            _currentPack.totalTimeToFinish = [NSNumber numberWithDouble:timeInterval];
+            [[NSManagedObjectContext MR_defaultContext]MR_saveToPersistentStoreAndWait];
+        
     }
 }
 
@@ -468,13 +484,7 @@
     //button.titleLabel.text = @"Reading";
     button.titleLabel.tintColor = [UIColor whiteColor];
     button.center = self.view.center;
-    button.layer.cornerRadius = 20;//button.bounds.size.width/2;
-    //button.backgroundColor = [UIColor redColor];
-    //    button.layer.shadowColor = [UIColor redColor].CGColor;
-    //    button.layer.shadowOffset = CGSizeMake(0.0f,2.0f);
-    //    button.layer.masksToBounds = NO;
-    //    button.layer.shadowRadius = 0.0f;
-    //    button.layer.shadowOpacity = 0.5;
+    button.layer.cornerRadius = 20;
     [button addTarget:self
                action:@selector(presentViewReading)
      forControlEvents:UIControlEventTouchUpInside];
@@ -539,7 +549,6 @@
         UIImage *buttonBackground = [UIImage imageNamed:@"closeReading.png"];
         [button setImage:buttonBackground forState:UIControlStateNormal];
         
-        
         [self addChildViewController:readingView];
         readingView.view.frame = self.view.bounds;
         [self.view addSubview:readingView.view];
@@ -557,5 +566,128 @@
         }
     }
 }
+#pragma mark - AlertView - Start Pack
+-(void)COUNTer;{
+    Question *newQuestion = _questions[_displayIndex];
+    NSPredicate *querry = [NSPredicate predicateWithFormat:@"questions CONTAINS %@", newQuestion];
+    QuestionPack *testQuestionPack =[QuestionPack MR_findFirstWithPredicate:querry];
+    NSInteger i = 0;
+    if(testQuestionPack){
+        NSSortDescriptor *nameDescriptor = [NSSortDescriptor sortDescriptorWithKey:@"questionId" ascending:YES];
+        NSArray *tquestions = [[testQuestionPack.questions allObjects] sortedArrayUsingDescriptors:[NSArray arrayWithObject:nameDescriptor]];
+        for(Question *q in tquestions){
+            if(q.studentAnswer){
+                [_studentAnwsers addObject:q.studentAnswer];
+                NSLog(@"Student answer for QUestion : %@", q.studentAnswer.result);
+                i++;
+            }
+        }
+        
+        if(i<10){
+            _displayIndex = i;
+            //[_tbvQuestion reloadData];
+        }
+        else{
+            _displayIndex = i-1;
+            //  NSLog(@"-------- %d",_studentAnwsers.count );
+            
+            
+        }
+        if([_currentPack.totalTimeToFinish floatValue]!= 0){
+            UIAlertView *alert = [[UIAlertView alloc]initWithTitle:@"Do Again" message:@"You did this pack"  delegate:self cancelButtonTitle:@"Cancel" otherButtonTitles:@"Start over",@"Continue",@"Review", nil];
+            [self.view addSubview:alert];
+            [alert show];
+            [self stopTimer];
+        }else{
+            [self startTimer];
+        }
+        //  NSLog(@"COUNT SA %d", i);
+    }
+    else{
+        NSLog(@"Have you any choice?");
+    }
+}
+-(void)alertView:(UIAlertView *)alertView clickedButtonAtIndex:(NSInteger)buttonIndex{
+    
+    switch (buttonIndex) {
+        case 0:// cancel
+            [self.navigationController popViewControllerAnimated:YES];
+            [self startTimer];
+            break;
+        case 1://start Over
+        {
+            Question *newQuestion = _questions[_displayIndex];
+            NSPredicate *querry = [NSPredicate predicateWithFormat:@"questions CONTAINS %@", newQuestion];
+            QuestionPack *testQuestionPack =[QuestionPack MR_findFirstWithPredicate:querry];
+            if(testQuestionPack){
+                NSSortDescriptor *nameDescriptor = [NSSortDescriptor sortDescriptorWithKey:@"questionId" ascending:YES];
+                NSArray *tquestions = [[testQuestionPack.questions allObjects] sortedArrayUsingDescriptors:[NSArray arrayWithObject:nameDescriptor]];
+                for (Question *q in tquestions) {
+                    NSPredicate *que = [NSPredicate predicateWithFormat:@"question = %@", q];
+                    [StudentAnswer MR_deleteAllMatchingPredicate:que];
+                    NSLog(@"Number of SA which you have deleted : %ld", (unsigned long)[StudentAnswer MR_countOfEntities]);
+                }
+                
+                _currentPack.totalTimeToFinish = [NSNumber numberWithDouble:0];
+                [_studentAnwsers removeAllObjects];
+                startTimeInterval = 0;
+                [[NSManagedObjectContext MR_defaultContext] MR_saveToPersistentStoreAndWait];
+            }
+            
+            _displayIndex = 0;
+            [self redisplayQuestion];
+            [self stopTimer];
+            [self startTimer];
+        }
+            
+            break;
+        case 2://continue
+        {
+            [self startTimer];
+        }
+            break;
+        case 3: //review
+        {
+            QuickReviewViewController *quickReviewController = [self.storyboard instantiateViewControllerWithIdentifier:@"QuickReviewViewController"];
+            
+            quickReviewController.studentAnswers = _studentAnwsers;
+            quickReviewController.questions = [[NSMutableArray alloc]init];
+            //add questions
+            Question *newQuestion = _questions[_displayIndex];
+            NSPredicate *querry = [NSPredicate predicateWithFormat:@"questions CONTAINS %@", newQuestion];
+            QuestionPack *testQuestionPack =[QuestionPack MR_findFirstWithPredicate:querry];
+            if(testQuestionPack){
+                for (Question *q in testQuestionPack.questions) {
+                    NSPredicate *que = [NSPredicate predicateWithFormat:@"question = %@", q];
+                    
+                    if( [StudentAnswer MR_countOfEntitiesWithPredicate:que] !=0){
+                        [quickReviewController.questions addObject:q];
+                    }
+                }
+            }
+            
+            
+            
+            //quickReviewController.questions = _questions;
+            
+            quickReviewController.lblTime = [NSString stringWithFormat:@"%lf",[_currentPack.totalTimeToFinish floatValue]];
+            
+            CATransition* transition = [CATransition animation];
+            transition.duration = 1.0f;
+            transition.type = kCATransitionMoveIn;
+            transition.subtype = kCATransitionFade;
+            [self.navigationController.view.layer addAnimation:transition
+                                                        forKey:kCATransition];
+            
+            NSLog(@"_studentcount : %ld",_studentAnwsers.count);
+            [self.navigationController pushViewController:quickReviewController animated:NO];
+        }
+            break;
+        default:
+            
+            break;
+    }
+}
+
 
 @end

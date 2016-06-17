@@ -10,7 +10,8 @@
 
 @interface SummaryCell : UITableViewCell
 @property (weak, nonatomic) IBOutlet UILabel *lblType;
-@property (weak, nonatomic) IBOutlet NSLayoutConstraint *lblPercent;
+@property (weak, nonatomic) IBOutlet UILabel *lblPercent;
+@property (weak, nonatomic) IBOutlet UILabel *lblTotal;
 @property (weak, nonatomic) IBOutlet UIProgressView *progressDone;
-
+- (void)cellWithType:(NSString *)type andInfo:(NSDictionary *)info;
 @end

@@ -23,7 +23,7 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     // Do any additional setup after loading the view.
-    
+    NSLog(@"-----------%d %d", _studentAnswers.count, _questions.count);
     self.navigationItem.hidesBackButton = YES;
     
     self.title = @"Review";
@@ -33,6 +33,10 @@
     UIBarButtonItem *barItem = [[UIBarButtonItem alloc]initWithTitle:@"Done" style:UIBarButtonItemStyleBordered target:self action:@selector(btnDoneDidTouch)];
     self.navigationItem.rightBarButtonItem = barItem;
     
+    //sort array; 
+    NSSortDescriptor *nameDescriptor = [NSSortDescriptor sortDescriptorWithKey:@"questionId" ascending:YES];
+    [_questions sortUsingDescriptors:[NSArray arrayWithObject:nameDescriptor]];
+   // NSArray *tquestions = [[_questions allObjects] sortedArrayUsingDescriptors:[NSArray arrayWithObject:nameDescriptor]];
 }
 
 #pragma mark - TableView Datasource
@@ -45,7 +49,7 @@
     if (section == 0) {
         return 1;
     } else if (section == 1) {
-        return _questions.count;
+        return _studentAnswers.count;
     } else {
         return 0;
     }
@@ -85,7 +89,7 @@
         
         cell.viewCir.percentage = (float)numberOfRightAnswer/(float)_studentAnswers.count;
         CGFloat completePercent = ((float)numberOfRightAnswer)*100.0f/(float)_studentAnswers.count;
-        cell.viewCir.textLabel.text = [NSString stringWithFormat:@"%.1lf%%", completePercent];        
+        cell.viewCir.textLabel.text = [NSString stringWithFormat:@" %.1lf%% ", completePercent];        
         cell.lblTime.text = [NSString stringWithFormat:@"Average time:  %.1fs", [self convertTimeFromString:_lblTime]/(float)_questions.count];
         
         return cell;

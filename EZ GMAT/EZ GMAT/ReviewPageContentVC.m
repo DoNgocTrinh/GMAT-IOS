@@ -29,6 +29,8 @@
 
 - (void)viewDidLoad {
     [super viewDidLoad];
+    _studentAnswer = _question.studentAnswer;
+    NSLog(@"student: %ld; question: %ld", [_studentAnswer.answerChoiceIdx integerValue], [_question.studentAnswer.answerChoiceIdx integerValue]);
     selectedRows = [[NSMutableArray alloc]initWithObjects:@"0",@"0",@"0",@"0",@"0", nil];
     
     heights =[[NSMutableArray alloc]initWithObjects:[NSNumber numberWithFloat:0],
@@ -141,13 +143,13 @@
         //         cell.explanation = [(Answer *)answers[indexPath.row] explanation];
         //
         if ((int)[_studentAnswer.answerChoiceIdx intValue] == (int)indexPath.row) {
-            cell.contentView.backgroundColor = [UIColor redColor];
-            cell.webViewAnswer.backgroundColor = [UIColor redColor];
+            cell.contentView.backgroundColor = [UIColor hx_colorWithHexRGBAString:@"#FFCDD2"];
+            cell.webViewAnswer.backgroundColor = cell.contentView.backgroundColor ;
         }
         
         if ((int)[_question.rightAnswerIdx intValue] == (int)indexPath.row) {
-            cell.contentView.backgroundColor = [UIColor greenColor];
-            cell.webViewAnswer.backgroundColor = [UIColor greenColor];
+            cell.contentView.backgroundColor = [UIColor hx_colorWithHexRGBAString:@"#C8E6C9"] ;
+           cell.webViewAnswer.backgroundColor = cell.contentView.backgroundColor;
         }
         
         return cell;

@@ -13,8 +13,11 @@
 
 @interface HomeViewController ()
 
-@property int i;
 
+{
+    UIActivityIndicatorView *loadingView;
+}
+@property int i;
 @end
 
 @implementation HomeViewController
@@ -24,15 +27,20 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     self.navigationController.navigationBar.translucent = NO;
+    
+    loadingView = [[UIActivityIndicatorView alloc]initWithActivityIndicatorStyle:UIActivityIndicatorViewStyleGray];
+    [self.view addSubview:loadingView];
+    
     [self configCollectionView];
     [self customView];
-    [sGmatAPI exploreQuestionPacksWithCompletionBlock:^(NSArray *question) {
-        [self pullQuestionPacks];
-    }];
     [self pullQuestionPacks];
     [sGmatAPI exploreQuestionWithCompletionBlock:^(NSArray *question) {
-        
+        [sGmatAPI exploreQuestionPacksWithCompletionBlock:^(NSArray *question) {
+            [self pullQuestionPacks];
+        }];
     }];
+    
+    
 }
 
 - (void)didReceiveMemoryWarning {
@@ -44,6 +52,7 @@
 -(NSInteger)collectionView:(UICollectionView *)collectionView numberOfItemsInSection:(NSInteger)section;{
     return _questionPacks.count;
 }
+
 -(QuestionPackCLVCell *)collectionView:(UICollectionView *)collectionView cellForItemAtIndexPath:(NSIndexPath *)indexPath{
     
     static NSString *cellId = @"QuestionPackCLVCell";
@@ -58,14 +67,14 @@
     QuestionPack *questionPack = _questionPacks[indexPath.row];
     //NSLog(@"pack Level : %ld", [questionPack.level integerValue]);
     cell.lblAvailableTime.text = questionPack.available_time;
-    cell.lblNumberQuestion.text =[NSString stringWithFormat:@"%lu questions", questionPack.questionIDs.count];
+    cell.lblNumberQuestion.text =[NSString stringWithFormat:@"%d questions", questionPack.questions.count];
     cell.lblNumberQuestion.textColor = [UIColor whiteColor];
     //cell.numberStar = 1;
     [cell layoutIfNeeded];
-   [cell drawStarsWithLightNumber:[questionPack.level integerValue]];
+    [cell drawStarsWithLightNumber:[questionPack.level integerValue]];
     //
     
-    cell.lblNumberOfPack.text = [NSString stringWithFormat:@"%ld / %ld",indexPath.row + 1 , _questionPacks.count];
+    cell.lblNumberOfPack.text = [NSString stringWithFormat:@"%d / %d",indexPath.row + 1 , _questionPacks.count];
     
     
     //Lock Pack
@@ -73,12 +82,15 @@
     NSDateFormatter *dateFormatter = [[NSDateFormatter alloc] init];
     [dateFormatter setDateFormat:@"yyyy-MM-dd"];
     NSString *resultString = [dateFormatter stringFromDate: currentTime];
-   
+    
     switch ([resultString compare:questionPack.available_time]) {
         case NSOrderedAscending:
             cell.btnLock.hidden = NO;
             cell.btnLocked.hidden = NO;
             cell.lblNumberQuestion.text = @"";
+            cell.viewHeader.backgroundColor = [UIColor grayColor];
+            cell.viewFooter.backgroundColor = cell.viewHeader.backgroundColor;
+            cell.contentView.backgroundColor = [cell.viewHeader.backgroundColor colorWithAlphaComponent:.8];
             break;
         case NSOrderedSame:
             cell.btnLock.hidden = YES;
@@ -95,7 +107,7 @@
 
 - (CGSize)collectionView:(UICollectionView *)collectionView layout:(UICollectionViewLayout*)collectionViewLayout sizeForItemAtIndexPath:(NSIndexPath *)indexPath
 {
-    CGFloat height = _clvQuestionPack.frame.size.height*8/9;
+    CGFloat height = _clvQuestionPack.frame.size.width/2-6;
     return CGSizeMake(height,height);
 }
 
@@ -115,16 +127,17 @@
                 
                 QuestionPack *selectedQuestionPack = _questionPacks[indexPath.row];
                 
-                NSSortDescriptor *nameDescriptor = [NSSortDescriptor sortDescriptorWithKey:@"questionID" ascending:YES];
-                NSArray *listID = [[selectedQuestionPack.questionIDs allObjects] sortedArrayUsingDescriptors:[NSArray arrayWithObject:nameDescriptor]];
+                NSSortDescriptor *nameDescriptor = [NSSortDescriptor sortDescriptorWithKey:@"questionId" ascending:YES];
+                NSArray *listID = [[selectedQuestionPack.questions allObjects] sortedArrayUsingDescriptors:[NSArray arrayWithObject:nameDescriptor]];
                 
                 QuestionViewController *questionViewController = [self.storyboard instantiateViewControllerWithIdentifier:@"question"];
+                questionViewController.currentPack = selectedQuestionPack;
                 questionViewController.questions= [[NSMutableArray alloc]init];
                 
-                for (QuestionID *questionId in  listID) {
+                for (Question *question in  listID) {
                     
-                    Question *question = [Question MR_findFirstByAttribute:@"questionId" withValue: questionId.questionID];
-                    [questionViewController.questions addObject:question];
+                    Question *newQuestion = [Question MR_findFirstByAttribute:@"questionId" withValue: question.questionId];
+                    [questionViewController.questions addObject:newQuestion];
                     
                 }
                 [self.navigationController pushViewController:questionViewController animated:YES];
@@ -154,9 +167,19 @@
 -(void)pullQuestionPacks;{
     
     NSArray *arrPacks=[QuestionPack MR_findAllSortedBy:@"packID" ascending:YES];
-    NSLog(@"number pack : %ld", arrPacks.count);
+    NSLog(@"number pack : %d", arrPacks.count);
+    
+    if(arrPacks.count==0){
+        loadingView.center = self.view.center;
+        [loadingView startAnimating];
+    }else{
+        [loadingView stopAnimating];
+        [loadingView removeFromSuperview];
+    }
+    
     self.questionPacks = [NSMutableArray arrayWithArray:arrPacks];
     [_clvQuestionPack reloadData];
+    
 }
 -(void)pullQuestion;{
     
@@ -178,20 +201,22 @@
     [self colorListConfig];
     //circle
     self.viewProgress.textStyle               = MCPercentageDoughnutViewTextStyleUserDefined;
-    self.viewProgress.linePercentage          = 0.08;
+    self.viewProgress.linePercentage          = 0.1;
     self.viewProgress.animationDuration       = 0.5;
     self.viewProgress.showTextLabel           = YES;
     self.viewProgress.animatesBegining        = YES;
     self.viewProgress.textLabel.font          = [UIFont systemFontOfSize:5];
     
-    self.viewProgress.textLabel.textColor     = kColor_NavigationBarBackground;
-    self.viewProgress.fillColor               = kColor_NavigationBarBackground;
+    self.viewProgress.textLabel.textColor     = [UIColor whiteColor];
+    self.viewProgress.fillColor               = kAppColor;
+    self.viewProgress.unfillColor             = [UIColor whiteColor];
     self.viewProgress.textLabel.font          = [UIFont systemFontOfSize:1.0];
     [self.viewProgress setInitialPercentage:0.5f];
-    [self.viewProgress setPercentage:0.8];
+    [self.viewProgress setPercentage:0.0];
     self.viewProgress.textLabel.text          = [NSString stringWithFormat:@" %.lf%% ", self.viewProgress.percentage*100];
     //view
-    self.view.backgroundColor = [kAppColor colorWithAlphaComponent:0.98];
+    self.viewBottomer.backgroundColor = [kAppColor colorWithAlphaComponent:1];
+    self.viewTop.backgroundColor = [kAppColor colorWithAlphaComponent:0.5];
     
     //bntMore
     self.btnMore.layer.cornerRadius           = 4.0f;

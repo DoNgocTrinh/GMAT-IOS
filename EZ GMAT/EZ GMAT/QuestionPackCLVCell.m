@@ -32,7 +32,7 @@
         [imgView removeFromSuperview];
     }
     UIImageView *imageView;
-    float width = _viewStar.frame.size.height*.75;
+    float width = _viewStar.frame.size.height;
     float height = width;
     //NSLog(@"Height : %lf", height);
     for(int i = 0 ;i < totalStars;i++)

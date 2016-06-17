@@ -26,7 +26,7 @@
 
 #define kColor_Window                                   [UIColor whiteColor]
 
-#define kAppColor                                     [UIColor hx_colorWithHexRGBAString: @"#475577"]
+#define kAppColor      [UIColor hx_colorWithHexRGBAString: @"#CA6924"]
 #define kGreenColor    [UIColor colorWithRed:63.0/255  green:175.0/255 blue:102.0/255 alpha:1.0]
 #define kSelectedColor  [UIColor hx_colorWithHexRGBAString:@"#FFECB3"];
 //MARK: API

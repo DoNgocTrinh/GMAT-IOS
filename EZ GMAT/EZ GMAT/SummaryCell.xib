@@ -5,6 +5,7 @@
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="10085"/>
         <capability name="Aspect ratio constraints" minToolsVersion="5.1"/>
         <capability name="Constraints to layout margins" minToolsVersion="6.0"/>
+        <capability name="Constraints with non-1.0 multipliers" minToolsVersion="5.1"/>
     </dependencies>
     <objects>
         <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner"/>
@@ -16,26 +17,76 @@
                 <rect key="frame" x="0.0" y="0.0" width="430" height="75"/>
                 <autoresizingMask key="autoresizingMask"/>
                 <subviews>
-                    <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" image="moreInfo" translatesAutoresizingMaskIntoConstraints="NO" id="NIe-JX-Owt">
+                    <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="moreInfo" translatesAutoresizingMaskIntoConstraints="NO" id="NIe-JX-Owt">
                         <rect key="frame" x="400" y="23" width="30" height="30"/>
                         <constraints>
                             <constraint firstAttribute="width" secondItem="NIe-JX-Owt" secondAttribute="height" multiplier="1:1" id="uJG-dA-u3M"/>
                         </constraints>
                     </imageView>
+                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Pl9-iD-tUT">
+                        <rect key="frame" x="8" y="8" width="392" height="19"/>
+                        <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                        <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                        <nil key="highlightedColor"/>
+                    </label>
+                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" minimumFontSize="8" translatesAutoresizingMaskIntoConstraints="NO" id="GPI-dm-jpO">
+                        <rect key="frame" x="8" y="46" width="36" height="21"/>
+                        <fontDescription key="fontDescription" type="system" pointSize="10"/>
+                        <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                        <nil key="highlightedColor"/>
+                    </label>
+                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="UFX-SY-Ugz">
+                        <rect key="frame" x="8" y="27" width="392" height="19"/>
+                        <fontDescription key="fontDescription" type="system" pointSize="13"/>
+                        <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                        <nil key="highlightedColor"/>
+                    </label>
+                    <progressView opaque="NO" contentMode="scaleToFill" verticalHuggingPriority="750" progress="0.5" translatesAutoresizingMaskIntoConstraints="NO" id="5wK-IA-Ib9">
+                        <rect key="frame" x="44" y="56" width="378" height="2"/>
+                    </progressView>
                 </subviews>
                 <constraints>
+                    <constraint firstItem="5wK-IA-Ib9" firstAttribute="leading" secondItem="H2p-sc-9uM" secondAttribute="leadingMargin" id="0J8-LV-f7q"/>
+                    <constraint firstItem="5wK-IA-Ib9" firstAttribute="leading" secondItem="GPI-dm-jpO" secondAttribute="trailing" id="4rM-WA-mIP"/>
+                    <constraint firstItem="5wK-IA-Ib9" firstAttribute="top" secondItem="Pl9-iD-tUT" secondAttribute="bottom" id="8cZ-ve-k3G"/>
                     <constraint firstAttribute="bottomMargin" secondItem="NIe-JX-Owt" secondAttribute="bottom" constant="85" id="9wD-Tj-lBT"/>
+                    <constraint firstItem="NIe-JX-Owt" firstAttribute="leading" secondItem="Pl9-iD-tUT" secondAttribute="trailing" id="FbB-e9-hFa"/>
+                    <constraint firstItem="GPI-dm-jpO" firstAttribute="top" secondItem="UFX-SY-Ugz" secondAttribute="bottom" id="IoV-kD-sMg"/>
+                    <constraint firstItem="GPI-dm-jpO" firstAttribute="leading" secondItem="UFX-SY-Ugz" secondAttribute="leading" id="Iyt-K0-CxJ"/>
+                    <constraint firstAttribute="trailingMargin" secondItem="5wK-IA-Ib9" secondAttribute="trailing" id="MBd-vZ-Sqo"/>
+                    <constraint firstAttribute="bottomMargin" secondItem="GPI-dm-jpO" secondAttribute="bottom" id="RtJ-7c-hXN"/>
                     <constraint firstItem="NIe-JX-Owt" firstAttribute="centerY" secondItem="H2p-sc-9uM" secondAttribute="centerY" id="UHL-x5-ncf"/>
+                    <constraint firstItem="UFX-SY-Ugz" firstAttribute="width" secondItem="Pl9-iD-tUT" secondAttribute="width" id="Y8d-PB-S1B"/>
+                    <constraint firstItem="UFX-SY-Ugz" firstAttribute="height" secondItem="Pl9-iD-tUT" secondAttribute="height" id="YFk-n5-5yr"/>
+                    <constraint firstItem="Pl9-iD-tUT" firstAttribute="height" secondItem="H2p-sc-9uM" secondAttribute="height" multiplier="1:4" id="bqH-Oq-C8E"/>
+                    <constraint firstItem="5wK-IA-Ib9" firstAttribute="centerX" secondItem="H2p-sc-9uM" secondAttribute="centerX" id="f3N-kV-pfV"/>
+                    <constraint firstItem="UFX-SY-Ugz" firstAttribute="top" secondItem="Pl9-iD-tUT" secondAttribute="bottom" id="fg8-h0-dUb"/>
+                    <constraint firstAttribute="leadingMargin" secondItem="Pl9-iD-tUT" secondAttribute="leading" id="hfm-5X-vNH"/>
+                    <constraint firstItem="UFX-SY-Ugz" firstAttribute="leading" secondItem="Pl9-iD-tUT" secondAttribute="leading" id="jGp-59-JeC"/>
+                    <constraint firstItem="GPI-dm-jpO" firstAttribute="top" secondItem="Pl9-iD-tUT" secondAttribute="bottom" id="kLy-JB-bLd"/>
+                    <constraint firstItem="GPI-dm-jpO" firstAttribute="width" secondItem="H2p-sc-9uM" secondAttribute="width" multiplier="1:12" id="laT-QR-9zN"/>
+                    <constraint firstAttribute="topMargin" secondItem="Pl9-iD-tUT" secondAttribute="top" id="qIr-qh-T3c"/>
                     <constraint firstAttribute="trailingMargin" secondItem="NIe-JX-Owt" secondAttribute="trailing" constant="-8" id="tz3-9S-n6v"/>
+                    <constraint firstItem="5wK-IA-Ib9" firstAttribute="centerY" secondItem="GPI-dm-jpO" secondAttribute="centerY" id="yCn-Us-K6X"/>
                 </constraints>
                 <variation key="default">
                     <mask key="constraints">
+                        <exclude reference="kLy-JB-bLd"/>
                         <exclude reference="9wD-Tj-lBT"/>
+                        <exclude reference="0J8-LV-f7q"/>
+                        <exclude reference="8cZ-ve-k3G"/>
+                        <exclude reference="f3N-kV-pfV"/>
                     </mask>
                 </variation>
             </tableViewCellContentView>
             <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
-            <point key="canvasLocation" x="277" y="219"/>
+            <connections>
+                <outlet property="lblPercent" destination="GPI-dm-jpO" id="5Pb-LA-7Wj"/>
+                <outlet property="lblTotal" destination="UFX-SY-Ugz" id="ijH-h0-OE5"/>
+                <outlet property="lblType" destination="Pl9-iD-tUT" id="1D5-iY-4NE"/>
+                <outlet property="progressDone" destination="5wK-IA-Ib9" id="hOl-19-tGH"/>
+            </connections>
+            <point key="canvasLocation" x="294" y="212"/>
         </tableViewCell>
     </objects>
     <resources>

@@ -23,6 +23,8 @@
     NSLog(@"%@", newQuestion.subType);
     newQuestion.stimulus = jsonDict[@"stimulus"];
     newQuestion.stem = jsonDict[@"stem"];
+    newQuestion.tag = [NSNumber numberWithInteger:-1];
+    newQuestion.bookMark =[NSNumber numberWithInteger:0];
     newQuestion.rightAnswerIdx = [NSNumber numberWithInteger:[jsonDict[@"right_answer"] integerValue]];
     newQuestion.answers = [[NSSet alloc]init];
     

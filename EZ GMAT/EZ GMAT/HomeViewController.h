@@ -22,9 +22,9 @@
 @property (weak, nonatomic) IBOutlet MCPercentageDoughnutView *viewProgress;
 
 @property (weak, nonatomic) IBOutlet UICollectionView *clvQuestionPack;
-@property (weak, nonatomic) IBOutlet UIButton *btnReminder;
-@property (weak, nonatomic) IBOutlet UIButton *btnAboutUs;
+
 @property (weak, nonatomic) IBOutlet UIView *viewBottomer;
+@property (weak, nonatomic) IBOutlet UIView *viewTop;
 
 #pragma mark - Action
 -(IBAction)btnMoreDidTap:(id)sender;

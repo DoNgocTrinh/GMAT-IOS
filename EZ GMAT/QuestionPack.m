@@ -8,6 +8,7 @@
 
 #import "QuestionPack.h"
 #import "QuestionID.h"
+#import "Question.h"
 
 @implementation QuestionPack
 
@@ -19,11 +20,14 @@
     newQuestionPack.packID = jsonDict[@"_id"][@"oid"];
     newQuestionPack.available_time = jsonDict[@"available_time"];
     newQuestionPack.level = jsonDict[@"level"];
+    newQuestionPack.totalTimeToFinish = [NSNumber numberWithFloat:0.0];
     for (NSString *stringID in jsonDict[@"question_ids"]) {
-        QuestionID *questionID = [QuestionID createAnswerWithStringID:stringID andQuestionPack:newQuestionPack];
-        [newQuestionPack.questionIDs setByAddingObject:questionID];
+        NSPredicate *predicate = [NSPredicate predicateWithFormat:@"(questionId=%@)", stringID];
+        Question *newQuestion = [Question MR_findFirstWithPredicate:predicate];
+        [newQuestionPack addQuestionsObject:newQuestion]
+        ;
     }
-    //NSLog(@"Number of questions: %ld", newQuestionPack.questionIDs.count);
+    //   NSLog(@"Number of questions: %ld", newQuestionPack.questions.count);
     return newQuestionPack;
 }
 @end

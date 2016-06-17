@@ -110,7 +110,7 @@
     
     pageContentViewController.pageindex = index;
     pageContentViewController.question = [_questions objectAtIndex:index];
-    pageContentViewController.studentAnswer = [_studentAnswers objectAtIndex:index];
+   pageContentViewController.studentAnswer = [_studentAnswers objectAtIndex:index];
     return pageContentViewController;
 }
 
@@ -183,18 +183,17 @@
 
 -(void)handleTap:(UITapGestureRecognizer *)sender
 {
-    NSLog(@"dmm®");
     if (sender.state == UIGestureRecognizerStateEnded) {
         for(UIView *tagView in self.view.subviews){
             if([tagView isKindOfClass:[TagButtonView class]]){
                 [tagView removeFromSuperview];
                 tagView.hidden = YES;
-                NSLog(@"removed");
             }
         }
     }
 }
+
 -(void)share;{
-    [TagButtonView showShareInViewController:self andWithView:_viewPage];
+       [TagButtonView showShareInViewController:self andWithView:_viewPage];
 }
 @end

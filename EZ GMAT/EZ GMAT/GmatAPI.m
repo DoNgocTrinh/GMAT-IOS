@@ -138,7 +138,7 @@
             NSString *currentVersion = [NSString stringWithFormat:@"%@",[[NSUserDefaults standardUserDefaults] objectForKey:@"version"]];
             NSString *apiVersion = [NSString stringWithFormat:@"%@",responseObject[@"value"][0] ];
             
-            if (![currentVersion isEqualToString:apiVersion]) {
+           // if (![currentVersion isEqualToString:apiVersion]) {
                 NSURLSessionTask *datatask = [_httpSessionManager GET:kGmatAPIExploreQuestionPackUrl parameters:nil progress:nil success:^(NSURLSessionDataTask * _Nonnull task, id  _Nullable responseObject) {
                     if(completion && responseObject){
                         
@@ -166,7 +166,7 @@
             else{
                 NSLog(@"\n\nVERSION IS UPDATED!!\n\n");
             }
-        }
+       // }
         
     } failure:^(NSURLSessionDataTask * _Nullable task, NSError * _Nonnull error) {
         if (error) {
@@ -178,13 +178,13 @@
 - (void)exploreQuestionTypeWithCompletionBlock:(void(^)(NSArray *questionType))completion;
 {
     
-    [_httpSessionManager GET:kGmatAPIVersionUrl parameters:nil progress:nil success:^(NSURLSessionDataTask * _Nonnull task, id  _Nullable responseObject) {
-        
-        if (completion && responseObject) {
-            NSString *currentVersion = [NSString stringWithFormat:@"%@",[[NSUserDefaults standardUserDefaults] objectForKey:@"version"]];
-            NSString *apiVersion = [NSString stringWithFormat:@"%@",responseObject[@"value"][0] ];
-            
-            if ([currentVersion isEqualToString:apiVersion]) {
+//    [_httpSessionManager GET:kGmatAPIVersionUrl parameters:nil progress:nil success:^(NSURLSessionDataTask * _Nonnull task, id  _Nullable responseObject) {
+//        
+//        if (completion && responseObject) {
+//            NSString *currentVersion = [NSString stringWithFormat:@"%@",[[NSUserDefaults standardUserDefaults] objectForKey:@"version"]];
+//            NSString *apiVersion = [NSString stringWithFormat:@"%@",responseObject[@"value"][0] ];
+    
+            //if ([currentVersion isEqualToString:apiVersion]) {
                 NSURLSessionTask *datatask = [_httpSessionManager GET:kGmatAPIExploreQuestionTypeURL parameters:nil progress:nil success:^(NSURLSessionDataTask * _Nonnull task, id  _Nullable responseObject) {
                     if(completion && responseObject){
                         
@@ -209,17 +209,17 @@
                 }];
                 
                 [datatask resume];
-            }
-            else{
-                NSLog(@"\n\nVERSION IS UPDATED!!\n\n");
-            }
-        }
-        
-    } failure:^(NSURLSessionDataTask * _Nullable task, NSError * _Nonnull error) {
-        if (error) {
-            NSLog(@"error: %@",error);
-        }
-    }];
+            //}
+//            else{
+//                NSLog(@"\n\nVERSION IS UPDATED!!\n\n");
+//            }
+//        }
+//        
+//    } failure:^(NSURLSessionDataTask * _Nullable task, NSError * _Nonnull error) {
+//        if (error) {
+//            NSLog(@"error: %@",error);
+//        }
+//    }];
 }
 #pragma mark - Login
 -(void)postLoginWithUsername:(NSString*)username andPassword:(NSString*)password withCompletionBlock:(void(^)(int loginStatus))completion

@@ -19,5 +19,6 @@
 
 @property (weak, nonatomic) IBOutlet UILabel *lblGreen;
 @property (weak, nonatomic) IBOutlet UILabel *lblStar;
+@property (weak, nonatomic) IBOutlet MCPercentageDoughnutView *viewProgress;
 
 @end

@@ -16,8 +16,15 @@
 + (instancetype)createStudentAnswerWithChoiceIndex:(NSInteger)index andQuestion:(Question *)question;
 {
     
-    StudentAnswer *newStudentAnswer = [StudentAnswer MR_createEntity];
-    
+    NSPredicate *querry = [NSPredicate predicateWithFormat:@"question = %@", question];
+    StudentAnswer *foundStudentAnswer = [StudentAnswer MR_findFirstWithPredicate:querry];
+    StudentAnswer *newStudentAnswer;
+    if(foundStudentAnswer){
+        newStudentAnswer = foundStudentAnswer;
+    }
+    else{
+    newStudentAnswer = [StudentAnswer MR_createEntity];
+    }
     newStudentAnswer.question = question;
     newStudentAnswer.answerChoiceIdx = [NSNumber numberWithInteger:index];
     if ([question.rightAnswerIdx isEqualToNumber:newStudentAnswer.answerChoiceIdx]) {
