@@ -21,14 +21,14 @@
     if ([tagButtonView isKindOfClass:[TagButtonView class]]){
         [tagButtonView setFrame:frame];
         
-        tagButtonView.btnGrey.layer.cornerRadius = tagButtonView.btnGrey.frame.size.height/4;
-        tagButtonView.btnRed.layer.cornerRadius = tagButtonView.btnGrey.layer.cornerRadius;
-        tagButtonView.btnGreen.layer.cornerRadius = tagButtonView.btnGrey.layer.cornerRadius;
-        tagButtonView.btnYellow.layer.cornerRadius = tagButtonView.btnGrey.layer.cornerRadius;
-        tagButtonView.btnGrey.backgroundColor = kAppColor;
-        tagButtonView.btnRed.backgroundColor = tagButtonView.btnGrey.backgroundColor;
-        tagButtonView.btnGreen.backgroundColor = tagButtonView.btnGrey.backgroundColor;
-        tagButtonView.btnYellow.backgroundColor = tagButtonView.btnGrey.backgroundColor;
+        tagButtonView.btnStar.layer.cornerRadius = tagButtonView.btnStar.frame.size.height/4;
+        tagButtonView.btnRed.layer.cornerRadius = tagButtonView.btnStar.layer.cornerRadius;
+        tagButtonView.btnGreen.layer.cornerRadius = tagButtonView.btnStar.layer.cornerRadius;
+        tagButtonView.btnYellow.layer.cornerRadius = tagButtonView.btnStar.layer.cornerRadius;
+        tagButtonView.btnStar.backgroundColor = kAppColor;
+        tagButtonView.btnRed.backgroundColor = tagButtonView.btnStar.backgroundColor;
+        tagButtonView.btnGreen.backgroundColor = tagButtonView.btnStar.backgroundColor;
+        tagButtonView.btnYellow.backgroundColor = tagButtonView.btnStar.backgroundColor;
         
         return tagButtonView;
     }

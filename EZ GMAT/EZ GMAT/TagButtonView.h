@@ -9,7 +9,7 @@
 #import <UIKit/UIKit.h>
 
 @interface TagButtonView : UIView
-@property (weak, nonatomic) IBOutlet UIButton *btnGrey;
+@property (weak, nonatomic) IBOutlet UIButton *btnStar;
 @property (weak, nonatomic) IBOutlet UIButton *btnRed;
 @property (weak, nonatomic) IBOutlet UIButton *btnGreen;
 @property (weak, nonatomic) IBOutlet UIButton *btnYellow;

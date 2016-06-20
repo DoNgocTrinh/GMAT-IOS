@@ -31,7 +31,7 @@
                         <constraint firstAttribute="width" secondItem="MIM-Ft-w43" secondAttribute="height" id="DXA-Ff-Z8M"/>
                     </constraints>
                     <fontDescription key="fontDescription" name="HelveticaNeue" family="Helvetica Neue" pointSize="18"/>
-                    <state key="normal" image="grey"/>
+                    <state key="normal" image="star"/>
                 </button>
             </subviews>
             <constraints>
@@ -53,16 +53,16 @@
             </constraints>
             <connections>
                 <outlet property="btnGreen" destination="pj4-wC-WSa" id="Gag-t5-C3c"/>
-                <outlet property="btnGrey" destination="MIM-Ft-w43" id="SOH-1F-vJe"/>
                 <outlet property="btnRed" destination="iAu-un-jGS" id="HWh-EK-MGh"/>
+                <outlet property="btnStar" destination="MIM-Ft-w43" id="JTQ-Vb-myu"/>
                 <outlet property="btnYellow" destination="p3N-uo-IQV" id="1en-Dj-hm3"/>
             </connections>
         </view>
     </objects>
     <resources>
         <image name="green" width="33" height="18"/>
-        <image name="grey" width="33" height="18"/>
         <image name="red" width="33" height="18"/>
+        <image name="star" width="50" height="50"/>
         <image name="yellow" width="33" height="18"/>
     </resources>
 </document>

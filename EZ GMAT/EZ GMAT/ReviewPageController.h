@@ -15,11 +15,14 @@
 @property (weak, nonatomic) IBOutlet UIButton *btnTag;
 @property (weak, nonatomic) IBOutlet UIButton *btnNext;
 @property (weak, nonatomic) IBOutlet UIButton *btnBack;
+@property (strong, nonatomic) IBOutlet UIView *vTag;
 
 @property (strong, nonatomic) UIPageViewController *pageViewController;
 @property (nonatomic, assign) NSInteger currentPageIndex;
 @property (nonatomic, strong) NSArray *studentAnswers;
 @property (nonatomic, strong) NSArray *questions;
+@property (strong, nonatomic) IBOutlet UIImageView *imgStar;
+@property (strong, nonatomic) IBOutlet UIImageView *imgTag;
 
 //- (void)saveScreenshotToPhotosAlbum:(UIView *)view;
 

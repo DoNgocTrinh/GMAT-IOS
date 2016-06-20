@@ -17,14 +17,14 @@
 @property (weak, nonatomic) IBOutlet UIView *viewStar;
 @property(nonatomic, assign) NSInteger numberStar;
 @property (weak, nonatomic) IBOutlet UILabel *lblNumberQuestion;
-@property (strong, nonatomic) IBOutlet UIButton *btnLock;
+
 @property (strong, nonatomic) IBOutlet UILabel *lblNumberOfPack;
-@property (strong, nonatomic) IBOutlet UIButton *btnLocked;
-- (IBAction)btnLocked:(id)sender;
+
 
 -(void)drawStarWithLightStar:(NSInteger)numberLight andTotal:(NSInteger)totalStars;
 -(void)drawStarsWithLightNumber:(NSInteger)no_Light;
 
+@property (strong, nonatomic) IBOutlet UIImageView *imgLocked;
 
 
 @end

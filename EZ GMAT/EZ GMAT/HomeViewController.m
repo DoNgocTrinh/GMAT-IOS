@@ -85,20 +85,17 @@
     
     switch ([resultString compare:questionPack.available_time]) {
         case NSOrderedAscending:
-            cell.btnLock.hidden = NO;
-            cell.btnLocked.hidden = NO;
+            cell.imgLocked.hidden = NO;
             cell.lblNumberQuestion.text = @"";
             cell.viewHeader.backgroundColor = [UIColor grayColor];
             cell.viewFooter.backgroundColor = cell.viewHeader.backgroundColor;
             cell.contentView.backgroundColor = [cell.viewHeader.backgroundColor colorWithAlphaComponent:.8];
             break;
         case NSOrderedSame:
-            cell.btnLock.hidden = YES;
-            cell.btnLocked.hidden = YES;
+            cell.imgLocked.hidden = YES;
             break;
         case NSOrderedDescending:
-            cell.btnLock.hidden = YES;
-            cell.btnLocked.hidden = YES;
+            cell.imgLocked.hidden = YES;
             break;
     }
     
@@ -124,7 +121,11 @@
         } completion:^(BOOL finished) {
             
             if([Question MR_countOfEntities] != 0){
-                
+                if(cell.imgLocked.hidden == NO){
+                    UIAlertView *alert = [[UIAlertView alloc]initWithTitle:@"Lock" message:@"This pack is locked" delegate:self cancelButtonTitle:@"OK" otherButtonTitles: nil];
+                    [alert show];
+                    return;
+                }
                 QuestionPack *selectedQuestionPack = _questionPacks[indexPath.row];
                 
                 NSSortDescriptor *nameDescriptor = [NSSortDescriptor sortDescriptorWithKey:@"questionId" ascending:YES];

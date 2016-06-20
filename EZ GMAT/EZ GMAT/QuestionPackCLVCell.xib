@@ -1,9 +1,8 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="10116" systemVersion="15E65" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="10117" systemVersion="15D21" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES">
     <dependencies>
         <deployment identifier="iOS"/>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="10085"/>
-        <capability name="Aspect ratio constraints" minToolsVersion="5.1"/>
         <capability name="Constraints with non-1.0 multipliers" minToolsVersion="5.1"/>
     </dependencies>
     <objects>
@@ -79,42 +78,29 @@
                             <constraint firstItem="yR0-aB-J11" firstAttribute="centerX" secondItem="JFe-wR-Olg" secondAttribute="centerX" id="tHn-3K-HFu"/>
                         </constraints>
                     </view>
-                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="H8y-pm-G8i">
-                        <rect key="frame" x="140" y="125" width="125" height="125"/>
-                        <constraints>
-                            <constraint firstAttribute="width" secondItem="H8y-pm-G8i" secondAttribute="height" id="GYu-8J-1yB"/>
-                        </constraints>
-                        <state key="normal" image="Lock-1"/>
-                    </button>
-                    <button opaque="NO" contentMode="scaleToFill" misplaced="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Qd1-Kc-z4x">
-                        <rect key="frame" x="0.0" y="1" width="404" height="375"/>
-                        <connections>
-                            <action selector="btnLocked:" destination="gTV-IL-0wX" eventType="touchUpInside" id="9gx-Hk-Sip"/>
-                        </connections>
-                    </button>
+                    <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="Lock-1" translatesAutoresizingMaskIntoConstraints="NO" id="SrH-9b-7Hd">
+                        <rect key="frame" x="101" y="94" width="202" height="188"/>
+                        <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
+                    </imageView>
                 </subviews>
                 <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
             </view>
             <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
             <constraints>
                 <constraint firstItem="nYo-cn-zAz" firstAttribute="centerY" secondItem="gTV-IL-0wX" secondAttribute="centerY" id="4Q3-3E-KAR"/>
-                <constraint firstItem="Qd1-Kc-z4x" firstAttribute="height" secondItem="nYo-cn-zAz" secondAttribute="height" id="CVm-f6-KiA"/>
-                <constraint firstItem="Qd1-Kc-z4x" firstAttribute="width" secondItem="nYo-cn-zAz" secondAttribute="width" id="DP3-yq-RsW"/>
-                <constraint firstItem="H8y-pm-G8i" firstAttribute="centerY" secondItem="gTV-IL-0wX" secondAttribute="centerY" id="DpD-8M-gfU"/>
+                <constraint firstItem="SrH-9b-7Hd" firstAttribute="centerY" secondItem="gTV-IL-0wX" secondAttribute="centerY" id="BzE-3s-sTM"/>
                 <constraint firstItem="nYo-cn-zAz" firstAttribute="height" secondItem="gTV-IL-0wX" secondAttribute="height" id="ESb-cA-6TG"/>
-                <constraint firstItem="H8y-pm-G8i" firstAttribute="width" secondItem="gTV-IL-0wX" secondAttribute="width" id="J62-bN-7XV"/>
                 <constraint firstAttribute="bottom" secondItem="oNp-Sz-Jkg" secondAttribute="bottom" id="Jxc-R8-kB2"/>
-                <constraint firstItem="Qd1-Kc-z4x" firstAttribute="centerY" secondItem="nYo-cn-zAz" secondAttribute="centerY" id="KoB-eQ-aEc"/>
                 <constraint firstItem="oNp-Sz-Jkg" firstAttribute="height" secondItem="JFe-wR-Olg" secondAttribute="height" id="QOQ-a7-uA9"/>
+                <constraint firstItem="SrH-9b-7Hd" firstAttribute="centerX" secondItem="gTV-IL-0wX" secondAttribute="centerX" id="SPd-2R-U52"/>
                 <constraint firstItem="oNp-Sz-Jkg" firstAttribute="leading" secondItem="JFe-wR-Olg" secondAttribute="leading" id="VM3-8S-ta3"/>
                 <constraint firstItem="JFe-wR-Olg" firstAttribute="top" secondItem="gTV-IL-0wX" secondAttribute="top" id="cgU-7z-QPg"/>
                 <constraint firstItem="JFe-wR-Olg" firstAttribute="height" secondItem="gTV-IL-0wX" secondAttribute="height" multiplier="1:5" id="cm9-Wc-JC6"/>
                 <constraint firstItem="JFe-wR-Olg" firstAttribute="width" secondItem="gTV-IL-0wX" secondAttribute="width" id="h2Q-zI-4u0"/>
                 <constraint firstItem="nYo-cn-zAz" firstAttribute="centerX" secondItem="gTV-IL-0wX" secondAttribute="centerX" id="hQj-m5-Tfp"/>
-                <constraint firstItem="Qd1-Kc-z4x" firstAttribute="centerX" secondItem="nYo-cn-zAz" secondAttribute="centerX" id="k9l-eC-3Tr"/>
+                <constraint firstItem="SrH-9b-7Hd" firstAttribute="width" secondItem="gTV-IL-0wX" secondAttribute="width" multiplier="2:4" id="iho-cA-g1J"/>
+                <constraint firstItem="SrH-9b-7Hd" firstAttribute="height" secondItem="gTV-IL-0wX" secondAttribute="height" multiplier="2:4" id="jFg-Ir-oAj"/>
                 <constraint firstItem="nYo-cn-zAz" firstAttribute="width" secondItem="gTV-IL-0wX" secondAttribute="width" id="kKq-qP-9hG"/>
-                <constraint firstItem="H8y-pm-G8i" firstAttribute="height" secondItem="gTV-IL-0wX" secondAttribute="height" multiplier="1:3" id="o7T-yP-eDQ"/>
-                <constraint firstItem="H8y-pm-G8i" firstAttribute="centerX" secondItem="gTV-IL-0wX" secondAttribute="centerX" id="qG1-I6-P7C"/>
                 <constraint firstItem="oNp-Sz-Jkg" firstAttribute="width" secondItem="JFe-wR-Olg" secondAttribute="width" id="qQH-WH-t9X"/>
                 <constraint firstItem="JFe-wR-Olg" firstAttribute="centerX" secondItem="gTV-IL-0wX" secondAttribute="centerX" id="toI-yO-HTa"/>
                 <constraint firstItem="JFe-wR-Olg" firstAttribute="leading" secondItem="gTV-IL-0wX" secondAttribute="leading" id="u9b-er-Ek0"/>
@@ -123,12 +109,10 @@
             <variation key="default">
                 <mask key="constraints">
                     <exclude reference="u9b-er-Ek0"/>
-                    <exclude reference="J62-bN-7XV"/>
                 </mask>
             </variation>
             <connections>
-                <outlet property="btnLock" destination="H8y-pm-G8i" id="TVC-Ok-UUy"/>
-                <outlet property="btnLocked" destination="Qd1-Kc-z4x" id="gSY-Xa-cej"/>
+                <outlet property="imgLocked" destination="SrH-9b-7Hd" id="cZE-Xf-ON9"/>
                 <outlet property="lblAvailableTime" destination="yR0-aB-J11" id="09X-k6-dII"/>
                 <outlet property="lblNumberOfPack" destination="Wao-rr-UoO" id="fM8-fv-kOg"/>
                 <outlet property="lblNumberQuestion" destination="nYo-cn-zAz" id="QRx-XZ-y7z"/>
@@ -140,6 +124,6 @@
         </collectionViewCell>
     </objects>
     <resources>
-        <image name="Lock-1" width="128" height="128"/>
+        <image name="Lock-1" width="50" height="50"/>
     </resources>
 </document>
