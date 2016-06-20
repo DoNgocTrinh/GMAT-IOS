@@ -8,9 +8,10 @@
 
 #import <UIKit/UIKit.h>
 #import "QuestionSubType.h"
+#import "QuestionType.h"
 
 @interface DetailSummaryCell : UITableViewCell
 @property (weak, nonatomic) IBOutlet UILabel *lblSubType;
 @property (weak, nonatomic) IBOutlet UILabel *lblTotal;
--(void)cellWithSubtype:(QuestionSubType *)subtype;
+-(void)cellWithType:(QuestionType *) type andSubtype:(QuestionSubType *)subtype;
 @end

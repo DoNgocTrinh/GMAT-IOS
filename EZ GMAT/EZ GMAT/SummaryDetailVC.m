@@ -54,24 +54,29 @@
     for(QuestionSubType *subtype in sortedSubTypes){
         [listSubtypes addObject:subtype.detail];
         
-        NSPredicate *querry = [NSPredicate predicateWithFormat:@"question.subType = %@",subtype.code];
-        NSArray *studentAnswers = [StudentAnswer MR_findAllWithPredicate:querry];
-        [listDids addObject:[NSNumber numberWithUnsignedInteger: studentAnswers.count]];
-        NSLog(@"did: %lu", studentAnswers.count);
-        querry = [NSPredicate predicateWithFormat:@"question.subType = %@ AND answerChoiceIdx = %@", subtype.code, [NSNumber numberWithInteger:1]];
-        studentAnswers = [StudentAnswer MR_findAllWithPredicate:querry];
-        NSLog(@"true: %lu", studentAnswers.count);
-        [listTrues addObject:[NSNumber numberWithUnsignedInteger:0]];
+        NSPredicate *quer = [NSPredicate predicateWithFormat:@"type = %@ and subType = %@", _type.code,subtype.code];
+        NSUInteger count = [Question MR_countOfEntitiesWithPredicate:quer];
+        if(count>0){
+            NSPredicate *querry = [NSPredicate predicateWithFormat:@"question.type = %@ and question.subType = %@",_type.code,subtype.code];
+            NSArray *studentAnswers = [StudentAnswer MR_findAllWithPredicate:querry];
+            [listDids addObject:[NSNumber numberWithFloat:(float)studentAnswers.count/count*100]];
+            
+            querry = [NSPredicate predicateWithFormat:@"question.type = %@ and question.subType = %@ and result = %d", _type.code,subtype.code, 1];
+            studentAnswers = [StudentAnswer MR_findAllWithPredicate:querry];
+            [listTrues addObject:[NSNumber numberWithFloat:(float)studentAnswers.count/count*100]];
+        }
+        else{
+            [listDids addObject:[NSNumber numberWithFloat:0]];
+            [listTrues addObject:[NSNumber numberWithFloat:0]];
+        }
     }
-    
-    
     // Build chart data
-    TWRDataSet *dataSet1 = [[TWRDataSet alloc] initWithDataPoints: listTrues fillColor:[UIColor orangeColor]                                                       strokeColor:[UIColor orangeColor]];
+    TWRDataSet *dataSet1 = [[TWRDataSet alloc] initWithDataPoints: listTrues fillColor:[UIColor colorWithRed:180.0/255 green:255.0/255 blue:136.0/255 alpha:1]                                                       strokeColor:[UIColor colorWithRed:180.0/255 green:255.0/255 blue:136.0/255 alpha:1]];
     
-    TWRDataSet *dataSet2 = [[TWRDataSet alloc] initWithDataPoints:listDids fillColor:[UIColor redColor]
-                                                      strokeColor:[UIColor redColor]];
+    TWRDataSet *dataSet2 = [[TWRDataSet alloc] initWithDataPoints:listDids fillColor:[UIColor colorWithRed:51.0/255 green:192.0/255 blue:152.0/255 alpha:1]
+                                                      strokeColor:[UIColor colorWithRed:51.0/255 green:192.0/255 blue:152.0/255 alpha:1]];
     
-   // NSArray *labels = [NSArray ar];
+    // NSArray *labels = [NSArray ar];
     TWRBarChart *bar = [[TWRBarChart alloc] initWithLabels:listSubtypes
                                                   dataSets:@[dataSet1, dataSet2]
                                                   animated:YES];
@@ -89,7 +94,7 @@
         cell = [nib objectAtIndex:0];
     }
     
-    [cell cellWithSubtype:(QuestionSubType *)sortedSubTypes[indexPath.row]];
+    [cell cellWithType:_type andSubtype:(QuestionSubType *)sortedSubTypes[indexPath.row]];
     
     return cell;
 }
@@ -105,7 +110,7 @@
     NSSortDescriptor *nameDescriptor = [NSSortDescriptor sortDescriptorWithKey:@"question.questionId" ascending:YES];
     
     QuestionSubType *selectedSubType = sortedSubTypes[indexPath.row];
-    NSPredicate *querry = [NSPredicate predicateWithFormat:@"question.subType = %@",selectedSubType.code];
+    NSPredicate *querry = [NSPredicate predicateWithFormat:@"question.type = %@ and question.subType = %@",_type.code,selectedSubType.code];
     NSArray *studentAnswers = [StudentAnswer MR_findAllWithPredicate:querry];
     
     if(studentAnswers.count<= 0){

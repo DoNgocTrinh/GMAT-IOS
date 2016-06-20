@@ -7,7 +7,6 @@
 //
 
 #import "DetailSummaryCell.h"
-#import "QuestionSubType.h"
 #import "StudentAnswer.h"
 
 @implementation DetailSummaryCell
@@ -18,17 +17,18 @@
 
 - (void)setSelected:(BOOL)selected animated:(BOOL)animated {
     [super setSelected:selected animated:animated];
-
+    
     // Configure the view for the selected state
 }
--(void)cellWithSubtype:(QuestionSubType *)subtype;{
+-(void)cellWithType:(QuestionType *) type andSubtype:(QuestionSubType *)subtype;{
+    
     _lblSubType.text = [NSString stringWithFormat:@" %@", subtype.detail];
     
     //find question have  subtype ...
-    NSPredicate *querry = [NSPredicate predicateWithFormat:@"subType = %@", subtype.code];
+    NSPredicate *querry = [NSPredicate predicateWithFormat:@"type = %@ and subType = %@", type.code,subtype.code];
     NSUInteger count = [Question MR_countOfEntitiesWithPredicate:querry];
     
-     _lblTotal.text = [NSString stringWithFormat:@"Total question : %ld", count];
+    _lblTotal.text = [NSString stringWithFormat:@"Total question : %ld", count];
     
 }
 @end

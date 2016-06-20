@@ -284,6 +284,7 @@
     if(questionDB){
         questionDB.bookMark = [NSNumber numberWithInteger:(i%2)];
         NSLog(@"bookMark of question %ld", [questionDB.bookMark integerValue]);
+        [self checkTagForQuestion:questionDB];
     }
     [self removeTagView];
     
