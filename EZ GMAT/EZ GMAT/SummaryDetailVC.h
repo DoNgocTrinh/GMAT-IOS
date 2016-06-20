@@ -7,7 +7,12 @@
 //
 
 #import <UIKit/UIKit.h>
+#import "QuestionType.h"
+#import "TWRCharts/TWRChart.h"
 
-@interface SummaryDetailVC : UIViewController
+@interface SummaryDetailVC : UIViewController<UITableViewDelegate, UITableViewDataSource>
+@property (weak, nonatomic) IBOutlet UITableView *tbvSubtype;
+@property (weak, nonatomic) IBOutlet UIView *graphView;
 
+@property QuestionType *type;
 @end

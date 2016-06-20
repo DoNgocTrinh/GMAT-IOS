@@ -353,7 +353,7 @@
     currentDate =[[NSDate date] dateByAddingTimeInterval:startTimeInterval];
     timeInterval  = [currentDate timeIntervalSinceDate:startDate];
     //reformat time from TimeInterval
-    NSLog(@"Time interval : %f", timeInterval);
+    //NSLog(@"Time interval : %f", timeInterval);
     timerDate = [NSDate dateWithTimeIntervalSince1970:timeInterval];
     
     time = [dateFomatter stringFromDate:timerDate];

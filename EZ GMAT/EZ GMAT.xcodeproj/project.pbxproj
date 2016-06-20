@@ -125,6 +125,17 @@
 		E83235071D0638C300314B74 /* katex.min.css in Resources */ = {isa = PBXBuildFile; fileRef = E83234E21D0638C300314B74 /* katex.min.css */; };
 		E83235081D0638C300314B74 /* katex.min.js in Resources */ = {isa = PBXBuildFile; fileRef = E83234E31D0638C300314B74 /* katex.min.js */; };
 		E83235091D0638C300314B74 /* README.md in Sources */ = {isa = PBXBuildFile; fileRef = E83234E41D0638C300314B74 /* README.md */; };
+		E84492DE1D17FE2000DB167C /* ChartNew.min.js in Resources */ = {isa = PBXBuildFile; fileRef = E84492CB1D17FE2000DB167C /* ChartNew.min.js */; };
+		E84492DF1D17FE2000DB167C /* chartView.html in Resources */ = {isa = PBXBuildFile; fileRef = E84492CC1D17FE2000DB167C /* chartView.html */; };
+		E84492E01D17FE2000DB167C /* TWRBarChart.m in Sources */ = {isa = PBXBuildFile; fileRef = E84492CE1D17FE2000DB167C /* TWRBarChart.m */; };
+		E84492E11D17FE2000DB167C /* TWRChartBuilder.m in Sources */ = {isa = PBXBuildFile; fileRef = E84492D11D17FE2000DB167C /* TWRChartBuilder.m */; };
+		E84492E21D17FE2000DB167C /* TWRChartView.m in Sources */ = {isa = PBXBuildFile; fileRef = E84492D31D17FE2000DB167C /* TWRChartView.m */; };
+		E84492E31D17FE2000DB167C /* TWRCircularChart.m in Sources */ = {isa = PBXBuildFile; fileRef = E84492D51D17FE2000DB167C /* TWRCircularChart.m */; };
+		E84492E41D17FE2000DB167C /* TWRDataSet+Strings.m in Sources */ = {isa = PBXBuildFile; fileRef = E84492D71D17FE2000DB167C /* TWRDataSet+Strings.m */; };
+		E84492E51D17FE2000DB167C /* TWRDataSet.m in Sources */ = {isa = PBXBuildFile; fileRef = E84492D91D17FE2000DB167C /* TWRDataSet.m */; };
+		E84492E61D17FE2000DB167C /* TWRLineChart.m in Sources */ = {isa = PBXBuildFile; fileRef = E84492DB1D17FE2000DB167C /* TWRLineChart.m */; };
+		E84492E71D17FE2000DB167C /* UIColor+HexString.m in Sources */ = {isa = PBXBuildFile; fileRef = E84492DD1D17FE2000DB167C /* UIColor+HexString.m */; };
+		E8678C401D169FA900F7BC76 /* DetailSummaryCell.m in Sources */ = {isa = PBXBuildFile; fileRef = E8678C3F1D169FA900F7BC76 /* DetailSummaryCell.m */; };
 		E87D48FE1D1425F5002BB700 /* Question+CoreDataProperties.m in Sources */ = {isa = PBXBuildFile; fileRef = E87D48FD1D1425F5002BB700 /* Question+CoreDataProperties.m */; };
 		E87D49011D142656002BB700 /* QuestionPack+CoreDataProperties.m in Sources */ = {isa = PBXBuildFile; fileRef = E87D49001D142656002BB700 /* QuestionPack+CoreDataProperties.m */; };
 		E87D493D1D146AF1002BB700 /* SummaryDetailVC.m in Sources */ = {isa = PBXBuildFile; fileRef = E87D493C1D146AF1002BB700 /* SummaryDetailVC.m */; };
@@ -397,7 +408,28 @@
 		E83234E21D0638C300314B74 /* katex.min.css */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.css; path = katex.min.css; sourceTree = "<group>"; };
 		E83234E31D0638C300314B74 /* katex.min.js */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.javascript; path = katex.min.js; sourceTree = "<group>"; };
 		E83234E41D0638C300314B74 /* README.md */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = net.daringfireball.markdown; path = README.md; sourceTree = "<group>"; };
+		E84492CB1D17FE2000DB167C /* ChartNew.min.js */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.javascript; path = ChartNew.min.js; sourceTree = "<group>"; };
+		E84492CC1D17FE2000DB167C /* chartView.html */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.html; path = chartView.html; sourceTree = "<group>"; };
+		E84492CD1D17FE2000DB167C /* TWRBarChart.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TWRBarChart.h; sourceTree = "<group>"; };
+		E84492CE1D17FE2000DB167C /* TWRBarChart.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TWRBarChart.m; sourceTree = "<group>"; };
+		E84492CF1D17FE2000DB167C /* TWRChart.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TWRChart.h; sourceTree = "<group>"; };
+		E84492D01D17FE2000DB167C /* TWRChartBuilder.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TWRChartBuilder.h; sourceTree = "<group>"; };
+		E84492D11D17FE2000DB167C /* TWRChartBuilder.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TWRChartBuilder.m; sourceTree = "<group>"; };
+		E84492D21D17FE2000DB167C /* TWRChartView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TWRChartView.h; sourceTree = "<group>"; };
+		E84492D31D17FE2000DB167C /* TWRChartView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TWRChartView.m; sourceTree = "<group>"; };
+		E84492D41D17FE2000DB167C /* TWRCircularChart.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TWRCircularChart.h; sourceTree = "<group>"; };
+		E84492D51D17FE2000DB167C /* TWRCircularChart.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TWRCircularChart.m; sourceTree = "<group>"; };
+		E84492D61D17FE2000DB167C /* TWRDataSet+Strings.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "TWRDataSet+Strings.h"; sourceTree = "<group>"; };
+		E84492D71D17FE2000DB167C /* TWRDataSet+Strings.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "TWRDataSet+Strings.m"; sourceTree = "<group>"; };
+		E84492D81D17FE2000DB167C /* TWRDataSet.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TWRDataSet.h; sourceTree = "<group>"; };
+		E84492D91D17FE2000DB167C /* TWRDataSet.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TWRDataSet.m; sourceTree = "<group>"; };
+		E84492DA1D17FE2000DB167C /* TWRLineChart.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TWRLineChart.h; sourceTree = "<group>"; };
+		E84492DB1D17FE2000DB167C /* TWRLineChart.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TWRLineChart.m; sourceTree = "<group>"; };
+		E84492DC1D17FE2000DB167C /* UIColor+HexString.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIColor+HexString.h"; sourceTree = "<group>"; };
+		E84492DD1D17FE2000DB167C /* UIColor+HexString.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIColor+HexString.m"; sourceTree = "<group>"; };
 		E847D6201CFEE6750082036A /* PrefixHeader.pch */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PrefixHeader.pch; sourceTree = "<group>"; };
+		E8678C3E1D169FA900F7BC76 /* DetailSummaryCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DetailSummaryCell.h; sourceTree = "<group>"; };
+		E8678C3F1D169FA900F7BC76 /* DetailSummaryCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DetailSummaryCell.m; sourceTree = "<group>"; };
 		E87D48FC1D1425F5002BB700 /* Question+CoreDataProperties.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "Question+CoreDataProperties.h"; sourceTree = "<group>"; };
 		E87D48FD1D1425F5002BB700 /* Question+CoreDataProperties.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "Question+CoreDataProperties.m"; sourceTree = "<group>"; };
 		E87D48FF1D142656002BB700 /* QuestionPack+CoreDataProperties.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "QuestionPack+CoreDataProperties.h"; sourceTree = "<group>"; };
@@ -623,6 +655,7 @@
 		E81A7E311CF75BCD00BDE293 /* Library */ = {
 			isa = PBXGroup;
 			children = (
+				E84492CA1D17FE2000DB167C /* TWRCharts */,
 				E83234BE1D0638C200314B74 /* katex */,
 				E81A7F101CF7743400BDE293 /* GMAT API */,
 				E81A7E3E1CF772CB00BDE293 /* AFNetworking */,
@@ -968,6 +1001,32 @@
 			path = fonts;
 			sourceTree = "<group>";
 		};
+		E84492CA1D17FE2000DB167C /* TWRCharts */ = {
+			isa = PBXGroup;
+			children = (
+				E84492CB1D17FE2000DB167C /* ChartNew.min.js */,
+				E84492CC1D17FE2000DB167C /* chartView.html */,
+				E84492CD1D17FE2000DB167C /* TWRBarChart.h */,
+				E84492CE1D17FE2000DB167C /* TWRBarChart.m */,
+				E84492CF1D17FE2000DB167C /* TWRChart.h */,
+				E84492D01D17FE2000DB167C /* TWRChartBuilder.h */,
+				E84492D11D17FE2000DB167C /* TWRChartBuilder.m */,
+				E84492D21D17FE2000DB167C /* TWRChartView.h */,
+				E84492D31D17FE2000DB167C /* TWRChartView.m */,
+				E84492D41D17FE2000DB167C /* TWRCircularChart.h */,
+				E84492D51D17FE2000DB167C /* TWRCircularChart.m */,
+				E84492D61D17FE2000DB167C /* TWRDataSet+Strings.h */,
+				E84492D71D17FE2000DB167C /* TWRDataSet+Strings.m */,
+				E84492D81D17FE2000DB167C /* TWRDataSet.h */,
+				E84492D91D17FE2000DB167C /* TWRDataSet.m */,
+				E84492DA1D17FE2000DB167C /* TWRLineChart.h */,
+				E84492DB1D17FE2000DB167C /* TWRLineChart.m */,
+				E84492DC1D17FE2000DB167C /* UIColor+HexString.h */,
+				E84492DD1D17FE2000DB167C /* UIColor+HexString.m */,
+			);
+			path = TWRCharts;
+			sourceTree = "<group>";
+		};
 		E847D61E1CFEE5450082036A /* PrefixHeader */ = {
 			isa = PBXGroup;
 			children = (
@@ -1049,6 +1108,8 @@
 				E8FA59461D09C5E100AA8280 /* SummaryCell.h */,
 				E8FA59471D09C5E100AA8280 /* SummaryCell.m */,
 				E8FA59481D09C5E100AA8280 /* SummaryCell.xib */,
+				E8678C3E1D169FA900F7BC76 /* DetailSummaryCell.h */,
+				E8678C3F1D169FA900F7BC76 /* DetailSummaryCell.m */,
 			);
 			name = NormalCell;
 			sourceTree = "<group>";
@@ -1259,6 +1320,7 @@
 				E83235051D0638C300314B74 /* KaTeX_Size4-Regular.woff in Resources */,
 				E83234ED1D0638C300314B74 /* KaTeX_Main-Italic.woff in Resources */,
 				E83234E51D0638C300314B74 /* KaTeX_AMS-Regular.eot in Resources */,
+				E84492DE1D17FE2000DB167C /* ChartNew.min.js in Resources */,
 				E83234F21D0638C300314B74 /* KaTeX_Math-BoldItalic.ttf in Resources */,
 				E8FD54B51CF8729F008647E6 /* QuickReviewAnswerCell.xib in Resources */,
 				E83234FD1D0638C300314B74 /* KaTeX_Size2-Regular.eot in Resources */,
@@ -1291,6 +1353,7 @@
 				E8FD54B71CF8729F008647E6 /* ReviewAnswerCell.xib in Resources */,
 				E83234E81D0638C300314B74 /* KaTeX_Main-Bold.eot in Resources */,
 				E83234F41D0638C300314B74 /* KaTeX_Math-Italic.eot in Resources */,
+				E84492DF1D17FE2000DB167C /* chartView.html in Resources */,
 				E8FA594A1D09C5E100AA8280 /* SummaryCell.xib in Resources */,
 				E8FD54C01CF8733A008647E6 /* CustomTitleView.xib in Resources */,
 				E83234EB1D0638C300314B74 /* KaTeX_Main-Italic.eot in Resources */,
@@ -1341,7 +1404,9 @@
 				E808F21E1D08297D00559BAD /* LoginViewController.m in Sources */,
 				E8FD54AC1CF8729F008647E6 /* QuestionPackCell.m in Sources */,
 				E81A7EE21CF772CB00BDE293 /* NSRelationshipDescription+MagicalDataImport.m in Sources */,
+				E84492E71D17FE2000DB167C /* UIColor+HexString.m in Sources */,
 				E81A7EF91CF772CB00BDE293 /* MMDrawerController.m in Sources */,
+				E8678C401D169FA900F7BC76 /* DetailSummaryCell.m in Sources */,
 				E81A7ED21CF772CB00BDE293 /* AFSecurityPolicy.m in Sources */,
 				E8FA65461CFDD85300D64D70 /* QuestionViewController.m in Sources */,
 				E81A7F071CF772CB00BDE293 /* UIActivityIndicatorView+AFNetworking.m in Sources */,
@@ -1354,6 +1419,7 @@
 				E80565001D07FFAC00542BB7 /* TagButtonView.m in Sources */,
 				E81A7F041CF772CB00BDE293 /* AFAutoPurgingImageCache.m in Sources */,
 				E81A7ED41CF772CB00BDE293 /* AFURLResponseSerialization.m in Sources */,
+				E84492E51D17FE2000DB167C /* TWRDataSet.m in Sources */,
 				E8FD54B21CF8729F008647E6 /* QuickReviewCell.m in Sources */,
 				E81A7EE31CF772CB00BDE293 /* NSString+MagicalDataImport.m in Sources */,
 				E8FD54931CF8665E008647E6 /* QuestionPack.m in Sources */,
@@ -1376,6 +1442,7 @@
 				E8FD54AE1CF8729F008647E6 /* TextCell.m in Sources */,
 				E81A7ED61CF772CB00BDE293 /* Constant.m in Sources */,
 				E81A7E021CF73EA900BDE293 /* AppDelegate.m in Sources */,
+				E84492E31D17FE2000DB167C /* TWRCircularChart.m in Sources */,
 				E8FD54951CF8665E008647E6 /* Answer.m in Sources */,
 				E81A7EE11CF772CB00BDE293 /* NSObject+MagicalDataImport.m in Sources */,
 				E81A7EE81CF772CB00BDE293 /* NSManagedObject+MagicalRequests.m in Sources */,
@@ -1384,6 +1451,7 @@
 				E87D49011D142656002BB700 /* QuestionPack+CoreDataProperties.m in Sources */,
 				E81A7EF81CF772CB00BDE293 /* MMDrawerBarButtonItem.m in Sources */,
 				E80EBC3B1D12F5EF0046001B /* QuestionPack+CoreDataProperties.m in Sources */,
+				E84492E01D17FE2000DB167C /* TWRBarChart.m in Sources */,
 				E81A7EF51CF772CB00BDE293 /* MagicalRecord+Setup.m in Sources */,
 				E81A7F091CF772CB00BDE293 /* UIImageView+AFNetworking.m in Sources */,
 				E8FA593A1D09B36400AA8280 /* QuestionSubType+CoreDataProperties.m in Sources */,
@@ -1397,6 +1465,7 @@
 				E81A7EDC1CF772CB00BDE293 /* HexColors.m in Sources */,
 				E81A7ED01CF772CB00BDE293 /* AFHTTPSessionManager.m in Sources */,
 				E81A7ED51CF772CB00BDE293 /* AFURLSessionManager.m in Sources */,
+				E84492E61D17FE2000DB167C /* TWRLineChart.m in Sources */,
 				E83235091D0638C300314B74 /* README.md in Sources */,
 				E8FD54911CF8665E008647E6 /* StudentAnswer.m in Sources */,
 				E8FA65431CFDBB2A00D64D70 /* ReadingViewController.m in Sources */,
@@ -1410,6 +1479,7 @@
 				E81A7F021CF772CB00BDE293 /* SCLTimerDisplay.m in Sources */,
 				E81A7E361CF75BFF00BDE293 /* HomeViewController.m in Sources */,
 				E81A7F0C1CF772CB00BDE293 /* UIWebView+AFNetworking.m in Sources */,
+				E84492E21D17FE2000DB167C /* TWRChartView.m in Sources */,
 				E8FD54771CF86636008647E6 /* GMATDatabase.xcdatamodel in Sources */,
 				E8FD54941CF8665E008647E6 /* Answer+CoreDataProperties.m in Sources */,
 				E8FA593B1D09B36400AA8280 /* QuestionType+CoreDataProperties.m in Sources */,
@@ -1417,8 +1487,10 @@
 				E8FD54B61CF8729F008647E6 /* ReviewAnswerCell.m in Sources */,
 				E81A7EFF1CF772CB00BDE293 /* SCLButton.m in Sources */,
 				E8FA59351D09B15300AA8280 /* QuestionSubType.m in Sources */,
+				E84492E11D17FE2000DB167C /* TWRChartBuilder.m in Sources */,
 				E81A7F061CF772CB00BDE293 /* AFNetworkActivityIndicatorManager.m in Sources */,
 				E81A7F001CF772CB00BDE293 /* SCLSwitchView.m in Sources */,
+				E84492E41D17FE2000DB167C /* TWRDataSet+Strings.m in Sources */,
 				E8FD54B01CF8729F008647E6 /* AnswerCell.m in Sources */,
 				E81A7F0A1CF772CB00BDE293 /* UIProgressView+AFNetworking.m in Sources */,
 				E81A7F081CF772CB00BDE293 /* UIButton+AFNetworking.m in Sources */,
@@ -1581,7 +1653,7 @@
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				GCC_PREFIX_HEADER = "EZ GMAT/PrefixHeader.pch";
 				INFOPLIST_FILE = "EZ GMAT/Info.plist";
-				IPHONEOS_DEPLOYMENT_TARGET = 7.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 7.1;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = njhkkj;
 				PRODUCT_NAME = "$(TARGET_NAME)";
@@ -1598,7 +1670,7 @@
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				GCC_PREFIX_HEADER = "EZ GMAT/PrefixHeader.pch";
 				INFOPLIST_FILE = "EZ GMAT/Info.plist";
-				IPHONEOS_DEPLOYMENT_TARGET = 7.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 7.1;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = njhkkj;
 				PRODUCT_NAME = "$(TARGET_NAME)";
