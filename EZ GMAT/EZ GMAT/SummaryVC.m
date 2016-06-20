@@ -75,31 +75,35 @@
 #pragma mark - TableView Delegate
 -(void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath{
     SummaryDetailVC *detailVC = [self.storyboard instantiateViewControllerWithIdentifier:@"SummaryDetailVC"];
+    QuestionType *selectedType = listTypes[indexPath.row];
+
+    detailVC.type = selectedType;
+    
     [self.navigationController pushViewController:detailVC animated:YES];
 }
 #pragma mark - tag counter
 -(void)countTag;{
     NSPredicate *querry = [NSPredicate predicateWithFormat:@"self.tag = %@", [NSNumber numberWithInteger:-1]];
     NSArray *questionUntag = [Question MR_findAllWithPredicate:querry];
-    _lblUntag.text = [NSString stringWithFormat:@" %d", questionUntag.count];
+    _lblUntag.text = [NSString stringWithFormat:@" %lu", (unsigned long)questionUntag.count];
     
     querry = [NSPredicate predicateWithFormat:@"self.tag = %@", [NSNumber numberWithInteger:0]];
     questionUntag = [Question MR_findAllWithPredicate:querry];
-    _lblStar.text = [NSString stringWithFormat:@" %d", questionUntag.count];
+    _lblStar.text = [NSString stringWithFormat:@" %lu", (unsigned long)questionUntag.count];
     
     
     querry = [NSPredicate predicateWithFormat:@"self.tag = %@", [NSNumber numberWithInteger:1]];
     questionUntag = [Question MR_findAllWithPredicate:querry];
-    _lblRed.text = [NSString stringWithFormat:@" %d", questionUntag.count];
+    _lblRed.text = [NSString stringWithFormat:@" %lu", (unsigned long)questionUntag.count];
     
     
     querry = [NSPredicate predicateWithFormat:@"self.tag = %@", [NSNumber numberWithInteger:2]];
     questionUntag = [Question MR_findAllWithPredicate:querry];
-    _lblGreen.text = [NSString stringWithFormat:@" %d", questionUntag.count];
+    _lblGreen.text = [NSString stringWithFormat:@" %lu", (unsigned long)questionUntag.count];
     
     querry = [NSPredicate predicateWithFormat:@"self.tag = %@", [NSNumber numberWithInteger:3]];
     questionUntag = [Question MR_findAllWithPredicate:querry];
-    _lblYellow.text = [NSString stringWithFormat:@" %d", questionUntag.count];
+    _lblYellow.text = [NSString stringWithFormat:@" %lu", (unsigned long)questionUntag.count];
     
     querry = [NSPredicate predicateWithFormat:@"self.tag = %@", [NSNumber numberWithInteger:4]];
     questionUntag = [Question MR_findAllWithPredicate:querry];
@@ -129,7 +133,7 @@
 }
 -(void) progressForEachSubtype;{
     
-    NSLog(@"%d", listTypes.count);
+    NSLog(@"%lu", (unsigned long)listTypes.count);
     
     for(QuestionType *type in listTypes){
         NSPredicate *pre =  [NSPredicate predicateWithFormat:@"(question.type = %@)", type.code];
@@ -137,7 +141,7 @@
         
         NSInteger trueAswer = [StudentAnswer MR_countOfEntitiesWithPredicate:pre];
         NSInteger typeCount = [Question MR_countOfEntitiesWithPredicate:preall];
-        NSLog(@"Count for subtype :%@  %d in %d",type.detail,trueAswer, typeCount);
+        NSLog(@"Count for subtype :%@  %ld in %ld",type.detail,(long)trueAswer, (long)typeCount);
     }
 }
 

@@ -21,8 +21,9 @@
     
     for (NSDictionary *subtype in jsonDict[@"sub_types"]) {
         QuestionSubType *newSubType = [QuestionSubType createSubTypeWithCode:subtype[@"code"] andDetail:subtype[@"detail"]];
-        [newQuestionType.subTypes setByAddingObject:newSubType];
+        [newQuestionType addSubTypesObject:newSubType];
     }
+    NSLog(@"xxxxx   %ld",newQuestionType.subTypes.count);
     return newQuestionType;
 }
 @end

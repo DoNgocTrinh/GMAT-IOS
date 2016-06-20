@@ -36,7 +36,6 @@
     //sort array; 
     NSSortDescriptor *nameDescriptor = [NSSortDescriptor sortDescriptorWithKey:@"questionId" ascending:YES];
     [_questions sortUsingDescriptors:[NSArray arrayWithObject:nameDescriptor]];
-   // NSArray *tquestions = [[_questions allObjects] sortedArrayUsingDescriptors:[NSArray arrayWithObject:nameDescriptor]];
 }
 
 #pragma mark - TableView Datasource
