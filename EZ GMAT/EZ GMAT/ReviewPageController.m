@@ -22,7 +22,7 @@
 
 - (void)viewDidLoad {
     [super viewDidLoad];
-    self.vTag.layer.borderWidth = 0.5;
+    _viewShowTag.backgroundColor = [kAppColor colorWithAlphaComponent:0.5];
     //Create Share-Button:
     UIBarButtonItem *shareButton = [[UIBarButtonItem alloc]
                                     initWithBarButtonSystemItem:UIBarButtonSystemItemAction
@@ -39,7 +39,6 @@
     ReviewPageContentVC *startingViewController = [self viewControllerAtIndex:self.currentPageIndex];
     self.navigationItem.title = [NSString stringWithFormat:@"%lu/%ld",startingViewController.pageindex+1,_questions.count];
     
-    
     NSArray *viewControllers = @[startingViewController];
     [self.pageViewController setViewControllers:viewControllers direction:UIPageViewControllerNavigationDirectionForward animated:YES completion:nil];
     
@@ -48,7 +47,8 @@
     _pageViewController.view.center = _viewPage.center;
     [_pageViewController.view setFrame:CGRectMake(_viewPage.bounds.origin.x, _viewPage.bounds.origin.y, _viewPage.bounds.size.width, _viewPage.bounds.size.height)];
     [self.pageViewController didMoveToParentViewController:self];
-    //
+    
+    //button handle
     _btnBack.backgroundColor = kAppColor;
     _btnNext.backgroundColor = _btnBack.backgroundColor;
     _btnTag.backgroundColor = _btnBack.backgroundColor;
@@ -56,6 +56,8 @@
     [_btnTag addTarget:self action:@selector(showTagViewButton) forControlEvents:UIControlEventTouchUpInside];
     [_btnNext addTarget:self action:@selector(btnNextDidTap) forControlEvents:UIControlEventTouchUpInside];
     [_btnBack addTarget:self action:@selector(btnBackDidTap) forControlEvents:UIControlEventTouchUpInside];
+    //
+    [self checkTagForQuestion:_questions[_currentPageIndex]];
 }
 
 - (void)didReceiveMemoryWarning {
@@ -70,11 +72,10 @@
     NSInteger index = ((ReviewPageContentVC*) viewController).pageindex;
     _currentPageIndex = index;
     self.navigationItem.title = [NSString stringWithFormat:@"%lu/%ld",index+1,_questions.count];
-    
+    [self checkTagForQuestion:_questions[index]];
     if ((index == 0) || (index == NSNotFound)) {
         return nil;
     }
-    
     index--;
     
     return [self viewControllerAtIndex:index];
@@ -84,16 +85,18 @@
 {
     NSInteger index = ((ReviewPageContentVC*) viewController).pageindex;
     _currentPageIndex = index;
+    [self checkTagForQuestion:_questions[index]];
     self.navigationItem.title = [NSString stringWithFormat:@"%lu/%ld",index+1,_questions.count];
     if (index == NSNotFound) {
         return nil;
     }
     
     index++;
-    
+
     if (index == [self.questions count]) {
         return nil;
     }
+    
     
     return [self viewControllerAtIndex:index];
 }
@@ -110,7 +113,6 @@
     
     pageContentViewController.pageindex = index;
     pageContentViewController.question = [_questions objectAtIndex:index];
-    [self checkTagForQuestion:pageContentViewController.question];
     pageContentViewController.studentAnswer = [_studentAnswers objectAtIndex:index];
     return pageContentViewController;
 }
@@ -128,8 +130,10 @@
 
 -(void)btnNextDidTap;{
     _currentPageIndex = (_currentPageIndex + 1)%_questions.count;
-    NSLog(@"questio tag %ld %ld",_currentPageIndex,[[(Question *)_questions[_currentPageIndex] tag] integerValue]);
     self.navigationItem.title = [NSString stringWithFormat:@"%lu/%ld",_currentPageIndex+1,_questions.count];
+    
+    [self checkTagForQuestion:_questions[_currentPageIndex]];
+    
     ReviewPageContentVC *view = [self viewControllerAtIndex:_currentPageIndex];
     [self.pageViewController setViewControllers:[NSArray arrayWithObject:view]direction:UIPageViewControllerNavigationDirectionForward animated:YES completion:^(BOOL finished) {
     }];
@@ -139,11 +143,12 @@
 
 -(void)btnBackDidTap;{
     if(_currentPageIndex ==0 )
-        _currentPageIndex = 10;
-    _currentPageIndex = (_currentPageIndex - 1)%_questions.count;
+        _currentPageIndex = _questions.count-1;
+    else
+        _currentPageIndex = (_currentPageIndex - 1)%_questions.count;
     
-    NSLog(@"Back %ld", (long)_currentPageIndex);
-    
+    // NSLog(@"Back %ld", (long)_currentPageIndex);
+    [self checkTagForQuestion:_questions[_currentPageIndex]];
     self.navigationItem.title = [NSString stringWithFormat:@"%lu/%ld",_currentPageIndex+1,_questions.count];
     ReviewPageContentVC *view = [self viewControllerAtIndex:_currentPageIndex];
     [self.pageViewController setViewControllers:[NSArray arrayWithObject:view]direction:UIPageViewControllerNavigationDirectionReverse animated:YES completion:^(BOOL finished) {
@@ -214,10 +219,10 @@
         [self checkTagForQuestion:questionDB];
         NSLog(@"tag of question %ld", [questionDB.tag integerValue]);
     }
+    [[NSManagedObjectContext MR_defaultContext]MR_saveToPersistentStoreAndWait];
     [self removeTagView];
 }
 -(void)removeTagView;{
-    [[NSManagedObjectContext MR_defaultContext]MR_saveToPersistentStoreAndWait];
     for(UIView *tagView in self.view.subviews){
         if([tagView isKindOfClass:[TagButtonView class]]){
             [tagView removeFromSuperview];
@@ -226,6 +231,7 @@
     }
 }
 -(void)checkTagForQuestion:(Question *)question;{
+    NSLog(@"checktag");
     switch ([question.tag integerValue]) {
         case -1:
             self.imgTag.image = [UIImage imageNamed:@"grey"];
@@ -272,20 +278,18 @@
 }
 
 -(void)starClick{
-    if(i%2 == 0){
-        self.imgStar.image = [UIImage imageNamed:@"star"];
-    }else{
-        self.imgStar.image = [UIImage imageNamed:@"nostar"];
-    }
-    i++;
     Question *selectedQuestion = (Question*)_questions[_currentPageIndex];
     NSPredicate *querry = [NSPredicate predicateWithFormat:@"self = %@", selectedQuestion];
     Question *questionDB = [Question MR_findFirstWithPredicate:querry];
     if(questionDB){
-        questionDB.bookMark = [NSNumber numberWithInteger:(i%2)];
+        if([questionDB.bookMark integerValue]==0)
+        {questionDB.bookMark = [NSNumber numberWithInteger:1];}
+        else{questionDB.bookMark = [NSNumber numberWithInteger:0];}
+        
         NSLog(@"bookMark of question %ld", [questionDB.bookMark integerValue]);
         [self checkTagForQuestion:questionDB];
     }
+    [[NSManagedObjectContext MR_defaultContext]MR_saveToPersistentStoreAndWait];
     [self removeTagView];
     
 }

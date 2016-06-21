@@ -30,7 +30,7 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     _studentAnswer = _question.studentAnswer;
-    NSLog(@"student: %ld; question: %ld", [_studentAnswer.answerChoiceIdx integerValue], [_question.studentAnswer.answerChoiceIdx integerValue]);
+    NSLog(@"tag: %ld; bookMark: %ld", [_question.tag integerValue], [_question.bookMark integerValue]);
     selectedRows = [[NSMutableArray alloc]initWithObjects:@"0",@"0",@"0",@"0",@"0", nil];
     
     heights =[[NSMutableArray alloc]initWithObjects:[NSNumber numberWithFloat:0],

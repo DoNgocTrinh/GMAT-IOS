@@ -66,7 +66,6 @@
     
     QuestionType *selectedType = listTypes[indexPath.row];
     [cell cellWithType:selectedType.detail andInfo:[self trueAnswerforType:selectedType]];
-  //  cell.textLabel.text = [NSString stringWithFormat:@"%.1lf%% - %@",[self trueAnswerforType:selectedType], selectedType.detail];
     return cell;
 }
 -(CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath{

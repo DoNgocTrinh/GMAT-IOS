@@ -15,7 +15,7 @@
 @property (weak, nonatomic) IBOutlet UIButton *btnTag;
 @property (weak, nonatomic) IBOutlet UIButton *btnNext;
 @property (weak, nonatomic) IBOutlet UIButton *btnBack;
-@property (strong, nonatomic) IBOutlet UIView *vTag;
+@property (strong, nonatomic) IBOutlet UIView *viewShowTag;
 
 @property (strong, nonatomic) UIPageViewController *pageViewController;
 @property (nonatomic, assign) NSInteger currentPageIndex;
