@@ -184,6 +184,8 @@
         [_tbvReview endUpdates];
     }
 }
+
+
 - (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath
 {
     if(indexPath.section == 0){
@@ -215,7 +217,9 @@
     }
     return 0;
 }
+
 #pragma mark - WebView Delegate
+
 -(void)webViewDidFinishLoad:(UIWebView *)webView{
     
     height = [[webView stringByEvaluatingJavaScriptFromString:@"document.body.scrollHeight"] floatValue];
