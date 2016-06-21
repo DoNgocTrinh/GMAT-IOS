@@ -23,7 +23,7 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     // Do any additional setup after loading the view.
-    NSLog(@"-----------%d %d", _studentAnswers.count, _questions.count);
+    NSLog(@"-----------%lu %lu", (unsigned long)_studentAnswers.count, (unsigned long)_questions.count);
     self.navigationItem.hidesBackButton = YES;
     
     self.title = @"Review";

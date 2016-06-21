@@ -357,7 +357,7 @@
     timerDate = [NSDate dateWithTimeIntervalSince1970:timeInterval];
     
     time = [dateFomatter stringFromDate:timerDate];
-    customTitleView.lblQuestionNumber.text = [NSString stringWithFormat:@"%d/%ld",_displayIndex+1,(unsigned long)_questions.count];
+    customTitleView.lblQuestionNumber.text = [NSString stringWithFormat:@"%ldd/%ld",_displayIndex+1,(unsigned long)_questions.count];
     customTitleView.lblTime.text = [NSString stringWithFormat:@"%@",time];
     
     _currentPack.totalTimeToFinish = [NSNumber numberWithDouble:timeInterval];
@@ -376,7 +376,7 @@
               [NSNumber numberWithFloat:0],
               [NSNumber numberWithFloat:0],
               [NSNumber numberWithFloat:0],nil ];
-    customTitleView.lblQuestionNumber.text = [NSString stringWithFormat:@"%d/%ld",_displayIndex+1,(unsigned long)_questions.count];
+    customTitleView.lblQuestionNumber.text = [NSString stringWithFormat:@"%ld/%ld",_displayIndex+1,(unsigned long)_questions.count];
     
     [_tbvQuestion reloadData];
 }
@@ -665,9 +665,6 @@
                     }
                 }
             }
-            
-            
-            
             //quickReviewController.questions = _questions;
             
             quickReviewController.lblTime = [NSString stringWithFormat:@"%lf",[_currentPack.totalTimeToFinish floatValue]];
@@ -688,6 +685,4 @@
             break;
     }
 }
-
-
 @end

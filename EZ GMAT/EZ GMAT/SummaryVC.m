@@ -13,6 +13,7 @@
 #import "Question.h"
 #import "StudentAnswer.h"
 #import "SummaryDetailVC.h"
+#import "QuickReviewViewController.h"
 @interface SummaryVC ()
 {
     NSArray *listTypes;
@@ -26,6 +27,7 @@
     [super viewDidLoad];
     
     [self configView];
+    [self setTargetForFilter];
     
     [self countTag];
     
@@ -33,7 +35,7 @@
     listTypes = [QuestionType MR_findAllSortedBy:@"code" ascending:YES];
     questions = [Question MR_findAll];
     //_lblUntag.text = [NSString stringWithFormat:@"% ld",(unsigned long)listTypes.count];
-[self progressForEachSubtype];
+    [self progressForEachSubtype];
     [_tbvCategories reloadData];
 }
 
@@ -75,7 +77,7 @@
 -(void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath{
     SummaryDetailVC *detailVC = [self.storyboard instantiateViewControllerWithIdentifier:@"SummaryDetailVC"];
     QuestionType *selectedType = listTypes[indexPath.row];
-
+    
     detailVC.type = selectedType;
     
     [self.navigationController pushViewController:detailVC animated:YES];
@@ -86,26 +88,24 @@
     NSArray *questionUntag = [Question MR_findAllWithPredicate:querry];
     _lblUntag.text = [NSString stringWithFormat:@" %lu", (unsigned long)questionUntag.count];
     
-    querry = [NSPredicate predicateWithFormat:@"self.tag = %@", [NSNumber numberWithInteger:0]];
+    querry = [NSPredicate predicateWithFormat:@"self.bookMark = %@", [NSNumber numberWithInteger:1]];
     questionUntag = [Question MR_findAllWithPredicate:querry];
     _lblStar.text = [NSString stringWithFormat:@" %lu", (unsigned long)questionUntag.count];
     
     
-    querry = [NSPredicate predicateWithFormat:@"self.tag = %@", [NSNumber numberWithInteger:1]];
+    querry = [NSPredicate predicateWithFormat:@"self.tag = %@", [NSNumber numberWithInteger:0]];
     questionUntag = [Question MR_findAllWithPredicate:querry];
     _lblRed.text = [NSString stringWithFormat:@" %lu", (unsigned long)questionUntag.count];
     
     
-    querry = [NSPredicate predicateWithFormat:@"self.tag = %@", [NSNumber numberWithInteger:2]];
+    querry = [NSPredicate predicateWithFormat:@"self.tag = %@", [NSNumber numberWithInteger:1]];
     questionUntag = [Question MR_findAllWithPredicate:querry];
     _lblGreen.text = [NSString stringWithFormat:@" %lu", (unsigned long)questionUntag.count];
     
-    querry = [NSPredicate predicateWithFormat:@"self.tag = %@", [NSNumber numberWithInteger:3]];
+    querry = [NSPredicate predicateWithFormat:@"self.tag = %@", [NSNumber numberWithInteger:2]];
     questionUntag = [Question MR_findAllWithPredicate:querry];
     _lblYellow.text = [NSString stringWithFormat:@" %lu", (unsigned long)questionUntag.count];
     
-    querry = [NSPredicate predicateWithFormat:@"self.tag = %@", [NSNumber numberWithInteger:4]];
-    questionUntag = [Question MR_findAllWithPredicate:querry];
     _lblAverageTime.text = [NSString stringWithFormat:@" %lu", (unsigned long)questionUntag.count];
 }
 #pragma mark - Progress View
@@ -126,22 +126,75 @@
     NSPredicate *pre = [NSPredicate predicateWithFormat:@"result = %@", [NSNumber numberWithInt:1]];
     NSArray *trueAnswer = [StudentAnswer MR_findAllWithPredicate:pre];
     NSArray *totalQuestions = [Question MR_findAll];
-   // NSLog(@"student answer count %lu", [StudentAnswer MR_findAll].count);
+    // NSLog(@"student answer count %lu", [StudentAnswer MR_findAll].count);
     [self.viewProgress setPercentage:(float)trueAnswer.count/totalQuestions.count];
     self.viewProgress.textLabel.text          = [NSString stringWithFormat:@" %.1lf%% ", self.viewProgress.percentage*100];
 }
+#pragma mark Button Filter
+-(void)setTargetForFilter;{
+    [_btnRed addTarget:self action:@selector(btnFilterDidTap:) forControlEvents:UIControlEventTouchUpInside];
+    [_btnGreen addTarget:self action:@selector(btnFilterDidTap:)forControlEvents:UIControlEventTouchUpInside];
+    [_btnYellow addTarget:self action:@selector(btnFilterDidTap:) forControlEvents:UIControlEventTouchUpInside];
+    [_btnUnTag addTarget:self action:@selector(btnFilterDidTap:) forControlEvents:UIControlEventTouchUpInside];
+    [_btnBookMark addTarget:self action:@selector(btnFilterDidTap:) forControlEvents:UIControlEventTouchUpInside];
+}
+-(void)btnFilterDidTap:(UIButton *)button;{
+    NSInteger tag ;
+    NSPredicate *pre;
+    if(button == _btnRed){
+        tag = 0;
+    }else if(button == _btnGreen){
+        tag = 1;
+    }else if(button == _btnYellow){
+        tag = 2;
+    }else if (button == _btnUnTag){
+        tag = -1;
+    }
+    pre = [NSPredicate predicateWithFormat:@"question.tag = %d", tag];
+    if(button == _btnBookMark){
+        pre = [NSPredicate predicateWithFormat:@"question.bookMark = %d", 1];
+    }
+    
+    NSSortDescriptor *nameDescriptor = [NSSortDescriptor sortDescriptorWithKey:@"question.questionId" ascending:YES];
+    NSArray *studentsAnswers =[[StudentAnswer MR_findAllWithPredicate:pre] sortedArrayUsingDescriptors:[NSArray arrayWithObject:nameDescriptor]];
+    NSLog(@"So cau theo tag : %ld", studentsAnswers.count);
+    NSMutableArray *sentQuestions = [[NSMutableArray alloc]init];
+    NSMutableArray *sentStudentAnswers= [[NSMutableArray alloc]initWithArray:studentsAnswers];
+    for(StudentAnswer *sta in sentStudentAnswers){
+        [sentQuestions addObject:sta.question];
+    }
+    
+    QuickReviewViewController *quickReviewController = [self.storyboard instantiateViewControllerWithIdentifier:@"QuickReviewViewController"];
+    
+    quickReviewController.studentAnswers = sentStudentAnswers;
+    quickReviewController.questions = sentQuestions;
+    
+    quickReviewController.lblTime = @"000000";
+    
+    CATransition* transition = [CATransition animation];
+    transition.duration = 1.0f;
+    transition.type = kCATransitionMoveIn;
+    transition.subtype = kCATransitionFade;
+    [self.navigationController.view.layer addAnimation:transition
+                                                forKey:kCATransition];
+    [self.navigationController pushViewController:quickReviewController animated:NO];
+    
+    
+}
+
+#pragma mark Function
 -(void) progressForEachSubtype;{
     
     NSLog(@"%lu", (unsigned long)listTypes.count);
     
-    for(QuestionType *type in listTypes){
-        NSPredicate *pre =  [NSPredicate predicateWithFormat:@"(question.type = %@)", type.code];
-        NSPredicate *preall =  [NSPredicate predicateWithFormat:@"(type = %@)", type.code];
-        
-        NSInteger trueAswer = [StudentAnswer MR_countOfEntitiesWithPredicate:pre];
-        NSInteger typeCount = [Question MR_countOfEntitiesWithPredicate:preall];
-        NSLog(@"Count for subtype :%@  %ld in %ld",type.detail,(long)trueAswer, (long)typeCount);
-    }
+//    for(QuestionType *type in listTypes){
+//        NSPredicate *pre =  [NSPredicate predicateWithFormat:@"(question.type = %@)", type.code];
+//        NSPredicate *preall =  [NSPredicate predicateWithFormat:@"(type = %@)", type.code];
+//        
+       // NSInteger trueAswer = [StudentAnswer MR_countOfEntitiesWithPredicate:pre];
+        //NSInteger typeCount = [Question MR_countOfEntitiesWithPredicate:preall];
+      //  NSLog(@"Count for subtype :%@  %ld in %ld",type.detail,(long)trueAswer, (long)typeCount);
+//    }
 }
 
 -(NSDictionary *)trueAnswerforType:(QuestionType *)type;{

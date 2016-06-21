@@ -67,14 +67,14 @@
     QuestionPack *questionPack = _questionPacks[indexPath.row];
     //NSLog(@"pack Level : %ld", [questionPack.level integerValue]);
     cell.lblAvailableTime.text = questionPack.available_time;
-    cell.lblNumberQuestion.text =[NSString stringWithFormat:@"%d questions", questionPack.questions.count];
+    cell.lblNumberQuestion.text =[NSString stringWithFormat:@"%lu questions", questionPack.questions.count];
     cell.lblNumberQuestion.textColor = [UIColor whiteColor];
     //cell.numberStar = 1;
     [cell layoutIfNeeded];
     [cell drawStarsWithLightNumber:[questionPack.level integerValue]];
     //
     
-    cell.lblNumberOfPack.text = [NSString stringWithFormat:@"%d / %d",indexPath.row + 1 , _questionPacks.count];
+    cell.lblNumberOfPack.text = [NSString stringWithFormat:@"%ld / %lu",indexPath.row + 1 , (unsigned long)_questionPacks.count];
     
     
     //Lock Pack
@@ -168,7 +168,7 @@
 -(void)pullQuestionPacks;{
     
     NSArray *arrPacks=[QuestionPack MR_findAllSortedBy:@"packID" ascending:YES];
-    NSLog(@"number pack : %d", arrPacks.count);
+    NSLog(@"number pack : %lu", (unsigned long)arrPacks.count);
     
     if(arrPacks.count==0){
         loadingView.center = self.view.center;

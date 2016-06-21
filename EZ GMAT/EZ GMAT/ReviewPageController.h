@@ -23,6 +23,7 @@
 @property (nonatomic, strong) NSArray *questions;
 @property (strong, nonatomic) IBOutlet UIImageView *imgStar;
 @property (strong, nonatomic) IBOutlet UIImageView *imgTag;
+@property (weak, nonatomic) IBOutlet UIButton *btnHeaderTag;
 
 //- (void)saveScreenshotToPhotosAlbum:(UIView *)view;
 

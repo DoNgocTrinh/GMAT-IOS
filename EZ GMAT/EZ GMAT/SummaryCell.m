@@ -30,7 +30,7 @@
         _lblTotal.text =@"Empty";
     }
     else{
-        _lblTotal.text = [NSString stringWithFormat:@"Total question : %d", [total integerValue]];
+        _lblTotal.text = [NSString stringWithFormat:@"Total question : %ld", (long)[total integerValue]];
     }
     _lblPercent.text = [NSString stringWithFormat:@"%.f%%", [percent floatValue]*100];
 }

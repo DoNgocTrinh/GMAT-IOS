@@ -56,6 +56,7 @@
     [_btnTag addTarget:self action:@selector(showTagViewButton) forControlEvents:UIControlEventTouchUpInside];
     [_btnNext addTarget:self action:@selector(btnNextDidTap) forControlEvents:UIControlEventTouchUpInside];
     [_btnBack addTarget:self action:@selector(btnBackDidTap) forControlEvents:UIControlEventTouchUpInside];
+    [_btnHeaderTag addTarget:self action:@selector(showTagViewButton) forControlEvents:UIControlEventTouchUpInside];
     //
     [self checkTagForQuestion:_questions[_currentPageIndex]];
 }
@@ -110,7 +111,6 @@
     // Create a new view controller and pass suitable data.
     ReviewPageContentVC *pageContentViewController = [self.storyboard instantiateViewControllerWithIdentifier:@"review"];
     
-    
     pageContentViewController.pageindex = index;
     pageContentViewController.question = [_questions objectAtIndex:index];
     pageContentViewController.studentAnswer = [_studentAnswers objectAtIndex:index];
@@ -138,8 +138,6 @@
     [self.pageViewController setViewControllers:[NSArray arrayWithObject:view]direction:UIPageViewControllerNavigationDirectionForward animated:YES completion:^(BOOL finished) {
     }];
 }
-
-
 
 -(void)btnBackDidTap;{
     if(_currentPageIndex ==0 )

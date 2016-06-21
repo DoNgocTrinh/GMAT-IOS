@@ -19,6 +19,11 @@
 
 @property (weak, nonatomic) IBOutlet UILabel *lblGreen;
 @property (weak, nonatomic) IBOutlet UILabel *lblStar;
+@property (weak, nonatomic) IBOutlet UIButton *btnBookMark;
+@property (weak, nonatomic) IBOutlet UIButton *btnUnTag;
+@property (weak, nonatomic) IBOutlet UIButton *btnRed;
+@property (weak, nonatomic) IBOutlet UIButton *btnGreen;
+@property (weak, nonatomic) IBOutlet UIButton *btnYellow;
 @property (weak, nonatomic) IBOutlet MCPercentageDoughnutView *viewProgress;
 
 @end
