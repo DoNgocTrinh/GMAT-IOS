@@ -16,6 +16,7 @@
         <attribute name="stimulus" optional="YES" attributeType="String" syncable="YES"/>
         <attribute name="subType" optional="YES" attributeType="String" syncable="YES"/>
         <attribute name="tag" optional="YES" attributeType="Integer 16" defaultValueString="0" syncable="YES"/>
+        <attribute name="timeToFinish" optional="YES" attributeType="Double" defaultValueString="0.0" syncable="YES"/>
         <attribute name="type" optional="YES" attributeType="String" syncable="YES"/>
         <relationship name="answers" optional="YES" toMany="YES" deletionRule="Cascade" destinationEntity="Answer" inverseName="question" inverseEntity="Answer" syncable="YES"/>
         <relationship name="questionPack" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="QuestionPack" inverseName="questions" inverseEntity="QuestionPack" syncable="YES"/>
@@ -48,7 +49,7 @@
     </entity>
     <elements>
         <element name="Answer" positionX="279" positionY="-1278" width="128" height="118"/>
-        <element name="Question" positionX="45" positionY="-1299" width="128" height="225"/>
+        <element name="Question" positionX="45" positionY="-1299" width="128" height="240"/>
         <element name="QuestionID" positionX="-324" positionY="-1242" width="128" height="60"/>
         <element name="QuestionPack" positionX="-263" positionY="-1131" width="128" height="120"/>
         <element name="QuestionSubType" positionX="-137" positionY="-1233" width="128" height="88"/>

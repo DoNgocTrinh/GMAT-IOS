@@ -22,7 +22,7 @@
 
 - (void)viewDidLoad {
     [super viewDidLoad];
-    _viewShowTag.backgroundColor = [kAppColor colorWithAlphaComponent:0.5];
+    _viewShowTag.backgroundColor = kAppColor;
     //Create Share-Button:
     UIBarButtonItem *shareButton = [[UIBarButtonItem alloc]
                                     initWithBarButtonSystemItem:UIBarButtonSystemItemAction

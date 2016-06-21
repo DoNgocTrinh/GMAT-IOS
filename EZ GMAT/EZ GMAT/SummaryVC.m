@@ -157,7 +157,13 @@
     
     NSSortDescriptor *nameDescriptor = [NSSortDescriptor sortDescriptorWithKey:@"question.questionId" ascending:YES];
     NSArray *studentsAnswers =[[StudentAnswer MR_findAllWithPredicate:pre] sortedArrayUsingDescriptors:[NSArray arrayWithObject:nameDescriptor]];
-    NSLog(@"So cau theo tag : %ld", studentsAnswers.count);
+    if(studentsAnswers.count<=0){
+        UIAlertView *alert = [[UIAlertView alloc]initWithTitle:@"" message:@"You have done no question" delegate:nil cancelButtonTitle:@"OK" otherButtonTitles: nil];
+        [self.view addSubview:alert];
+        [alert show];
+        [self.navigationController popViewControllerAnimated:YES];
+        return;
+    }
     NSMutableArray *sentQuestions = [[NSMutableArray alloc]init];
     NSMutableArray *sentStudentAnswers= [[NSMutableArray alloc]initWithArray:studentsAnswers];
     for(StudentAnswer *sta in sentStudentAnswers){

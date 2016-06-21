@@ -18,6 +18,8 @@
     self.backgroundColor = [UIColor clearColor];
     _webViewAnswer.userInteractionEnabled = NO;
     _webViewAnswer.delegate = self;
+    self.layer.borderWidth = 0.5;
+    self.layer.borderColor = [[UIColor grayColor] colorWithAlphaComponent:0.3].CGColor;
     
 }
 

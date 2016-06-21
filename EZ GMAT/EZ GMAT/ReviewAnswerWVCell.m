@@ -17,6 +17,8 @@
     _webViewAnswer.userInteractionEnabled = NO;
     self.contentView.backgroundColor = [UIColor whiteColor];
     _webViewAnswer.backgroundColor = [UIColor whiteColor];
+    self.layer.borderWidth = 0.5;
+    self.layer.borderColor = [[UIColor grayColor] colorWithAlphaComponent:0.3].CGColor;
 }
 
 - (void)setSelected:(BOOL)selected animated:(BOOL)animated {

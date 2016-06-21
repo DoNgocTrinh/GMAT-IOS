@@ -13,9 +13,9 @@
 		E80E19FE1D072E9F005362BD /* ReviewPageContentVC.m in Sources */ = {isa = PBXBuildFile; fileRef = E80E19F91D072E9F005362BD /* ReviewPageContentVC.m */; };
 		E80E19FF1D072E9F005362BD /* ReviewPageController.m in Sources */ = {isa = PBXBuildFile; fileRef = E80E19FB1D072E9F005362BD /* ReviewPageController.m */; };
 		E80E1A001D072E9F005362BD /* ReviewPageViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = E80E19FD1D072E9F005362BD /* ReviewPageViewController.m */; };
-		E80EBC3B1D12F5EF0046001B /* QuestionPack+CoreDataProperties.m in Sources */ = {isa = PBXBuildFile; fileRef = E80EBC3A1D12F5EF0046001B /* QuestionPack+CoreDataProperties.m */; };
 		E812645F1D05992200094764 /* AnswerWVCell.m in Sources */ = {isa = PBXBuildFile; fileRef = E812645D1D05992200094764 /* AnswerWVCell.m */; };
 		E81264601D05992200094764 /* AnswerWVCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = E812645E1D05992200094764 /* AnswerWVCell.xib */; };
+		E813A8331D19365000A7FFE6 /* downloaded.png in Resources */ = {isa = PBXBuildFile; fileRef = E813A8321D19365000A7FFE6 /* downloaded.png */; };
 		E81A7DFF1CF73EA900BDE293 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = E81A7DFE1CF73EA900BDE293 /* main.m */; };
 		E81A7E021CF73EA900BDE293 /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = E81A7E011CF73EA900BDE293 /* AppDelegate.m */; };
 		E81A7E081CF73EA900BDE293 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = E81A7E061CF73EA900BDE293 /* Main.storyboard */; };
@@ -211,11 +211,10 @@
 		E80E19FB1D072E9F005362BD /* ReviewPageController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ReviewPageController.m; sourceTree = "<group>"; };
 		E80E19FC1D072E9F005362BD /* ReviewPageViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ReviewPageViewController.h; sourceTree = "<group>"; };
 		E80E19FD1D072E9F005362BD /* ReviewPageViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ReviewPageViewController.m; sourceTree = "<group>"; };
-		E80EBC391D12F5EF0046001B /* QuestionPack+CoreDataProperties.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "QuestionPack+CoreDataProperties.h"; sourceTree = "<group>"; };
-		E80EBC3A1D12F5EF0046001B /* QuestionPack+CoreDataProperties.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "QuestionPack+CoreDataProperties.m"; sourceTree = "<group>"; };
 		E812645C1D05992200094764 /* AnswerWVCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AnswerWVCell.h; sourceTree = "<group>"; };
 		E812645D1D05992200094764 /* AnswerWVCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AnswerWVCell.m; sourceTree = "<group>"; };
 		E812645E1D05992200094764 /* AnswerWVCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = AnswerWVCell.xib; sourceTree = "<group>"; };
+		E813A8321D19365000A7FFE6 /* downloaded.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = downloaded.png; path = katex/downloaded.png; sourceTree = "<group>"; };
 		E81A7DFA1CF73EA900BDE293 /* EZ GMAT.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "EZ GMAT.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		E81A7DFE1CF73EA900BDE293 /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
 		E81A7E001CF73EA900BDE293 /* AppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
@@ -570,10 +569,6 @@
 		E81A7DF11CF73EA900BDE293 = {
 			isa = PBXGroup;
 			children = (
-				E87D48FF1D142656002BB700 /* QuestionPack+CoreDataProperties.h */,
-				E87D49001D142656002BB700 /* QuestionPack+CoreDataProperties.m */,
-				E87D48FC1D1425F5002BB700 /* Question+CoreDataProperties.h */,
-				E87D48FD1D1425F5002BB700 /* Question+CoreDataProperties.m */,
 				E81A7DFC1CF73EA900BDE293 /* EZ GMAT */,
 				E81A7E161CF73EA900BDE293 /* EZ GMATTests */,
 				E81A7E211CF73EA900BDE293 /* EZ GMATUITests */,
@@ -639,6 +634,7 @@
 				E81A7E061CF73EA900BDE293 /* Main.storyboard */,
 				E81A7E091CF73EA900BDE293 /* Assets.xcassets */,
 				E81A7E0B1CF73EA900BDE293 /* LaunchScreen.storyboard */,
+				E813A8321D19365000A7FFE6 /* downloaded.png */,
 				E808F21B1D08296D00559BAD /* Login */,
 				E81A7E321CF75BDE00BDE293 /* Home */,
 				E8FD54BB1CF87303008647E6 /* QuestionView */,
@@ -1127,8 +1123,10 @@
 		E8FD54961CF86668008647E6 /* Private */ = {
 			isa = PBXGroup;
 			children = (
-				E80EBC391D12F5EF0046001B /* QuestionPack+CoreDataProperties.h */,
-				E80EBC3A1D12F5EF0046001B /* QuestionPack+CoreDataProperties.m */,
+				E87D48FF1D142656002BB700 /* QuestionPack+CoreDataProperties.h */,
+				E87D49001D142656002BB700 /* QuestionPack+CoreDataProperties.m */,
+				E87D48FC1D1425F5002BB700 /* Question+CoreDataProperties.h */,
+				E87D48FD1D1425F5002BB700 /* Question+CoreDataProperties.m */,
 				E8FA593C1D09B3BC00AA8280 /* QuestionType+CoreDataProperties.h */,
 				E8FA593D1D09B3BC00AA8280 /* QuestionType+CoreDataProperties.m */,
 				E8FA59361D09B36400AA8280 /* QuestionSubType+CoreDataProperties.h */,
@@ -1368,6 +1366,7 @@
 				E83234F01D0638C300314B74 /* KaTeX_Main-Regular.woff in Resources */,
 				E83234F61D0638C300314B74 /* KaTeX_Math-Italic.woff in Resources */,
 				E83235011D0638C300314B74 /* KaTeX_Size3-Regular.ttf in Resources */,
+				E813A8331D19365000A7FFE6 /* downloaded.png in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -1450,7 +1449,6 @@
 				E81A7ED81CF772CB00BDE293 /* MCNewCustomLayeredView.m in Sources */,
 				E87D49011D142656002BB700 /* QuestionPack+CoreDataProperties.m in Sources */,
 				E81A7EF81CF772CB00BDE293 /* MMDrawerBarButtonItem.m in Sources */,
-				E80EBC3B1D12F5EF0046001B /* QuestionPack+CoreDataProperties.m in Sources */,
 				E84492E01D17FE2000DB167C /* TWRBarChart.m in Sources */,
 				E81A7EF51CF772CB00BDE293 /* MagicalRecord+Setup.m in Sources */,
 				E81A7F091CF772CB00BDE293 /* UIImageView+AFNetworking.m in Sources */,

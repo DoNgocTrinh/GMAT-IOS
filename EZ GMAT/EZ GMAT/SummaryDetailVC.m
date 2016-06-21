@@ -40,6 +40,7 @@
     [chartView setChartJsFilePath:jsFilePath];
     [self loadBarChart];
     [self loadBarChart];
+    _tbvSubtype.backgroundColor = [kAppColor colorWithAlphaComponent:.2];
 }
 
 - (void)didReceiveMemoryWarning {

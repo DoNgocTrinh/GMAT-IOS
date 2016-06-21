@@ -105,12 +105,16 @@
             {
                 cell.webViewQuestion.opaque = NO;
                 cell.webViewQuestion.backgroundColor =[kAppColor colorWithAlphaComponent:.2];
+                cell.webViewQuestion.scrollView.scrollEnabled = NO;
             }
-
-            [cell loadContentWithContent:_question.stimulus questionType:_question.type];
-            
+            else{
+                cell.webViewQuestion.scrollView.scrollEnabled = YES;
+            }
+            NSString *stringImage = @"<img src='downloaded.png' width='50' height='50';>";
+            NSString *content = [NSString stringWithFormat:@"%@ %@", _question.stimulus, stringImage];
+            //[cell loadContentWithContent:_question.stimulus questionType:_question.type];
+            [cell loadContentWithContent:content questionType:_question.type];
             return cell;
-            
         } else if (indexPath.row == 1) {
             TextCell *cell = [tableView dequeueReusableCellWithIdentifier:cellId];
             
@@ -125,6 +129,7 @@
             cell.webViewQuestion.opaque = NO;
             cell.webViewQuestion.backgroundColor =[kAppColor colorWithAlphaComponent:.2];
             [cell loadContentWithContent:_question.stem questionType:_question.type];
+            cell.webViewQuestion.scrollView.scrollEnabled = NO;
             return cell;
         }
         else return nil;
@@ -149,9 +154,10 @@
         
         if ((int)[_question.rightAnswerIdx intValue] == (int)indexPath.row) {
             cell.contentView.backgroundColor = [UIColor hx_colorWithHexRGBAString:@"#C8E6C9"] ;
-           cell.webViewAnswer.backgroundColor = cell.contentView.backgroundColor;
+            cell.webViewAnswer.backgroundColor = cell.contentView.backgroundColor;
         }
-        
+        //cell.contentView.layer.borderWidth = 0.5;
+        //cell.contentView.layer.borderColor = [[UIColor grayColor] colorWithAlphaComponent:0.2].CGColor;
         return cell;
         
     } else return nil;
@@ -219,18 +225,18 @@
     if(webView.tag>=2){
         if([selectedRows[webView.tag-2] isEqualToString:@"1"]){
             if([expandheights[webView.tag] floatValue] == 0){
-            expandheights[webView.tag] = [NSNumber numberWithFloat:height];
+                expandheights[webView.tag] = [NSNumber numberWithFloat:height];
                 [_tbvReview beginUpdates];
                 [_tbvReview endUpdates];
             }
-           
+            
             
             //            [_tbvReview reloadRowsAtIndexPaths:[NSArray arrayWithObject: [NSIndexPath indexPathForRow:webView.tag-2 inSection:1] ]withRowAnimation:UITableViewRowAnimationNone];
         }
     }
-//    if([expandheights[webView.tag] floatValue]!=0){
-//      
-//    }
+    //    if([expandheights[webView.tag] floatValue]!=0){
+    //
+    //    }
     
     if([heights[webView.tag] floatValue]==0){
         heights[webView.tag] = [NSNumber numberWithFloat:height];

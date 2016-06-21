@@ -31,6 +31,7 @@
     //timer:
     NSDate *currentDate;// =[NSDate date];
     NSTimeInterval timeInterval;//  = [currentDate timeIntervalSinceDate:startDate];
+    NSTimeInterval timeForEachQuestion;
     CGFloat startTimeInterval;
     NSDate *timerDate ; // = [NSDate dateWithTimeIntervalSince1970:timeInterval];
     NSDateFormatter *dateFomatter;// = [[NSDateFormatter alloc]init];
@@ -52,6 +53,7 @@
     startTimeInterval = [_currentPack.totalTimeToFinish floatValue];
     
     [self COUNTer];
+    NSLog(@"startQuestion time: %lf %ld", [[(Question *)_questions[_displayIndex] timeToFinish] doubleValue], _displayIndex);
     dateFomatter = [[NSDateFormatter alloc]init];
     [dateFomatter setDateFormat:@"mm:ss"];
     [dateFomatter setTimeZone:[NSTimeZone timeZoneForSecondsFromGMT:0.0]];
@@ -65,19 +67,13 @@
               [NSNumber numberWithFloat:0],nil ];
     
     self.navigationController.navigationBar.translucent = NO;
-    
-    //    [_tbvQuestion setContentInset:UIEdgeInsetsMake(self.navigationController.navigationBar.frame.size.height+20, 0, 0, 0)];
-    //    [_tbvQuestion setScrollIndicatorInsets:UIEdgeInsetsMake(self.navigationController.navigationBar.frame.size.height+20, 0, 0, 0)];
-    //custom title view
-    
-    
+
     CGRect rect = CGRectMake(0, 0, self.view.frame.size.width, 44);
     customTitleView = [CustomTitleView customViewWithFrame:rect];
     [customTitleView setCenter:self.navigationItem.titleView.center];
     self.navigationItem.titleView = customTitleView;
     timerDate = [NSDate dateWithTimeIntervalSince1970:startTimeInterval];
     customTitleView.lblTime.text = [NSString stringWithFormat:@"%@", [dateFomatter stringFromDate:timerDate]];
-    
     
     [_btnSubmit setBackgroundColor:kAppColor];
     
@@ -155,15 +151,23 @@
         
         cell.selectionStyle = UITableViewCellSelectionStyleNone;
         
-        [cell loadContentWithContent:selectedQuestion.stimulus questionType:selectedQuestion.type];
+        //dump image
+        NSString *stringImage = @"<img src='downloaded.png' width='50' height='50';>";
+        NSString *content = [NSString stringWithFormat:@"%@ %@", selectedQuestion.stimulus, stringImage];
+        
+        //  [cell loadContentWithContent:selectedQuestion.stimulus questionType:selectedQuestion.type];
+        [cell loadContentWithContent:content questionType:selectedQuestion.type];
         cell.webViewQuestion.delegate = self;
         cell.webViewQuestion.tag = 0;
         // NSLog(@"Height update: %lf", height);
-        //cell.webViewQuestion.scrollView.scrollEnabled = NO;
         if(![selectedQuestion.type isEqualToString:@"RC"])
         {
             cell.webViewQuestion.opaque = NO;
             cell.webViewQuestion.backgroundColor =[kAppColor colorWithAlphaComponent:.2];
+            cell.webViewQuestion.scrollView.scrollEnabled = NO;
+        }
+        else{
+            cell.webViewQuestion.scrollView.scrollEnabled = YES;
         }
         return cell;
         
@@ -201,6 +205,7 @@
         cell.webViewQuestion.tag = 1;
         cell.webViewQuestion.opaque = NO;
         cell.webViewQuestion.backgroundColor =[kAppColor colorWithAlphaComponent:.2];
+        cell.webViewQuestion.scrollView.scrollEnabled = NO;
         return cell;
         
     }
@@ -357,10 +362,23 @@
     timerDate = [NSDate dateWithTimeIntervalSince1970:timeInterval];
     
     time = [dateFomatter stringFromDate:timerDate];
-    customTitleView.lblQuestionNumber.text = [NSString stringWithFormat:@"%ldd/%ld",_displayIndex+1,(unsigned long)_questions.count];
+    customTitleView.lblQuestionNumber.text = [NSString stringWithFormat:@"%ld/%ld",_displayIndex+1,(unsigned long)_questions.count];
     customTitleView.lblTime.text = [NSString stringWithFormat:@"%@",time];
     
     _currentPack.totalTimeToFinish = [NSNumber numberWithDouble:timeInterval];
+    
+    double beforeTime = 0;
+    for(int i = 0; i<_displayIndex;i++){
+        NSLog(@"time 4 question %d : %lf", i,  [[(Question *)_questions[i] timeToFinish] doubleValue]);
+        beforeTime += [[(Question *)_questions[i] timeToFinish] doubleValue];
+    }
+    NSLog(@"before time: %lf ", beforeTime);
+    
+    Question *currentQuestion = _questions[_displayIndex];
+    currentQuestion.timeToFinish = [NSNumber numberWithDouble:timeInterval-beforeTime];
+//    customTitleView.lblQuestionNumber.text = [NSString stringWithFormat:@"%.lf",[currentQuestion.timeToFinish doubleValue]];
+//
+    NSLog(@"time current Question %lf", [currentQuestion.timeToFinish doubleValue]);
 }
 
 
@@ -368,6 +386,15 @@
 
 - (void)redisplayQuestion;
 {       selectQuestion = _questions[_displayIndex];
+    NSLog(@"display index:%ld ", _displayIndex);
+    NSLog(@"start question at index : %ld at time: %lf", _displayIndex+1, [selectQuestion.timeToFinish doubleValue]);
+    
+    if (_displayIndex == _questions.count - 1) {
+        [_btnSubmit setTitle:@"Submit" forState:UIControlStateNormal];
+    }
+    else{
+        [_btnSubmit setTitle:@"Next" forState:UIControlStateNormal];
+    }
     
     heights =[[NSMutableArray alloc]initWithObjects:[NSNumber numberWithFloat:0],
               [NSNumber numberWithFloat:0],
@@ -411,13 +438,11 @@
             [_studentAnwsers addObject:newStudentAnswer];
             
             [[NSManagedObjectContext MR_defaultContext] MR_saveToPersistentStoreAndWait];
-            if (_displayIndex == _questions.count - 2) {
-                [_btnSubmit setTitle:@"Submit" forState:UIControlStateNormal];
-            }
             
-            [self redisplayQuestion];
+            //[self redisplayQuestion];
             
             _displayIndex+=1;
+            [self redisplayQuestion];
             
         } else {
             [self stopTimer];
@@ -446,9 +471,9 @@
             
             
         }
-   
-            _currentPack.totalTimeToFinish = [NSNumber numberWithDouble:timeInterval];
-            [[NSManagedObjectContext MR_defaultContext]MR_saveToPersistentStoreAndWait];
+        
+        _currentPack.totalTimeToFinish = [NSNumber numberWithDouble:timeInterval];
+        [[NSManagedObjectContext MR_defaultContext]MR_saveToPersistentStoreAndWait];
         
     }
 }
@@ -594,7 +619,7 @@
             
         }
         if([_currentPack.totalTimeToFinish floatValue]!= 0){
-            UIAlertView *alert = [[UIAlertView alloc]initWithTitle:@"Do Again" message:@"You did this pack"  delegate:self cancelButtonTitle:@"Cancel" otherButtonTitles:@"Start over",@"Continue",@"Review", nil];
+            UIAlertView *alert = [[UIAlertView alloc]initWithTitle:@"Do Again" message:@"You started this pack"  delegate:self cancelButtonTitle:@"Cancel" otherButtonTitles:@"Start over",@"Continue",@"Review", nil];
             [self.view addSubview:alert];
             [alert show];
             [self stopTimer];
@@ -623,6 +648,7 @@
                 NSSortDescriptor *nameDescriptor = [NSSortDescriptor sortDescriptorWithKey:@"questionId" ascending:YES];
                 NSArray *tquestions = [[testQuestionPack.questions allObjects] sortedArrayUsingDescriptors:[NSArray arrayWithObject:nameDescriptor]];
                 for (Question *q in tquestions) {
+                    q.timeToFinish = [NSNumber numberWithDouble:0];
                     NSPredicate *que = [NSPredicate predicateWithFormat:@"question = %@", q];
                     [StudentAnswer MR_deleteAllMatchingPredicate:que];
                     NSLog(@"Number of SA which you have deleted : %ld", (unsigned long)[StudentAnswer MR_countOfEntities]);
@@ -677,7 +703,15 @@
                                                         forKey:kCATransition];
             
             NSLog(@"_studentcount : %ld",_studentAnwsers.count);
-            [self.navigationController pushViewController:quickReviewController animated:NO];
+            if(_studentAnwsers.count<=0){
+                UIAlertView *alert = [[UIAlertView alloc]initWithTitle:@"" message:@"You have done no question to review" delegate:nil cancelButtonTitle:@"OK" otherButtonTitles: nil];
+                [self.view addSubview:alert];
+                [self.navigationController popViewControllerAnimated:NO];
+                [alert show];
+                
+            }else{
+                [self.navigationController pushViewController:quickReviewController animated:NO];
+            }
         }
             break;
         default:

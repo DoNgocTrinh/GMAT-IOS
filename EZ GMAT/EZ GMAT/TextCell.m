@@ -16,6 +16,8 @@
     
     self.backgroundColor = [UIColor clearColor];
    // _webViewQuestion.userInteractionEnabled = NO;
+    //self.layer.borderWidth = 0.5;
+    //self.layer.borderColor = [[UIColor grayColor] colorWithAlphaComponent:0.3].CGColor;
     
 }
 
@@ -29,7 +31,6 @@
 -(void)loadContentWithLocalHTML:(NSString *)content;{
     NSString* htmlPath = [[NSBundle mainBundle] pathForResource:@"index" ofType:@"html"];
     NSString* appHtml = [NSString stringWithContentsOfFile:htmlPath encoding:NSUTF8StringEncoding error:nil];
-    
     content = [NSString stringWithFormat: @"%@", content];
     
     if([content rangeOfString:@"$"].location != NSNotFound) { // Expression inside text.
@@ -49,7 +50,9 @@
         
         [_webViewQuestion loadHTMLString:appHtml baseURL:baseURL];
     } else { // Raw KaTeX.
-        [_webViewQuestion loadHTMLString:content baseURL:nil];
+        NSString *path = [[NSBundle mainBundle] bundlePath];
+        NSURL *baseURL = [NSURL fileURLWithPath:path];
+        [_webViewQuestion loadHTMLString:content baseURL:baseURL];
         //  content = [NSString stringWithFormat:@"<span class=\"tex\">%@</span>", content];
     }
     

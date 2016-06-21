@@ -2,7 +2,7 @@
 //  Question+CoreDataProperties.h
 //  EZ GMAT
 //
-//  Created by Do Ngoc Trinh on 6/17/16.
+//  Created by Do Ngoc Trinh on 6/21/16.
 //  Copyright © 2016 Do Ngoc Trinh. All rights reserved.
 //
 //  Choose "Create NSManagedObject Subclass…" from the Core Data editor menu
@@ -15,6 +15,7 @@ NS_ASSUME_NONNULL_BEGIN
 
 @interface Question (CoreDataProperties)
 
+@property (nullable, nonatomic, retain) NSNumber *bookMark;
 @property (nullable, nonatomic, retain) NSString *explanation;
 @property (nullable, nonatomic, retain) NSString *questionId;
 @property (nullable, nonatomic, retain) NSNumber *rightAnswerIdx;
@@ -23,7 +24,7 @@ NS_ASSUME_NONNULL_BEGIN
 @property (nullable, nonatomic, retain) NSString *subType;
 @property (nullable, nonatomic, retain) NSNumber *tag;
 @property (nullable, nonatomic, retain) NSString *type;
-@property (nullable, nonatomic, retain) NSNumber *bookMark;
+@property (nullable, nonatomic, retain) NSNumber *timeToFinish;
 @property (nullable, nonatomic, retain) NSSet<Answer *> *answers;
 @property (nullable, nonatomic, retain) StudentAnswer *studentAnswer;
 

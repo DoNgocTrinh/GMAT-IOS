@@ -26,6 +26,7 @@
     newQuestion.tag = [NSNumber numberWithInteger:-1];
     newQuestion.bookMark =[NSNumber numberWithInteger:0];
     newQuestion.rightAnswerIdx = [NSNumber numberWithInteger:[jsonDict[@"right_answer"] integerValue]];
+    newQuestion.timeToFinish = [NSNumber numberWithDouble:0];
     newQuestion.answers = [[NSSet alloc]init];
     
     for (NSDictionary *answerChoice in jsonDict[@"answer_choices"]) {

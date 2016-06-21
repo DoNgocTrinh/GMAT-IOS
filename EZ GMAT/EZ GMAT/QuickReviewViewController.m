@@ -15,14 +15,23 @@
 #import "ReviewPageController.h"
 
 @interface QuickReviewViewController ()
-
+{
+    double avgTime;
+}
 @end
 
 @implementation QuickReviewViewController
 
 - (void)viewDidLoad {
     [super viewDidLoad];
-    // Do any additional setup after loading the view.
+    
+    //calculate AVG time
+avgTime = 0;
+    for(Question *q in _questions){
+        avgTime += [q.timeToFinish doubleValue];
+    }
+    avgTime = avgTime/_questions.count;
+    
     NSLog(@"-----------%lu %lu", (unsigned long)_studentAnswers.count, (unsigned long)_questions.count);
     self.navigationItem.hidesBackButton = YES;
     
@@ -89,7 +98,7 @@
         cell.viewCir.percentage = (float)numberOfRightAnswer/(float)_studentAnswers.count;
         CGFloat completePercent = ((float)numberOfRightAnswer)*100.0f/(float)_studentAnswers.count;
         cell.viewCir.textLabel.text = [NSString stringWithFormat:@" %.1lf%% ", completePercent];        
-        cell.lblTime.text = [NSString stringWithFormat:@"Average time:  %.1fs", [self convertTimeFromString:_lblTime]/(float)_questions.count];
+        cell.lblTime.text = [NSString stringWithFormat:@"Average time:  %.1fs",avgTime];
         
         return cell;
     } else if (indexPath.section == 1) {
