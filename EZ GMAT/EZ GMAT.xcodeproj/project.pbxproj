@@ -141,6 +141,7 @@
 		E87D493D1D146AF1002BB700 /* SummaryDetailVC.m in Sources */ = {isa = PBXBuildFile; fileRef = E87D493C1D146AF1002BB700 /* SummaryDetailVC.m */; };
 		E8B0C2191D0ECA370073BB52 /* ReviewAnswerWVCell.m in Sources */ = {isa = PBXBuildFile; fileRef = E8B0C2171D0ECA370073BB52 /* ReviewAnswerWVCell.m */; };
 		E8B0C21A1D0ECA370073BB52 /* ReviewAnswerWVCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = E8B0C2181D0ECA370073BB52 /* ReviewAnswerWVCell.xib */; };
+		E8F53F0E1D1A3CD600344400 /* demo-image.jpg in Resources */ = {isa = PBXBuildFile; fileRef = E8F53F0D1D1A3CD600344400 /* demo-image.jpg */; };
 		E8FA59331D09B15300AA8280 /* QuestionType+CoreDataProperties.m in Sources */ = {isa = PBXBuildFile; fileRef = E8FA592E1D09B15300AA8280 /* QuestionType+CoreDataProperties.m */; };
 		E8FA59341D09B15300AA8280 /* QuestionSubType+CoreDataProperties.m in Sources */ = {isa = PBXBuildFile; fileRef = E8FA59301D09B15300AA8280 /* QuestionSubType+CoreDataProperties.m */; };
 		E8FA59351D09B15300AA8280 /* QuestionSubType.m in Sources */ = {isa = PBXBuildFile; fileRef = E8FA59321D09B15300AA8280 /* QuestionSubType.m */; };
@@ -438,6 +439,7 @@
 		E8B0C2161D0ECA370073BB52 /* ReviewAnswerWVCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ReviewAnswerWVCell.h; sourceTree = "<group>"; };
 		E8B0C2171D0ECA370073BB52 /* ReviewAnswerWVCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ReviewAnswerWVCell.m; sourceTree = "<group>"; };
 		E8B0C2181D0ECA370073BB52 /* ReviewAnswerWVCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = ReviewAnswerWVCell.xib; sourceTree = "<group>"; };
+		E8F53F0D1D1A3CD600344400 /* demo-image.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = "demo-image.jpg"; sourceTree = "<group>"; };
 		E8FA592D1D09B15300AA8280 /* QuestionType+CoreDataProperties.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "QuestionType+CoreDataProperties.h"; sourceTree = "<group>"; };
 		E8FA592E1D09B15300AA8280 /* QuestionType+CoreDataProperties.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "QuestionType+CoreDataProperties.m"; sourceTree = "<group>"; };
 		E8FA592F1D09B15300AA8280 /* QuestionSubType+CoreDataProperties.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "QuestionSubType+CoreDataProperties.h"; sourceTree = "<group>"; };
@@ -635,6 +637,7 @@
 				E81A7E091CF73EA900BDE293 /* Assets.xcassets */,
 				E81A7E0B1CF73EA900BDE293 /* LaunchScreen.storyboard */,
 				E813A8321D19365000A7FFE6 /* downloaded.png */,
+				E8F53F0D1D1A3CD600344400 /* demo-image.jpg */,
 				E808F21B1D08296D00559BAD /* Login */,
 				E81A7E321CF75BDE00BDE293 /* Home */,
 				E8FD54BB1CF87303008647E6 /* QuestionView */,
@@ -1362,6 +1365,7 @@
 				E83234E71D0638C300314B74 /* KaTeX_AMS-Regular.woff in Resources */,
 				E81264601D05992200094764 /* AnswerWVCell.xib in Resources */,
 				E8FA65441CFDBB2A00D64D70 /* ReadingViewController.xib in Resources */,
+				E8F53F0E1D1A3CD600344400 /* demo-image.jpg in Resources */,
 				E83234F81D0638C300314B74 /* KaTeX_Math-Regular.ttf in Resources */,
 				E83234F01D0638C300314B74 /* KaTeX_Main-Regular.woff in Resources */,
 				E83234F61D0638C300314B74 /* KaTeX_Math-Italic.woff in Resources */,

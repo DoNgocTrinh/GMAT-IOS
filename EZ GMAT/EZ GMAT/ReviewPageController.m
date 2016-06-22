@@ -22,6 +22,7 @@
 
 - (void)viewDidLoad {
     [super viewDidLoad];
+    [self setTitle:@"Review"];
     _viewShowTag.backgroundColor = kAppColor;
     //Create Share-Button:
     UIBarButtonItem *shareButton = [[UIBarButtonItem alloc]
@@ -93,7 +94,7 @@
     }
     
     index++;
-
+    
     if (index == [self.questions count]) {
         return nil;
     }
@@ -129,6 +130,9 @@
 }
 
 -(void)btnNextDidTap;{
+    if(![TagButtonView disappearFromView:self.view]){
+        return;
+    }
     _currentPageIndex = (_currentPageIndex + 1)%_questions.count;
     self.navigationItem.title = [NSString stringWithFormat:@"%lu/%ld",_currentPageIndex+1,_questions.count];
     
@@ -140,12 +144,14 @@
 }
 
 -(void)btnBackDidTap;{
+    if(![TagButtonView disappearFromView:self.view]){
+        return;
+    }
     if(_currentPageIndex ==0 )
         _currentPageIndex = _questions.count-1;
     else
         _currentPageIndex = (_currentPageIndex - 1)%_questions.count;
     
-    // NSLog(@"Back %ld", (long)_currentPageIndex);
     [self checkTagForQuestion:_questions[_currentPageIndex]];
     self.navigationItem.title = [NSString stringWithFormat:@"%lu/%ld",_currentPageIndex+1,_questions.count];
     ReviewPageContentVC *view = [self viewControllerAtIndex:_currentPageIndex];
@@ -154,33 +160,19 @@
 }
 
 -(void)showTagViewButton;{
-    int count = 0;
-    for(UIView *tagView in self.view.subviews){
-        if([tagView isKindOfClass:[TagButtonView class]]){
-            count++;
-            [tagView removeFromSuperview];
-            tagView.hidden = YES;
-            NSLog(@"removed");
-        }
-    }
-    if(count==0){
+    if([TagButtonView disappearFromView:self.view]){
         CGFloat x = 0;
         CGFloat y = 0;
         CGFloat width = self.view.frame.size.width;
-        CGFloat height = self.view.frame.size.height;
-        TagButtonView *tagView= [TagButtonView tagViewWithFrame:CGRectMake(x, y, width, height)];
+        CGFloat height = self.view.bounds.size.height;
+        TagButtonView *tagView= [TagButtonView tagViewWithFrame:CGRectMake(x, y, width, height-74)];
         [tagView.btnRed addTarget:self action:@selector(redClick) forControlEvents:UIControlEventTouchUpInside];
         [tagView.btnGreen addTarget:self action:@selector(greenClick) forControlEvents:UIControlEventTouchUpInside];
         [tagView.btnYellow addTarget:self action:@selector(yellowClick) forControlEvents:UIControlEventTouchUpInside];
         [tagView.btnStar addTarget:self action:@selector(starClick) forControlEvents:UIControlEventTouchUpInside];
         tagView.center = self.viewPage.center;
-        [UIView animateWithDuration:0.5 animations:^{
-            
-            [self.view addSubview:tagView];
-            
-        } completion:^(BOOL finished) {
-            
-        }];
+        [self.view addSubview:tagView];
+        
         UITapGestureRecognizer *tapGR;
         tapGR = [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(handleTap:)];
         tapGR.numberOfTapsRequired = 1;
@@ -192,12 +184,7 @@
 -(void)handleTap:(UITapGestureRecognizer *)sender
 {
     if (sender.state == UIGestureRecognizerStateEnded) {
-        for(UIView *tagView in self.view.subviews){
-            if([tagView isKindOfClass:[TagButtonView class]]){
-                [tagView removeFromSuperview];
-                tagView.hidden = YES;
-            }
-        }
+        [TagButtonView disappearFromView:self.view];
     }
 }
 
@@ -230,6 +217,7 @@
 }
 -(void)checkTagForQuestion:(Question *)question;{
     NSLog(@"checktag");
+    
     switch ([question.tag integerValue]) {
         case -1:
             self.imgTag.image = [UIImage imageNamed:@"grey"];
@@ -257,7 +245,12 @@
             self.imgStar.image = [UIImage imageNamed:@"nostar"];
             break;
     }
-    
+    if([[(StudentAnswer *)_studentAnswers[_currentPageIndex] result] intValue]==1){
+        _viewShowTag.backgroundColor = [[UIColor hx_colorWithHexRGBAString:@"#61BD6D"] colorWithAlphaComponent:0.8];
+    }
+    else{
+        _viewShowTag.backgroundColor = [[UIColor hx_colorWithHexRGBAString:@"#E25041"] colorWithAlphaComponent:0.8];
+    }
 }
 
 -(void)redClick{

@@ -30,7 +30,6 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     _studentAnswer = _question.studentAnswer;
-    NSLog(@"tag: %ld; bookMark: %ld", [_question.tag integerValue], [_question.bookMark integerValue]);
     selectedRows = [[NSMutableArray alloc]initWithObjects:@"0",@"0",@"0",@"0",@"0", nil];
     
     heights =[[NSMutableArray alloc]initWithObjects:[NSNumber numberWithFloat:0],
@@ -104,7 +103,7 @@
             if(![_question.type isEqualToString:@"RC"])
             {
                 cell.webViewQuestion.opaque = NO;
-                cell.webViewQuestion.backgroundColor =[kAppColor colorWithAlphaComponent:.2];
+                cell.webViewQuestion.backgroundColor =kQuestionColor;
                 cell.webViewQuestion.scrollView.scrollEnabled = NO;
             }
             else{
@@ -127,9 +126,11 @@
             cell.webViewQuestion.tag = 1;
             cell.webViewQuestion.delegate = self;
             cell.webViewQuestion.opaque = NO;
-            cell.webViewQuestion.backgroundColor =[kAppColor colorWithAlphaComponent:.2];
+            cell.webViewQuestion.backgroundColor =kQuestionColor;
             [cell loadContentWithContent:_question.stem questionType:_question.type];
             cell.webViewQuestion.scrollView.scrollEnabled = NO;
+            cell.layer.borderWidth = 0.8;
+            cell.layer.borderColor = [[UIColor grayColor] colorWithAlphaComponent:0.5].CGColor;
             return cell;
         }
         else return nil;
@@ -145,8 +146,7 @@
         cell.webViewAnswer.tag = indexPath.row +2;
         cell.webViewAnswer.delegate = self;
         [cell cellWithAnswer:  (Answer *)answers[indexPath.row] andIsSelected:selectedRows[indexPath.row]];
-        //         cell.explanation = [(Answer *)answers[indexPath.row] explanation];
-        //
+ 
         if ((int)[_studentAnswer.answerChoiceIdx intValue] == (int)indexPath.row) {
             cell.contentView.backgroundColor = [UIColor hx_colorWithHexRGBAString:@"#FFCDD2"];
             cell.webViewAnswer.backgroundColor = cell.contentView.backgroundColor ;
@@ -180,6 +180,7 @@
             selectedRows[indexPath.row] = @"0";
         }
         [(ReviewAnswerWVCell *) cell cellWithAnswer:  (Answer *)answers[indexPath.row] andIsSelected:selectedRows[indexPath.row]];
+        
         [_tbvReview beginUpdates];
         [_tbvReview endUpdates];
     }

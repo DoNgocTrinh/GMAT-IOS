@@ -10,6 +10,8 @@
 #import "SummaryVC.h"
 #import "QuestionPackCLVCell.h"
 #import "QuestionViewController.h"
+#import "Question.h"
+#import "StudentAnswer.h"
 
 @interface HomeViewController ()
 
@@ -39,8 +41,23 @@
             [self pullQuestionPacks];
         }];
     }];
+}
+-(void)viewWillAppear:(BOOL)animated{
+    //caculate data
+    NSPredicate *querry = [NSPredicate predicateWithFormat:@"result = %d",1];
+    NSInteger trueAnswers = [StudentAnswer MR_countOfEntitiesWithPredicate:querry];
+    NSInteger questions = [Question MR_countOfEntities];
+    CGFloat percent =(float)trueAnswers/questions;
     
-    
+    [_viewProgress setPercentage:percent];
+    if(percent<=.7){
+        _lblSkillLevel.text =@"Newbie";
+    }else if(percent>0.7 && percent <=0.9){
+        _lblSkillLevel.text =@"Intermediate";
+    }else{
+        _lblSkillLevel.text =@"Expert";
+    }
+    self.viewProgress.textLabel.text = [NSString stringWithFormat:@" %.lf%% ", self.viewProgress.percentage*100];
 }
 
 - (void)didReceiveMemoryWarning {
@@ -98,7 +115,6 @@
             cell.imgLocked.hidden = YES;
             break;
     }
-    
     return cell;
 }
 
@@ -200,6 +216,7 @@
 -(void)customView;{
     //color list
     [self colorListConfig];
+    
     //circle
     self.viewProgress.textStyle               = MCPercentageDoughnutViewTextStyleUserDefined;
     self.viewProgress.linePercentage          = 0.1;
@@ -213,10 +230,10 @@
     self.viewProgress.unfillColor             = [UIColor whiteColor];
     self.viewProgress.textLabel.font          = [UIFont systemFontOfSize:1.0];
     [self.viewProgress setInitialPercentage:0.5f];
-    [self.viewProgress setPercentage:0.0];
+    [self.viewProgress setPercentage:0];
     self.viewProgress.textLabel.text          = [NSString stringWithFormat:@" %.lf%% ", self.viewProgress.percentage*100];
     //view
-    self.viewBottomer.backgroundColor = [kAppColor colorWithAlphaComponent:1];
+    self.viewBottomer.backgroundColor = [[UIColor lightGrayColor] colorWithAlphaComponent:0.5];
     self.viewTop.backgroundColor = [kAppColor colorWithAlphaComponent:0.5];
     
     //bntMore
@@ -225,22 +242,23 @@
 }
 -(void)colorListConfig;{
     colorList = [[NSArray alloc]initWithObjects:
-                 @"#2d5139",
-                 @"#2d3f51",
-                 @"#462e52",
-                 @"#4e512d",
-                 @"#512d2d",
-                 @"#2e524f",
-                 @"#52432e",
-                 @"#522e42",
-                 @"#3c6b4c",
-                 @"#3c6b4c",
-                 @"#5b3c6b",
-                 @"#676b3c",
-                 @"#6b3c3c",
-                 @"#3c6b67",
-                 @"#6b573c",
-                 @"#6b3c56",
+                 @"#E87328",
+                 // @"#16a085",
+                 //                 @"#27ae60",
+                 //                 @"#2980b9",
+                 //                 @"#8e44ad",
+                 //                 @"#2c3e50",
+                 //                 @"#f39c12",
+                 //                 @"#d35400",
+                 //                 @"#e74c3c",
+                 //                 @"#c0392b",
+                 //                 @"#3c6b4c",
+                 //                 @"#5b3c6b",
+                 //                 @"#676b3c",
+                 //                 @"#6b3c3c",
+                 //                 @"#3c6b67",
+                 //                 @"#6b573c",
+                 //                 @"#6b3c56",
                  nil];
 }
 @end

@@ -5,6 +5,7 @@
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="10085"/>
         <capability name="Aspect ratio constraints" minToolsVersion="5.1"/>
         <capability name="Constraints to layout margins" minToolsVersion="6.0"/>
+        <capability name="Constraints with non-1.0 multipliers" minToolsVersion="5.1"/>
     </dependencies>
     <objects>
         <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner"/>
@@ -24,7 +25,7 @@
                         </constraints>
                     </imageView>
                     <webView contentMode="scaleAspectFill" translatesAutoresizingMaskIntoConstraints="NO" id="toR-Jb-fEq">
-                        <rect key="frame" x="41" y="0.0" width="315" height="126"/>
+                        <rect key="frame" x="41" y="0.0" width="304" height="126"/>
                         <color key="backgroundColor" red="0.36078431370000003" green="0.38823529410000002" blue="0.4039215686" alpha="1" colorSpace="deviceRGB"/>
                         <constraints>
                             <constraint firstAttribute="height" relation="greaterThanOrEqual" constant="44" id="5PY-VN-URp"/>
@@ -45,6 +46,18 @@
                             </mask>
                         </variation>
                     </webView>
+                    <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="expand" translatesAutoresizingMaskIntoConstraints="NO" id="Lc6-fK-gZe">
+                        <rect key="frame" x="345" y="103" width="15" height="15"/>
+                        <constraints>
+                            <constraint firstAttribute="width" secondItem="Lc6-fK-gZe" secondAttribute="height" id="vIb-ee-86M"/>
+                            <constraint firstAttribute="width" secondItem="Lc6-fK-gZe" secondAttribute="height" multiplier="1:1" id="vga-uH-SBB"/>
+                        </constraints>
+                        <variation key="default">
+                            <mask key="constraints">
+                                <exclude reference="vIb-ee-86M"/>
+                            </mask>
+                        </variation>
+                    </imageView>
                 </subviews>
                 <constraints>
                     <constraint firstItem="toR-Jb-fEq" firstAttribute="height" secondItem="tUU-ya-EG0" secondAttribute="height" id="1BY-Ks-DOc"/>
@@ -53,21 +66,29 @@
                     <constraint firstAttribute="bottomMargin" secondItem="toR-Jb-fEq" secondAttribute="bottom" constant="-2" id="B9Q-Qh-zJP"/>
                     <constraint firstAttribute="bottomMargin" secondItem="toR-Jb-fEq" secondAttribute="bottom" id="BTv-vK-6Q5"/>
                     <constraint firstAttribute="bottomMargin" secondItem="toR-Jb-fEq" secondAttribute="bottom" constant="-2" id="EO4-MS-i1g"/>
+                    <constraint firstItem="Lc6-fK-gZe" firstAttribute="leading" secondItem="toR-Jb-fEq" secondAttribute="trailing" id="GmC-mP-rjk"/>
                     <constraint firstItem="toR-Jb-fEq" firstAttribute="top" secondItem="tUU-ya-EG0" secondAttribute="topMargin" id="HST-zD-Tbu"/>
                     <constraint firstItem="toR-Jb-fEq" firstAttribute="leading" secondItem="V6L-o2-Hn0" secondAttribute="trailing" constant="4" id="Hby-Vv-9XY"/>
+                    <constraint firstItem="Lc6-fK-gZe" firstAttribute="width" secondItem="tUU-ya-EG0" secondAttribute="width" multiplier="1:25" id="PiP-9U-dPW"/>
+                    <constraint firstItem="Lc6-fK-gZe" firstAttribute="centerY" secondItem="tUU-ya-EG0" secondAttribute="centerY" id="Qa9-QY-MTN"/>
                     <constraint firstItem="toR-Jb-fEq" firstAttribute="centerY" secondItem="tUU-ya-EG0" secondAttribute="centerY" id="Rk4-WP-h8I"/>
                     <constraint firstItem="V6L-o2-Hn0" firstAttribute="centerY" secondItem="tUU-ya-EG0" secondAttribute="centerY" id="UFt-Al-Bwt"/>
                     <constraint firstItem="V6L-o2-Hn0" firstAttribute="leading" secondItem="tUU-ya-EG0" secondAttribute="leadingMargin" constant="4" id="VYq-Zx-ySf"/>
                     <constraint firstAttribute="bottomMargin" secondItem="toR-Jb-fEq" secondAttribute="bottom" id="ViK-fK-OjW"/>
+                    <constraint firstItem="Lc6-fK-gZe" firstAttribute="leading" secondItem="toR-Jb-fEq" secondAttribute="trailing" id="Xqw-dU-XCl"/>
                     <constraint firstItem="toR-Jb-fEq" firstAttribute="top" secondItem="tUU-ya-EG0" secondAttribute="topMargin" id="bMt-QJ-mFb"/>
                     <constraint firstItem="toR-Jb-fEq" firstAttribute="centerY" secondItem="V6L-o2-Hn0" secondAttribute="centerY" id="cqD-VQ-aAE"/>
+                    <constraint firstAttribute="bottomMargin" secondItem="Lc6-fK-gZe" secondAttribute="bottom" id="h8C-o5-KA4"/>
                     <constraint firstItem="toR-Jb-fEq" firstAttribute="height" secondItem="tUU-ya-EG0" secondAttribute="height" id="m77-cK-6gy"/>
                     <constraint firstItem="toR-Jb-fEq" firstAttribute="top" secondItem="tUU-ya-EG0" secondAttribute="topMargin" id="ncf-oP-OZ0"/>
                     <constraint firstItem="toR-Jb-fEq" firstAttribute="top" secondItem="tUU-ya-EG0" secondAttribute="topMargin" id="u33-qa-adR"/>
                     <constraint firstItem="toR-Jb-fEq" firstAttribute="height" secondItem="tUU-ya-EG0" secondAttribute="height" id="veW-zi-PBQ"/>
+                    <constraint firstAttribute="trailing" secondItem="Lc6-fK-gZe" secondAttribute="trailing" constant="4" id="xRN-lb-eBV"/>
+                    <constraint firstItem="Lc6-fK-gZe" firstAttribute="height" secondItem="tUU-ya-EG0" secondAttribute="height" multiplier="1:6" id="xzU-9F-ta8"/>
                 </constraints>
                 <variation key="default">
                     <mask key="constraints">
+                        <exclude reference="7Ad-tg-vsW"/>
                         <exclude reference="B9Q-Qh-zJP"/>
                         <exclude reference="BTv-vK-6Q5"/>
                         <exclude reference="EO4-MS-i1g"/>
@@ -80,14 +101,21 @@
                         <exclude reference="ncf-oP-OZ0"/>
                         <exclude reference="u33-qa-adR"/>
                         <exclude reference="veW-zi-PBQ"/>
+                        <exclude reference="GmC-mP-rjk"/>
+                        <exclude reference="Qa9-QY-MTN"/>
+                        <exclude reference="xzU-9F-ta8"/>
                     </mask>
                 </variation>
             </tableViewCellContentView>
             <connections>
+                <outlet property="imgExpand" destination="Lc6-fK-gZe" id="HB5-YR-5q1"/>
                 <outlet property="imvAnswer" destination="V6L-o2-Hn0" id="Jf2-9U-YVO"/>
                 <outlet property="webViewAnswer" destination="toR-Jb-fEq" id="EWd-JN-4eU"/>
             </connections>
             <point key="canvasLocation" x="299" y="161.5"/>
         </tableViewCell>
     </objects>
+    <resources>
+        <image name="expand" width="50" height="50"/>
+    </resources>
 </document>

@@ -67,7 +67,7 @@
               [NSNumber numberWithFloat:0],nil ];
     
     self.navigationController.navigationBar.translucent = NO;
-
+    
     CGRect rect = CGRectMake(0, 0, self.view.frame.size.width, 44);
     customTitleView = [CustomTitleView customViewWithFrame:rect];
     [customTitleView setCenter:self.navigationItem.titleView.center];
@@ -152,7 +152,7 @@
         cell.selectionStyle = UITableViewCellSelectionStyleNone;
         
         //dump image
-        NSString *stringImage = @"<img src='downloaded.png' width='50' height='50';>";
+        NSString *stringImage = @"<br><img src='demo-image.jpg' width='50' height='50';>";
         NSString *content = [NSString stringWithFormat:@"%@ %@", selectedQuestion.stimulus, stringImage];
         
         //  [cell loadContentWithContent:selectedQuestion.stimulus questionType:selectedQuestion.type];
@@ -163,7 +163,7 @@
         if(![selectedQuestion.type isEqualToString:@"RC"])
         {
             cell.webViewQuestion.opaque = NO;
-            cell.webViewQuestion.backgroundColor =[kAppColor colorWithAlphaComponent:.2];
+            cell.webViewQuestion.backgroundColor =kQuestionColor;
             cell.webViewQuestion.scrollView.scrollEnabled = NO;
         }
         else{
@@ -204,8 +204,10 @@
         cell.webViewQuestion.delegate = self;
         cell.webViewQuestion.tag = 1;
         cell.webViewQuestion.opaque = NO;
-        cell.webViewQuestion.backgroundColor =[kAppColor colorWithAlphaComponent:.2];
+        cell.webViewQuestion.backgroundColor =[UIColor hx_colorWithHexRGBAString:@"#EEEEEE"];
         cell.webViewQuestion.scrollView.scrollEnabled = NO;
+        cell.layer.borderWidth = 0.8;
+        cell.layer.borderColor = [[UIColor grayColor] colorWithAlphaComponent:0.5].CGColor;
         return cell;
         
     }
@@ -376,8 +378,8 @@
     
     Question *currentQuestion = _questions[_displayIndex];
     currentQuestion.timeToFinish = [NSNumber numberWithDouble:timeInterval-beforeTime];
-//    customTitleView.lblQuestionNumber.text = [NSString stringWithFormat:@"%.lf",[currentQuestion.timeToFinish doubleValue]];
-//
+    //    customTitleView.lblQuestionNumber.text = [NSString stringWithFormat:@"%.lf",[currentQuestion.timeToFinish doubleValue]];
+    //
     NSLog(@"time current Question %lf", [currentQuestion.timeToFinish doubleValue]);
 }
 
@@ -457,7 +459,7 @@
             QuickReviewViewController *quickReviewController = [self.storyboard instantiateViewControllerWithIdentifier:@"QuickReviewViewController"];
             
             quickReviewController.studentAnswers = _studentAnwsers;
-            quickReviewController.questions = _questions;
+            //quickReviewController.questions = _questions;
             
             quickReviewController.lblTime = customTitleView.lblTime.text;
             
@@ -615,8 +617,6 @@
         else{
             _displayIndex = i-1;
             //  NSLog(@"-------- %d",_studentAnwsers.count );
-            
-            
         }
         if([_currentPack.totalTimeToFinish floatValue]!= 0){
             UIAlertView *alert = [[UIAlertView alloc]initWithTitle:@"Do Again" message:@"You started this pack"  delegate:self cancelButtonTitle:@"Cancel" otherButtonTitles:@"Start over",@"Continue",@"Review", nil];
@@ -669,13 +669,44 @@
             break;
         case 2://continue
         {
-            [self startTimer];
+            if(_studentAnwsers.count==10){
+                QuickReviewViewController *quickReviewController = [self.storyboard instantiateViewControllerWithIdentifier:@"QuickReviewViewController"];
+                quickReviewController.studentAnswers = _studentAnwsers;
+                quickReviewController.questions = [[NSMutableArray alloc]init];
+                //add questions
+                Question *newQuestion = _questions[_displayIndex];
+                NSPredicate *querry = [NSPredicate predicateWithFormat:@"questions CONTAINS %@", newQuestion];
+                QuestionPack *testQuestionPack =[QuestionPack MR_findFirstWithPredicate:querry];
+                if(testQuestionPack){
+                    for (Question *q in testQuestionPack.questions) {
+                        NSPredicate *que = [NSPredicate predicateWithFormat:@"question = %@", q];
+                        
+                        if( [StudentAnswer MR_countOfEntitiesWithPredicate:que] !=0){
+                            [quickReviewController.questions addObject:q];
+                        }
+                    }
+                }
+                //quickReviewController.questions = _questions;
+                
+                quickReviewController.lblTime = [NSString stringWithFormat:@"%lf",[_currentPack.totalTimeToFinish floatValue]];
+                
+                CATransition* transition = [CATransition animation];
+                transition.duration = 1.0f;
+                transition.type = kCATransitionMoveIn;
+                transition.subtype = kCATransitionFade;
+                [self.navigationController.view.layer addAnimation:transition
+                                                            forKey:kCATransition];
+                NSLog(@"_studentcount : %ld",_studentAnwsers.count);
+                
+                [self.navigationController pushViewController:quickReviewController animated:NO];
+            }else{
+                [self startTimer];
+            }
         }
             break;
         case 3: //review
         {
             QuickReviewViewController *quickReviewController = [self.storyboard instantiateViewControllerWithIdentifier:@"QuickReviewViewController"];
-            
             quickReviewController.studentAnswers = _studentAnwsers;
             quickReviewController.questions = [[NSMutableArray alloc]init];
             //add questions

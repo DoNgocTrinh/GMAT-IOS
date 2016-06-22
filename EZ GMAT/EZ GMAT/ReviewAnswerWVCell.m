@@ -19,19 +19,45 @@
     _webViewAnswer.backgroundColor = [UIColor whiteColor];
     self.layer.borderWidth = 0.5;
     self.layer.borderColor = [[UIColor grayColor] colorWithAlphaComponent:0.3].CGColor;
+    [_imgExpand setImage:[UIImage imageNamed:@"expand"]];
 }
-
+-(void)checkExpand:(NSString *)string;{
+    if([string isEqualToString:@"1"]){
+        [_imgExpand setImage:[UIImage imageNamed:@"collapse"]];
+    }
+    else{
+        [_imgExpand setImage:[UIImage imageNamed:@"expand"]];
+    }
+}
+-(void)compareImage:(UIImage *)img1 andImage:(UIImage *)img2;{
+    img2 = [UIImage imageNamed:@"expand"];
+    NSData *data1 = UIImagePNGRepresentation(img1);
+    NSData *data2 = UIImagePNGRepresentation(img2);
+    if([data1 isEqualToData:data2])
+    {
+        [UIView animateWithDuration:0.2 animations:^{
+            [_imgExpand setImage:[UIImage imageNamed:@"collapse"]];
+        }];
+        
+    }else{
+        [UIView animateWithDuration:0.2 animations:^{
+            [_imgExpand setImage:[UIImage imageNamed:@"expand"]];
+        }];
+    }
+}
 - (void)setSelected:(BOOL)selected animated:(BOOL)animated {
     if(selected){
         //  self.backgroundView.backgroundColor = kSelectedColor;
-//        self.contentView.backgroundColor = kSelectedColor;
-//        _webViewAnswer.backgroundColor = kSelectedColor;
+        //        self.contentView.backgroundColor = kSelectedColor;
+        //        _webViewAnswer.backgroundColor = kSelectedColor;
         //®[self loadContentWithContent:[NSString stringWithFormat:@"-------%@", @"choice"]];
+        
         
     }
     else{
-//        self.contentView.backgroundColor = [UIColor whiteColor];
-//        _webViewAnswer.backgroundColor = [UIColor whiteColor];
+        //[_imgExpand setImage:[UIImage imageNamed:@"expand"]];
+        //        self.contentView.backgroundColor = [UIColor whiteColor];
+        //        _webViewAnswer.backgroundColor = [UIColor whiteColor];
         //[self loadContentWithContent:[NSString stringWithFormat:@"%@", @"choice"]];
     }
     _webViewAnswer.opaque = NO;
@@ -39,6 +65,8 @@
 -(void)webViewDidFinishLoad:(UIWebView *)webView{
 }
 -(void)cellWithAnswer: (Answer*)answer andIsSelected:(NSString *)isSelected;{
+    
+    [self checkExpand:isSelected];
     
     switch ([answer.index intValue]) {
         case 0:

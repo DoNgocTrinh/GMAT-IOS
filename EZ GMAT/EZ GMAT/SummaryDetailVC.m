@@ -22,6 +22,10 @@
 
 - (void)viewDidLoad {
     [super viewDidLoad];
+    self.title = _type.detail;
+    UIBarButtonItem *barButton = [[UIBarButtonItem alloc] init];
+    barButton.title = @"";
+    self.navigationController.navigationBar.topItem.backBarButtonItem = barButton;
     //sort
     NSSortDescriptor *nameDescriptor = [NSSortDescriptor sortDescriptorWithKey:@"code" ascending:YES];
     sortedSubTypes = [[_type.subTypes allObjects] sortedArrayUsingDescriptors:[NSArray arrayWithObject:nameDescriptor]];

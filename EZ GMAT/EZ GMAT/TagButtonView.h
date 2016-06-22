@@ -16,4 +16,5 @@
 @property UIImage *img;
 + (id)tagViewWithFrame: (CGRect)frame;
 +(void)showShareInViewController:(UIViewController *)viewController andWithView:(UIView *)view;
++(BOOL)disappearFromView:(UIView *)superView;
 @end

@@ -12,6 +12,7 @@
 
 - (void)awakeFromNib {
     [super awakeFromNib];
+ //   self.layer.masksToBounds = NO;
     self.layer.cornerRadius=10.0f;
     self.layer.borderColor=[UIColor blueColor].CGColor;
     // Initialization code

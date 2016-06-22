@@ -25,7 +25,6 @@
 
 - (void)viewDidLoad {
     [super viewDidLoad];
-    
     [self configView];
     [self setTargetForFilter];
     
@@ -37,6 +36,9 @@
     //_lblUntag.text = [NSString stringWithFormat:@"% ld",(unsigned long)listTypes.count];
     [self progressForEachSubtype];
     [_tbvCategories reloadData];
+}
+-(void)viewWillAppear:(BOOL)animated{
+     [self setTitle:@"Summary"];
 }
 
 - (void)didReceiveMemoryWarning {
@@ -119,7 +121,7 @@
     self.viewProgress.fillColor               = kAppColor;
     self.viewProgress.unfillColor             = [UIColor whiteColor];
     self.viewProgress.textLabel.font          = [UIFont systemFontOfSize:1.0];
-    [self.viewProgress setInitialPercentage:0.5f];
+    [self.viewProgress setInitialPercentage:0.0f];
     
     //count
     

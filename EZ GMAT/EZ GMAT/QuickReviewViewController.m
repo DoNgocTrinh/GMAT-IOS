@@ -25,8 +25,14 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     
+    _questions = [[NSMutableArray alloc]init];
+    
+    for(StudentAnswer *sta in _studentAnswers){
+        [_questions addObject:sta.question];
+    }
+    
     //calculate AVG time
-avgTime = 0;
+    avgTime = 0;
     for(Question *q in _questions){
         avgTime += [q.timeToFinish doubleValue];
     }
@@ -42,7 +48,7 @@ avgTime = 0;
     UIBarButtonItem *barItem = [[UIBarButtonItem alloc]initWithTitle:@"Done" style:UIBarButtonItemStyleBordered target:self action:@selector(btnDoneDidTouch)];
     self.navigationItem.rightBarButtonItem = barItem;
     
-    //sort array; 
+    //sort array;
     NSSortDescriptor *nameDescriptor = [NSSortDescriptor sortDescriptorWithKey:@"questionId" ascending:YES];
     [_questions sortUsingDescriptors:[NSArray arrayWithObject:nameDescriptor]];
 }
@@ -97,7 +103,7 @@ avgTime = 0;
         
         cell.viewCir.percentage = (float)numberOfRightAnswer/(float)_studentAnswers.count;
         CGFloat completePercent = ((float)numberOfRightAnswer)*100.0f/(float)_studentAnswers.count;
-        cell.viewCir.textLabel.text = [NSString stringWithFormat:@" %.1lf%% ", completePercent];        
+        cell.viewCir.textLabel.text = [NSString stringWithFormat:@" %.1lf%% ", completePercent];
         cell.lblTime.text = [NSString stringWithFormat:@"Average time:  %.1fs",avgTime];
         
         return cell;
@@ -113,7 +119,7 @@ avgTime = 0;
         cell.lblQuestion.text = [NSString stringWithFormat:@"%ld. %@",indexPath.row + 1, [_questions[indexPath.row] stimulus]];
         
         [cell cellWithResult:[_studentAnswers[indexPath.row] result]];
-
+        
         return cell;
     } else {
         return nil;
@@ -128,21 +134,21 @@ avgTime = 0;
     if (indexPath.section == 1) {
         [tableView deselectRowAtIndexPath:indexPath animated:NO];
         
-//        ReviewViewController *reviewController = [self.storyboard instantiateViewControllerWithIdentifier:@"review"];
-//        
-//        reviewController.studentAnswer = _studentAnswers[indexPath.row];
-//        reviewController.question = _questions[indexPath.row];
-//        
-//        [self.navigationController pushViewController:reviewController animated:YES];
-
+        //        ReviewViewController *reviewController = [self.storyboard instantiateViewControllerWithIdentifier:@"review"];
+        //
+        //        reviewController.studentAnswer = _studentAnswers[indexPath.row];
+        //        reviewController.question = _questions[indexPath.row];
+        //
+        //        [self.navigationController pushViewController:reviewController animated:YES];
+        
         
         ReviewPageController *reviewPageController = [self.storyboard instantiateViewControllerWithIdentifier:@"ReviewPageController"];
-       
+        
         reviewPageController.currentPageIndex  = indexPath.row;
         reviewPageController.questions = _questions;
         reviewPageController.studentAnswers = _studentAnswers;
         
-       [self.navigationController pushViewController:reviewPageController animated:YES];
+        [self.navigationController pushViewController:reviewPageController animated:YES];
     }
     
 }
@@ -164,7 +170,7 @@ avgTime = 0;
     NSDate *date = [dateFormatter dateFromString:@"00:00"];
     //NSLog(@"Date: %@", currentDate);
     NSTimeInterval timeInterval = [currentDate timeIntervalSinceDate:date];
-   // NSLog(@"Time interval : %f", timeInterval);
+    // NSLog(@"Time interval : %f", timeInterval);
     return timeInterval;
 }
 - (void)btnDoneDidTouch;
